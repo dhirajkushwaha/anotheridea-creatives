@@ -1,9 +1,11 @@
 
 import React from 'react'
 
+import { colorIndex } from '.'
+
 function WorknavItem(prop) {
   return (
-    <a href={prop.link} className="WorkNav-item">
+    <a href={prop.link} className={"WorkNav-item " + (prop.activeIndex === prop.index ? "Active-item" : "")}>
         <div className="WorkNav-itemInner">
             <div className="WorkNav-itemLabel">{prop.label}</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="WorkNav-itemArrow icon sprite-icons">
@@ -18,17 +20,18 @@ function WorknavItem(prop) {
 }
 
 
-export default function Worknav() {
+export default function Worknav(prop) {
+
   return (
         <>
             <div className="WorkNav">
                 <div className="WorkNav-inner">
                     <div className="WorkNav-wrapper">
-                        <WorknavItem link="/work/branding" label="Branding" color="#af37d9" />
-                        <WorknavItem link="/work/compaigns" label="Compaigns" color="#de477e" />
-                        <WorknavItem link="/work/content" label="Content" color="#f2ad45" />
-                        <WorknavItem link="/work/strategy" label="Strategy" color="#3ab8c9" />
-                        <WorknavItem link="/work/workshop" label="Workshop" color="#3b33b3" />
+                        <WorknavItem index={0} activeIndex={prop.activeIndex} link="/work/branding" label="Branding" color={colorIndex[0]} />
+                        <WorknavItem index={1} activeIndex={prop.activeIndex} link="/work/compaigns" label="Compaigns" color={colorIndex[1]} />
+                        <WorknavItem index={2} activeIndex={prop.activeIndex} link="/work/content" label="Content" color={colorIndex[2]} />
+                        <WorknavItem index={3} activeIndex={prop.activeIndex} link="/work/strategy" label="Strategy" color={colorIndex[3]} />
+                        <WorknavItem index={4} activeIndex={prop.activeIndex} link="/work/workshop" label="Workshop" color={colorIndex[4]} />
                     </div>
                 </div>
             </div>

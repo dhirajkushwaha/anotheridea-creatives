@@ -317,31 +317,31 @@ function WorksList(props){
 // Page Component
 export default function hWork(props){
 
-    const executed = useRef(0);
+    // const executed = useRef(0);
 
 
-    useEffect(() => {
-		if (typeof window === "undefined") { return; }
-        if ( !executed.current){
+    // useEffect(() => {
+	// 	if (typeof window === "undefined") { return; }
+    //     if ( !executed.current){
 
-            // ListFilter Listener
-            if ( true ){
-                const ListfilterItem = document.querySelectorAll(".Listfilter-listItem");
-                var LastFilterItem = document.querySelector(".Listfilter-listItem.is_active")
+    //         // ListFilter Listener
+    //         if ( true ){
+    //             const ListfilterItem = document.querySelectorAll(".Listfilter-listItem");
+    //             var LastFilterItem = document.querySelector(".Listfilter-listItem.is_active")
 
-                ListfilterItem.forEach(filterItem => {
-                    filterItem.addEventListener("click", (e)=>{
-                        LastFilterItem.classList.remove("is_active");
-                        filterItem.classList.add("is_active");
-                        LastFilterItem = filterItem;
-                    });
-                });
+    //             ListfilterItem.forEach(filterItem => {
+    //                 filterItem.addEventListener("click", (e)=>{
+    //                     LastFilterItem.classList.remove("is_active");
+    //                     filterItem.classList.add("is_active");
+    //                     LastFilterItem = filterItem;
+    //                 });
+    //             });
 
-            }
+    //         }
 
-            executed.current += 1
-        }
-    }, [])
+    //         executed.current += 1
+    //     }
+    // }, [])
 
     return(
         <div className="Work-page" data-scroll-container>
