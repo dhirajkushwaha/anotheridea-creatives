@@ -4140,3 +4140,63 @@ button.FormButton .AppButton-label{
 	}
 
 }
+
+.ListIconTitleText {
+    margin: 10rem 0 3rem;
+}
+
+.ListIconTitleText-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ListIconTitleText-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ListIconTitleText-listItem {
+    position: relative;
+    margin-bottom: 7rem;
+}
+
+.ListIconTitleText-icon {
+    width: 2.7rem;
+    height: 2.8rem;
+    background-color: var(--page-color);
+}
+
+.ListIconTitleText-listItemTitle {
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.ListIconTitleText-listItemText {
+    font-size: 2rem;
+    line-height: 3.4rem;
+    color: #b5b5b5;
+}
+
+
+@media (min-width: 1024px){
+	.ListIconTitleText-wrapper {
+		width: 120rem;
+	}
+
+	.ListIconTitleText-list {
+		padding-left: 8rem;
+	}
+
+	.ListIconTitleText-listItem {
+		width: calc(50% - 8rem);
+	}
+
+	.ListIconTitleText-icon {
+		position: absolute;
+		top: 0.5rem;
+		left: -8rem;
+	}
+
+}

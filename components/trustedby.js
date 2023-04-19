@@ -43,39 +43,39 @@ export default function Trustedby(props) {
 
 			//  Trusters Logo sourcing
 			if (true) {
-                // let n_logos = 9;
-                let n_logos = 5;
-                if (document.body.clientWidth <= 1023) { n_logos = 3 }
 
-                let t_logos = [];
+                let n_logos_row = 5;
+                if (document.body.clientWidth <= 1023) { n_logos_row = 3 }
 
-                let no_of_logos = 41;
+                let logo_rows = [];
 
-                for (let layer_n = 1; layer_n <= Math.round( 45/n_logos ); layer_n++) {
+                let no_of_logos = 69;
 
-                    let oneLayer_logos = [];
-                    for (let num = 1; num <= n_logos; num++) {
+                for (let row_n = 1; row_n <= Math.ceil( no_of_logos/n_logos_row ); row_n++) {
 
-                        if ( ((layer_n-1)*n_logos + num) > no_of_logos ){
+                    let oneRow_logos = [];
+                    for (let num = 1; num <= n_logos_row; num++) {
+
+                        if ( ((row_n-1)*n_logos_row + num) > no_of_logos ){
                             continue;
                         }
                         let trustedSliderItem = (<div className="trusterSliderItem">
                                                     <img
                                                         loading="lazy"
-                                                        src={`/assets/truster/logo (${(layer_n-1)*n_logos + num}).png`}
+                                                        src={`/assets/truster/logo (${(row_n-1)*n_logos_row + num}).png`}
                                                         alt=""
-                                                        key={(layer_n-1)*n_logos + num}
+                                                        key={(row_n-1)*n_logos_row + num}
                                                     />
                                                 </div>)
 
-                        oneLayer_logos.push( trustedSliderItem );
+                        oneRow_logos.push( trustedSliderItem );
                     }
 
-                    t_logos.push([<div className="trusterSlider" key={layer_n}> {oneLayer_logos} </div> ]);
+                    logo_rows.push([<div className="trusterSlider" key={row_n}> {oneRow_logos} </div> ]);
 
                 }
 
-                setTrusters(t_logos);
+                setTrusters(logo_rows);
 			}
 
 
@@ -86,10 +86,10 @@ export default function Trustedby(props) {
     useEffect(() => {
         if (true) {
 
-            let no_column_per_slide = trusters.length/3;
+            let no_column_per_slide = (trusters.length/(14/3));
 
             let slides_copy = [];
-            for (let i = 0; i <3; i++) {
+            for (let i = 0; i < Math.ceil((trusters.length)/3); i++) {
                 slides_copy.push( <SwiperSlide> <div className="trusterSlideWrapper">{trusters.slice(i*no_column_per_slide, (i+1)*no_column_per_slide)}</div></SwiperSlide>)
             }
 
