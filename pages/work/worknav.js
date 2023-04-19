@@ -28,10 +28,10 @@ export default function Worknav(prop) {
                 <div className="WorkNav-inner">
                     <div className="WorkNav-wrapper">
                         <WorknavItem index={0} activeIndex={prop.activeIndex} link="/work/branding" label="Branding" color={colorIndex[0]} />
-                        <WorknavItem index={1} activeIndex={prop.activeIndex} link="/work/compaigns" label="Compaigns" color={colorIndex[1]} />
+                        <WorknavItem index={1} activeIndex={prop.activeIndex} link="/work/campaigns" label="Campaigns" color={colorIndex[1]} />
                         <WorknavItem index={2} activeIndex={prop.activeIndex} link="/work/content" label="Content" color={colorIndex[2]} />
                         <WorknavItem index={3} activeIndex={prop.activeIndex} link="/work/strategy" label="Strategy" color={colorIndex[3]} />
-                        <WorknavItem index={4} activeIndex={prop.activeIndex} link="/work/workshop" label="Workshop" color={colorIndex[4]} />
+                        <WorknavItem index={4} activeIndex={prop.activeIndex} link="/work/workshops" label="Workshops" color={colorIndex[4]} />
                     </div>
                 </div>
             </div>

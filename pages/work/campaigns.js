@@ -1,28 +1,14 @@
 import React from 'react'
-import Head from 'next/head'
 
-import Work from '.'
+import Work, { WorkHero } from '.'
 
-export default function Compaigns() {
+
+export default function Campaigns() {
   return (
     <Work>
-        <Head>
-            <title>Work: Branding</title>
-        </Head>
-
-        <div className="WorkHero">
-            <div className="WorkHero-wrapper">
-                <h1 className="WorkHero-title HomeTitle">
-                    <span className="HomeTitle-title app-text--regular">BRANDING</span>
-                </h1>
-                <h2 className="WorkHero-subtitle app-text--large">
-                    <p>
-                        We help co-create brands, not only advertise your projects. Consider us the Google Maps equivalent for your brand.
-                        We’ll enable your brand to not only set the right success destinations, but also pick the most optimal routes to get to these goals.
-                    </p>
-                </h2>
-            </div>
-        </div>
+        <WorkHero title="Campaigns" heroCopy="If strategy is your brand’s intellect, then creativity is its persona.
+We’ll ensure your brand makes instant chemistry with customers, even in an over communicated world.
+" />
     </Work>
   )
 }

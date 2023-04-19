@@ -4043,7 +4043,7 @@ button.FormButton .AppButton-label{
 }
 
 .WorkNav-item.Active-item .WorkNav-itemArrow {
-	opacity: 0;
+	opacity: 0 !important;
 }
 
 .WorkNav-item.Active-item .WorkNav-itemColor{
@@ -4096,6 +4096,8 @@ button.FormButton .AppButton-label{
 
 .HomeTitle-title{
 	color: var(--page-color);
+
+	text-transform: uppercase;
 }
 
 .HomeTitle-title, .HomeTitle span {

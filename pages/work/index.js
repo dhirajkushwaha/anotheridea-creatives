@@ -1,6 +1,6 @@
 
-import React, { useRef, useState } from 'react'
-import { useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/navigation';
 
 
@@ -18,10 +18,34 @@ export const colorIndex = {
 
 const pageIndex = {
     "branding" : 0,
-    "compaigns" : 1,
+    "campaigns" : 1,
     "content" : 2,
     "strategy" : 3,
-    "workshop" : 4
+    "workshops" : 4
+}
+
+export function WorkHero(prop){
+
+    return(
+        <>
+            <Head>
+                <title>Work: {prop.title}</title>
+            </Head>
+
+            <div className="WorkHero">
+                <div className="WorkHero-wrapper">
+                    <h1 className="WorkHero-title HomeTitle">
+                        <span className="HomeTitle-title app-text--regular">{prop.title}</span>
+                    </h1>
+                    <h2 className="WorkHero-subtitle app-text--large">
+                        <p>
+                            {prop.heroCopy}
+                        </p>
+                    </h2>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default function Work({ children }) {
@@ -32,7 +56,6 @@ export default function Work({ children }) {
 
 
     useEffect(() => {
-        push("/work/branding")
 
         if ( executed.current == 0 ){
 
@@ -40,6 +63,9 @@ export default function Work({ children }) {
                 let path_array = (window.location.pathname).split("/");
                 return pageIndex[path_array[path_array.length-1]]
             });
+
+
+            window.location.pathname === "/work" ? push("/work/branding") : null;
 
             executed.current++;
         }
