@@ -1,0 +1,26 @@
+{
+  "name": "anotherideacreatives",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@vimeo/player": "^2.18.0",
+    "gsap": "^3.11.1",
+    "jquery": "^3.6.3",
+    "locomotive-scroll": "^3.6.1",
+    "next": "^13.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "splitting": "^1.0.6",
+    "swiper": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "8.23.0",
+    "eslint-config-next": "^13.0.6"
+  }
+}
