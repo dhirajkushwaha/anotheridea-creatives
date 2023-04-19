@@ -315,95 +315,95 @@ function WorksList(props){
 }
 
 // Page Component
-export default function hWork(props){
+// export default function hWork(props){
 
-    // const executed = useRef(0);
+//     const executed = useRef(0);
 
 
-    // useEffect(() => {
-	// 	if (typeof window === "undefined") { return; }
-    //     if ( !executed.current){
+//     useEffect(() => {
+// 		if (typeof window === "undefined") { return; }
+//         if ( !executed.current){
 
-    //         // ListFilter Listener
-    //         if ( true ){
-    //             const ListfilterItem = document.querySelectorAll(".Listfilter-listItem");
-    //             var LastFilterItem = document.querySelector(".Listfilter-listItem.is_active")
+//             // ListFilter Listener
+//             if ( true ){
+//                 const ListfilterItem = document.querySelectorAll(".Listfilter-listItem");
+//                 var LastFilterItem = document.querySelector(".Listfilter-listItem.is_active")
 
-    //             ListfilterItem.forEach(filterItem => {
-    //                 filterItem.addEventListener("click", (e)=>{
-    //                     LastFilterItem.classList.remove("is_active");
-    //                     filterItem.classList.add("is_active");
-    //                     LastFilterItem = filterItem;
-    //                 });
-    //             });
+//                 ListfilterItem.forEach(filterItem => {
+//                     filterItem.addEventListener("click", (e)=>{
+//                         LastFilterItem.classList.remove("is_active");
+//                         filterItem.classList.add("is_active");
+//                         LastFilterItem = filterItem;
+//                     });
+//                 });
 
-    //         }
+//             }
 
-    //         executed.current += 1
-    //     }
-    // }, [])
+//             executed.current += 1
+//         }
+//     }, [])
 
-    return(
-        <div className="Work-page" data-scroll-container>
-            <Head>
-				<title>Work - Another Idea</title>
-			</Head>
+//     return(
+//         <div className="Work-page" data-scroll-container>
+//             <Head>
+// 				<title>Work - Another Idea</title>
+// 			</Head>
 
-            <section className="Works-Listfilter">
-                <div className="Listfilter-wrapper">
-                    <div className="Listfilter-list">
-                        <div className="Listfilter-title">Explore :</div>
-                        <div className="Listfilter-listItem is_active" data-filter="all" >
-                            <div className="Listfilter-listItemLabel">
-                                All
-                            </div>
-                        </div>
-                        <div className="Listfilter-listItem" data-filter="automobile">
-                            <div className="Listfilter-listItemLabel">
-                                Automobile
-                            </div>
-                            <span className="Listfilters-listItemCount">01</span>
-                        </div>
-                        <div className="Listfilter-listItem" data-filter="food">
-                            <div className="Listfilter-listItemLabel">
-                                Food
-                            </div>
-                            <span className="Listfilters-listItemCount">01</span>
-                        </div>
-                        <div className="Listfilter-listItem is-disable" data-filter="beauty">
-                            <div className="Listfilter-listItemLabel">
-                                Beauty
-                            </div>
-                            <span className="Listfilters-listItemCount"></span>
-                        </div>
-                        <div className="Listfilter-listItem is-disable" data-filter="FMCG">
-                            <div className="Listfilter-listItemLabel">
-                                FMCG
-                            </div>
-                            <span className="Listfilters-listItemCount"></span>
-                        </div>
-                        <div className="Listfilter-listItem is-disable" data-filter="drama">
-                            <div className="Listfilter-listItemLabel">
-                                Drama
-                            </div>
-                            <span className="Listfilters-listItemCount"></span>
-                        </div>
-                        <div className="Listfilter-listItem is-disable"  data-filter="humour">
-                            <div className="Listfilter-listItemLabel">
-                                Humour
-                            </div>
-                            <span className="Listfilters-listItemCount"></span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section className="Works-List">
-                <div className="List-wrapper">
-                    <WorksList parentProp={props} />
-                </div>
-                <ReadyToMake />
-            </section>
-            <Footer></Footer>
-        </div>
-    )
-}
+//             <section className="Works-Listfilter">
+//                 <div className="Listfilter-wrapper">
+//                     <div className="Listfilter-list">
+//                         <div className="Listfilter-title">Explore :</div>
+//                         <div className="Listfilter-listItem is_active" data-filter="all" >
+//                             <div className="Listfilter-listItemLabel">
+//                                 All
+//                             </div>
+//                         </div>
+//                         <div className="Listfilter-listItem" data-filter="automobile">
+//                             <div className="Listfilter-listItemLabel">
+//                                 Automobile
+//                             </div>
+//                             <span className="Listfilters-listItemCount">01</span>
+//                         </div>
+//                         <div className="Listfilter-listItem" data-filter="food">
+//                             <div className="Listfilter-listItemLabel">
+//                                 Food
+//                             </div>
+//                             <span className="Listfilters-listItemCount">01</span>
+//                         </div>
+//                         <div className="Listfilter-listItem is-disable" data-filter="beauty">
+//                             <div className="Listfilter-listItemLabel">
+//                                 Beauty
+//                             </div>
+//                             <span className="Listfilters-listItemCount"></span>
+//                         </div>
+//                         <div className="Listfilter-listItem is-disable" data-filter="FMCG">
+//                             <div className="Listfilter-listItemLabel">
+//                                 FMCG
+//                             </div>
+//                             <span className="Listfilters-listItemCount"></span>
+//                         </div>
+//                         <div className="Listfilter-listItem is-disable" data-filter="drama">
+//                             <div className="Listfilter-listItemLabel">
+//                                 Drama
+//                             </div>
+//                             <span className="Listfilters-listItemCount"></span>
+//                         </div>
+//                         <div className="Listfilter-listItem is-disable"  data-filter="humour">
+//                             <div className="Listfilter-listItemLabel">
+//                                 Humour
+//                             </div>
+//                             <span className="Listfilters-listItemCount"></span>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </section>
+//             <section className="Works-List">
+//                 <div className="List-wrapper">
+//                     <WorksList parentProp={props} />
+//                 </div>
+//                 <ReadyToMake />
+//             </section>
+//             <Footer></Footer>
+//         </div>
+//     )
+// }
