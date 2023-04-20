@@ -35,7 +35,7 @@ export function WorkHero(prop){
             <div className="WorkHero">
                 <div className="WorkHero-wrapper">
                     <h1 className="WorkHero-title HomeTitle">
-                        <span className="HomeTitle-title app-text--regular">{prop.title}</span>
+                        <span className="HomeTitle-title">{prop.title}</span>
                     </h1>
                     <h2 className="WorkHero-subtitle app-text--large">
                         <p>
@@ -64,9 +64,7 @@ export default function Work({ children }) {
                 return pageIndex[path_array[path_array.length-1]]
             });
 
-
             window.location.pathname === "/work" ? push("/work/branding") : null;
-
             executed.current++;
         }
 
@@ -77,7 +75,7 @@ export default function Work({ children }) {
         <main className='Work-page-container' style={{"--page-color":colorIndex[activeIndex]}} data-scroll-container>
             <Worknav activeIndex={activeIndex} />
             {children}
-            <Footer></Footer>
+            <Footer />
         </main>
     )
 }

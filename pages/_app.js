@@ -315,7 +315,6 @@ function MyApp({ Component, pageProps }) {
                 if ( player != undefined ) player.pause(); // pausing the home page video
 
                 let menuSecDelay = 0;
-                // let menuSecDuration = 1.5;
                 let menuSecDuration = 0.7;
 
                 if ( headerTriggerStart.current == "scroll" ){

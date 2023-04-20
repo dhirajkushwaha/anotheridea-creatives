@@ -86,18 +86,6 @@ function OnBoardItem(props){
                     ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
                     ctx.fill();
 
-                    // mouse avoiding
-                    // var a = this.x - mouse.x;
-                    // var b = this.y - mouse.y;
-
-                    // var distance = Math.sqrt( a*a + b*b );
-                    // if(distance<(radius*70)){
-                    //     this.accX = (this.x - mouse.x)/100;
-                    //     this.accY = (this.y - mouse.y)/100;
-                    //     this.vx += this.accX;
-                    //     this.vy += this.accY;
-                    // }
-
                 }
 
                 function initScene(){
@@ -277,9 +265,9 @@ export default function About(){
                     <h1>Empanelled Directors</h1>
                 </div>
                 <div className="Paragraph">
-                    <p className="onlyDesk" >We are an advertising agency that can help deliver strategic value to our clients. <br />
-                    We provide a complete spectrum of services that enable brands to interface with target audiences at multiple touch points.<br />
-                    To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you.<br /> As well as to percolate this brand essence into project based communication endeavours.<br />
+                    <p className="Aboutus-p onlyDesk" >We are an advertising agency that can help deliver strategic value to our clients.
+                    We provide a complete spectrum of services that enable brands to interface with target audiences at multiple touch points.
+                    To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you. As well as to percolate this brand essence into project based communication endeavours.
                     We optimize a brand’s success potential through accurate planning and insightful implementation of communication initiatives.
                     </p>
                     <p className="onlyMob" >We are an advertising agency that can help deliver strategic value to our clients.

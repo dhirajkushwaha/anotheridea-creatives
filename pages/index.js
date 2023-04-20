@@ -1023,7 +1023,7 @@ export default function Home(props) {
 				<Trustedby sendSwiperInstance={props.sendSwiperInstance} />
 			</section>
 
-			<Footer></Footer>
+			<Footer />
 		</div>
 	);
 }

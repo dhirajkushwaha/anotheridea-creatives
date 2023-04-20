@@ -33,6 +33,42 @@ export default function Strategy() {
             </div>
         </div>
 
+        <div className="TitleTextButton app-container">
+            <div className="TitleTextButton-wrapper">
+                <div className="TitleTextButton-wrapperSmall">
+                    <p className='TitleTextButton-text'>How can we reduce the gap between Skills and Sales?</p>
+                    <p className='TitleTextButton-text' style={{textTransform: "uppercase", marginTop: "1rem"}} >This is where we come </p>
+                </div>
+            </div>
+        </div>
+        <div className="TitleTextButton app-container">
+            <div className="TitleTextButton-wrapper">
+                <div className="TitleTextButton-wrapperSmall">
+                    <p className='TitleTextButton-text app-text--large' style={{color:"var(--page-color)", fontSize:"4rem"}}>We are Credo Consulting.</p>
+                    <p className='TitleTextButton-text'>A visionary part of Another Idea.</p>
+                    <p className='TitleTextButton-listItemText'>Think of us as a Training & Enabling Partner who will help sensitise your Sales and other resources to the true potential of your projects.</p>
+                </div>
+            </div>
+        </div>
+        <div className="TitleTextButton app-container">
+            <div className="TitleTextButton-wrapper">
+                <div className="TitleTextButton-wrapperSmall">
+                    <p className='TitleTextButton-text' >What sets up apart:</p>
+                    <p className='TitleTextButton-text'>End to end solutions. <br /> Scale of understanding.</p>
+                    <p className='TitleTextButton-listItemText'>Our expertise to help bridge essential skill gaps comes from 33+ years of experience in understanding the Indian real estate market and home buying behaviour.</p>
+                </div>
+            </div>
+        </div>
+        <div className="TitleTextButton app-container">
+            <div className="TitleTextButton-wrapper">
+                <div className="TitleTextButton-wrapperSmall">
+                    <p className='TitleTextButton-text' >What we provide:</p>
+                    <p className='TitleTextButton-text'>Decades of exposure. <br /> From Leads to walk-ins to sales closure.</p>
+                    <p className='TitleTextButton-listItemText'>Successful customer conversions will depend on the performance of the Sales Team, across every stage of the process. Our solutions encompass skill improvement from start to end of the sales journey.</p>
+                </div>
+            </div>
+        </div>
+
 
 
     </Work>
