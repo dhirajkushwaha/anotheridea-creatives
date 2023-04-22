@@ -35,16 +35,24 @@ import { useSwiper } from 'swiper/react';
 // Fractional Component
 function NavItem(props){
 
-    const executed = useRef(0)
-    const [subnav, setSubnav] = useState("");
-
-    useEffect(() => {
-        if ( executed.current == 0 ){
-
-            if(props.subnav == true){
-                setSubnav(
-                <div className="Menu-subnav" >
-                    <div><svg xmlns="http://www.w3.org/2000/svg" className="Menu-subnavArrow icon sprite-icons"><path d="M0 0h2v10H0V0z"/><path d="M10 9v2H0V9h10z"/><path d="M13 10l-4.5 4.33V5.67L13 10z"/></svg></div>
+    return(
+    <div className="Menu-navItem">
+            <div className="Menu-navItemNum">
+                <span>{props.itemNum}</span>
+            </div>
+            <Link href={props.href} passHref legacyBehavior>
+                <a className="Menu-navItemLink">
+                    <div data-label={props.linkLabel} className="Menu-navItemLinkInner colorFill" style={{"--x":"0px","--y":"0px","--r":"0px"}}>
+                        {props.linkLabel}
+                        <span data-label={props.linkLabel} className="Menu-navItemLinkInnerHover" style={{"color":"rgb(85, 65, 248)"}}>
+                        </span>
+                    </div>
+                </a>
+            </Link>
+            {
+            props.subnav ?
+                (<div className="Menu-subnav" >
+                    <div className="Menu-subnavItem" ><svg xmlns="http://www.w3.org/2000/svg" className="Menu-subnavArrow icon sprite-icons"><path d="M0 0h2v10H0V0z"/><path d="M10 9v2H0V9h10z"/><path d="M13 10l-4.5 4.33V5.67L13 10z"/></svg></div>
                     <div className="Menu-subnavItem" >
                         <a href="/work/branding" className="Menu-subnavItemLink">Branding</a>
                     </div>
@@ -60,30 +68,10 @@ function NavItem(props){
                     <div className="Menu-subnavItem" >
                         <a href="/work/workshops" className="Menu-subnavItemLink">Workshops</a>
                     </div>
-                </div>
-                )
+                </div>)
+                :
+                ""
             }
-
-        }
-        executed.current += 1;
-    }, [])
-
-
-    return(
-    <div className="Menu-navItem">
-            <div className="Menu-navItemNum">
-                <span>{props.itemNum}</span>
-            </div>
-            <Link href={props.href} passHref legacyBehavior>
-                <a className="Menu-navItemLink">
-                    <div data-label={props.linkLabel} className="Menu-navItemLinkInner colorFill" style={{"--x":"0px","--y":"0px","--r":"0px"}}>
-                        {props.linkLabel}
-                        <span data-label={props.linkLabel} className="Menu-navItemLinkInnerHover" style={{"color":"rgb(85, 65, 248)"}}>
-                        </span>
-                    </div>
-                </a>
-            </Link>
-            {subnav}
         </div>
     );
 }
@@ -99,7 +87,6 @@ function MyApp({ Component, pageProps }) {
 
     const mouse_pos = useRef([0, 0]);
     const menuState = useRef(false);
-    const visitedUrl = useRef([]);
 
     const prevCursor = useRef("default-state");
 
@@ -208,7 +195,7 @@ function MyApp({ Component, pageProps }) {
             }
 
             if ( scrollMag < headerTrigDist && scrollMag > 0 ) { // inbetween scrolling init and fixed =-
-                headerTriggerStart.current = "scroll";
+                headerTriggerStart.current = "noheader";
             }
         }
 
@@ -293,9 +280,9 @@ function MyApp({ Component, pageProps }) {
 
     // button animation
     const menuButton = () => {
-        var menuButtonRef = document.querySelector(".Header .MenuButton");
-        var menuContainerRef = document.querySelector(".Header .Menu")
-        var menuNavItem = document.querySelectorAll(".Header .Menu-navItem")
+        var menu_btn_el = document.querySelector(".Header .MenuButton");
+        var menu_el = document.querySelector(".Header .Menu")
+        var menu_nav_el = document.querySelectorAll(".Header .Menu-navItem")
 
         let iframe, player;
 
@@ -314,16 +301,15 @@ function MyApp({ Component, pageProps }) {
             if ( menuState.current ) {
                 if ( player != undefined ) player.pause(); // pausing the home page video
 
-                let menuSecDelay = 0;
-                let menuSecDuration = 0.7;
+                let delay = 0;
+                let duration = 0.7;
 
-                if ( headerTriggerStart.current == "scroll" ){
-                    locomotiveScrollInstance.current.scrollTo("top");
-
-                    menuSecDelay = 0.5;
+                if ( headerTriggerStart.current == "noheader" ){
+                    locomotiveScrollInstance.current.scrollTo("top"); // to correct it's position
+                    delay = 0.5; // to avoid ui artifacts
                 }
 
-                menuContainerRef.style.removeProperty("display");
+                menu_el.style.removeProperty("display");
                 gsap.set((document.body || window), { overflowY:"hidden" });
 
                 const gsapTimelineAnimation = gsap.timeline({ defaults:{
@@ -331,20 +317,26 @@ function MyApp({ Component, pageProps }) {
                     ease: "power3.out"
                  } });
 
-                let menuButtonBoundingRect = menuButtonRef.getBoundingClientRect();
+                let menuButtonBoundingRect = menu_btn_el.getBoundingClientRect();
 
-                gsap.set(menuContainerRef, { "--x": ((menuButtonBoundingRect.left + (menuButtonBoundingRect.width)/2).toString() + "px"), "--y": ((menuButtonBoundingRect.top + (menuButtonBoundingRect.height)/2).toString() + "px")})
-                gsap.fromTo(menuContainerRef, { "--r":"0px" }, { duration:menuSecDuration, "--r":(((window.innerWidth >= window.innerHeight ? window.innerWidth : window.innerHeight)*1.3).toString() + "px"), ease:"none", delay:menuSecDelay });
+                gsap.set(menu_el, { "--x": ((menuButtonBoundingRect.left + (menuButtonBoundingRect.width)/2).toString() + "px"), "--y": ((menuButtonBoundingRect.top + (menuButtonBoundingRect.height)/2).toString() + "px")})
+                gsap.fromTo(menu_el, { "--r":"0px" }, { duration:duration, "--r":(((window.innerWidth >= window.innerHeight ? window.innerWidth : window.innerHeight)*1.3).toString() + "px"), ease:"none", delay:delay });
+                gsap.fromTo(".Menu-subnavItem", {x: "200px", opacity: 0}, {x: 0, opacity: 1, ease:"power1" ,duration:0.5, stagger:{
+                    from: "end",
+                    axis: "x",
+                    amount: 0.7
+                }});
 
-                menuNavItem.forEach((element, index) => {
+                menu_nav_el.forEach((element, index) => {
                     let delay;
-                    if ( index < 1 ){
+                    if ( index == 0 ){
                         delay = "<0.2" //"<0.25"
-                        if ( headerTriggerStart.current == "scroll" )
+                        if ( headerTriggerStart.current == "noheader" )
                             delay = "<0.75"
                     }
-                    else
+                    else{
                         delay = "<0.01"
+                    }
 
                     gsapTimelineAnimation
                         .fromTo(element.querySelector(".Menu-navItemNum"), { x: element.querySelector(".Menu-navItemNum").clientWidth*14, opacity:0.1 }, { x: 0, opacity:1 }, delay)
@@ -357,14 +349,14 @@ function MyApp({ Component, pageProps }) {
                     .fromTo(".Header .Menu-socials", { x:document.querySelector(".Header .Menu-socials").clientWidth/3, opacity:0 }, { x: 0, opacity:1 }, "<0.1");
 
 
-                menuButtonRef.classList.toggle("menu-open")
+                menu_btn_el.classList.toggle("menu-open")
                 m_cursor_states("color", {color: "black"})
 
             } else {
                 (document.body || window).style.removeProperty("overflow-y");
-                gsap.to(menuContainerRef, { duration:0.5, "--r":"0px", ease:"circ.out", onComplete:()=>{
-                    gsap.set(menuContainerRef, {display:"none"});
-                    menuButtonRef.classList.toggle("menu-open");
+                gsap.to(menu_el, { duration:0.5, "--r":"0px", ease:"circ.out", onComplete:()=>{
+                    gsap.set(menu_el, {display:"none"});
+                    menu_btn_el.classList.toggle("menu-open");
                 } });
                 m_cursor_states("color", {color: "rgb(85, 65, 248)"});
 
@@ -373,7 +365,7 @@ function MyApp({ Component, pageProps }) {
             }
         }
 
-        menuButtonRef.addEventListener("click", ()=>{
+        menu_btn_el.addEventListener("click", ()=>{
             toggleMenuState()
         })
     }
@@ -486,14 +478,6 @@ function MyApp({ Component, pageProps }) {
 
             prevCursor.current = "link";
         }
-        // else if ( state == "slide-arrow-end" ){
-        //     c_tl
-        //         .to(".mouseCursor", { scale:0.2, onComplete: ()=>{
-        //             setm_content_icon("")
-        //         }})
-
-        //     prevCursor.current = "default-state";
-        // }
         else if ( state == "move-slide" ){
             c_tl
                 .to(".mouseCursor", { scale:1, onComplete: ()=>{
@@ -599,61 +583,67 @@ function MyApp({ Component, pageProps }) {
         // classes having link
         var cl_h_link = {
             "/" : [".Works-slideContent", ".ideasBehind-item", ".AppButton", ".Menu-navItemLink"],
-            "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
-            "/directors" : [".AppButton", ".Menu-navItemLink"],
-            "/team" : [".AppButton", ".Menu-navItemLink"],
+            "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/directors" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/team" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/contact" : [".AppButton", ".ContactDetailsInfo.Contact-Map"],
-            "/about" : [".AppButton", ".Menu-navItemLink"],
+            "/about" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
         }
 
         if ( cl_h_link[router.asPath] !== undefined ){
 
             cl_h_link[router.asPath].forEach(cl => {
 
-                let interv_cl_vis = setInterval(() => {
+                const cl_querySelections = document.querySelectorAll(cl);
 
-                    if ( document.querySelectorAll(cl) == undefined ) return;
+                if ( cl_querySelections == undefined ) return; // checking if existential or not
 
-                    document.querySelectorAll(cl).forEach((h_link, index) => {
+                // iterating all the elements contained in query selection
+                cl_querySelections.forEach((h_link, index) => {
+                    // h_link => link dom element
+                    if ( el_h_event.current.indexOf(h_link) === -1 /* avoids dublicates of events */ ){
+                        let conserveCursorState = ""; // in order to conserve before and after states
 
-                        if ( el_h_event.current.indexOf(h_link) === -1 ){
-                            let prev_c = ""
-                            h_link.addEventListener("mouseenter", (e)=>{
-                                if ( cl === ".ideasBehind-item" ){
-                                    m_cursor_states("color", { color: h_link.style.getPropertyValue("--ideasBehindColor")});
-                                }
-                                if ( cl === ".Menu-navItemLink" ){
 
-                                    let menu_bgcolors = ["rgb(85, 65, 248)", "rgb(175, 55, 217)", "rgb(222, 71, 126)", "rgb(242, 173, 69)"];
+                        // here the h_link considered with Menu elements don't work as supposed no even listeners sets
 
-                                    gsap.to(".Menu", {background:menu_bgcolors[index]});
-                                    gsap.to(".Menu-navItemLinkInnerHover", {color:menu_bgcolors[index]});
 
-                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menu_bgcolors[index]});
-                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menu_bgcolors[index]});
-                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menu_bgcolors[index]});
-                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menu_bgcolors[index]});
+                        h_link.addEventListener("mouseenter", (e)=>{
 
-                                }
-                                prev_c = prevCursor.current
-                                m_cursor_states("link");
-                            });
-                            h_link.addEventListener("mouseleave", (e)=>{
+                            // Conditional cases for special classes
+                            if ( cl === ".ideasBehind-item" ){
+                                // changing mouse cursor color when hovered over larged fancy text
+                                m_cursor_states("color", { color: h_link.style.getPropertyValue("--ideasBehindColor")});
+                            }
+                            if ( cl === ".Menu-navItemLink" ){
+                                // changes menu background color
+                                let menuColorPresets = ["rgb(85, 65, 248)", "rgb(175, 55, 217)", "rgb(222, 71, 126)", "rgb(242, 173, 69)"];
 
-                                if ( cl === ".ideasBehind-item" ){
-                                    m_cursor_states("color", { color: "default" });
-                                }
+                                gsap.to(".Menu", {background:menuColorPresets[index]});
+                                gsap.to(".Menu-navItemLinkInnerHover", {color:menuColorPresets[index]});
 
-                                // m_cursor_states("link-end");
-                                m_cursor_states(prev_c);
-                            });
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColorPresets[index]});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColorPresets[index]});
 
-                            el_h_event.current.push(h_link);
-                        }
-                    });
+                            }
 
-                    clearInterval(interv_cl_vis);
-                }, 0);
+                            conserveCursorState = prevCursor.current;
+                            m_cursor_states("link");
+                        });
+                        h_link.addEventListener("mouseleave", (e)=>{
+
+                            if ( cl === ".ideasBehind-item" ){
+                                m_cursor_states("color", { color: "default" });
+                            }
+
+                            m_cursor_states(conserveCursorState);
+                        });
+
+                        el_h_event.current.push(h_link);
+                    }
+                });
 
             });
 
@@ -672,9 +662,10 @@ function MyApp({ Component, pageProps }) {
         if ( cl_h_arrow[router.asPath] !== undefined ){
 
             cl_h_arrow[router.asPath].forEach((cl, index) => {
+
                 document.querySelectorAll(cl).forEach(h_arrow => {
                     if ( el_h_event.current.indexOf(h_arrow) === -1 ){
-                        let prev_c = ""
+                        let conserveCursorState = ""
 
                         let d_arrow = "";
                         let prev_d_arrow = "";
@@ -684,7 +675,7 @@ function MyApp({ Component, pageProps }) {
 
                         // let slide_interv = setInterval(() => {
                         h_arrow.addEventListener("mouseenter", (e)=>{
-                            prev_c = prevCursor.current;
+                            conserveCursorState = prevCursor.current;
                         })
 
                         h_arrow.addEventListener("mousemove", (e)=>{
@@ -718,7 +709,7 @@ function MyApp({ Component, pageProps }) {
                         h_arrow.addEventListener("mouseleave", (e)=>{
 
                             h_arrow.removeEventListener("mousemove", listener_ref)
-                            m_cursor_states(prev_c);
+                            m_cursor_states(conserveCursorState );
                             d_arrow = "";
                             prev_d_arrow = "";
 
@@ -749,14 +740,14 @@ function MyApp({ Component, pageProps }) {
             cl_h_slide[router.asPath].forEach(cl => {
                 document.querySelectorAll(cl).forEach(h_link => {
                     if ( el_h_event.current.indexOf(h_link) === -1 ){
-                        let prev_c = ""
+                        let conserveCursorState = ""
 
                         h_link.addEventListener("mouseenter", (e)=>{
-                            prev_c = prevCursor.current
+                            conserveCursorState = prevCursor.current
                             m_cursor_states("move-slide");
                         });
                         h_link.addEventListener("mouseleave", (e)=>{
-                            m_cursor_states(prev_c);
+                            m_cursor_states(conserveCursorState );
                         });
 
                         el_h_event.current.push(h_link);
@@ -1009,48 +1000,37 @@ function MyApp({ Component, pageProps }) {
         if ( window.location.pathname === "/" ){
 
             {// works slider section
-                let s_ref_interv = setInterval(() => {
+                if ( s_ref.current === undefined ) return;
 
-                    if ( s_ref.current === undefined ) return;
+                const w_s_tl =  gsap.timeline({
+                    defaults : {
+                        duration: 1,
+                        // ease: "sine",
+                    },
+                    scrollTrigger:{
+                        trigger: ".Works-slider",
+                        scroller: scroll_trigger_scroller.current,
+                        start: "top 67%",
+                        end: "top 0%"
+                    }
+                });
 
-                    // footer planet animation
-                    const w_s_tl =  gsap.timeline({
-                        defaults : {
-                            duration: 1,
-                            // ease: "sine",
-                        },
-                        scrollTrigger:{
-                            trigger: ".Works-slider",
-                            scroller: scroll_trigger_scroller.current,
-                            start: "top 67%",
-                            end: "top 0%"
+                // Changing the slider magnatude of slide
+                gsap.set(s_ref.current, {
+                    currentX: (s_ref.current.slideWidth) * 1.3
+                })
+
+                w_s_tl
+                    .fromTo(".Works-slider", { opacity: 0 }, { opacity: 1, duration: 1 })
+                    // .from(".Works-slideInner", { x: `${( 80 * 0.69 )}vw` }, "<0")
+                    .to(s_ref.current, {
+                        currentX: 0,
+                        duration: 1.5,
+                        ease: "circ",
+                        onComplete: ()=>{
+                            s_ref.current.snappingState = 1
                         }
-                    });
-
-                    // Changing the slider magnatude of slide
-                    gsap.set(s_ref.current, {
-                        currentX: (s_ref.current.slideWidth) * 1.3
-                    })
-
-                    w_s_tl
-                        .fromTo(".Works-slider", { opacity: 0 }, { opacity: 1, duration: 1 })
-                        // .from(".Works-slideInner", { x: `${( 80 * 0.69 )}vw` }, "<0")
-                        .to(s_ref.current, {
-                            currentX: 0,
-                            duration: 1.5,
-                            ease: "circ",
-                            onComplete: ()=>{
-                                s_ref.current.snappingState = 1
-                            }
-                        }, "<0")
-
-
-
-
-
-
-                    clearInterval(s_ref_interv);
-                }, 0);
+                    }, "<0");
             }
 
             if ( window.innerWidth >= 1024  ){
@@ -1084,12 +1064,9 @@ function MyApp({ Component, pageProps }) {
                         })
 
                         end_tl
-                            // .fromTo(".Vision-bg", { opacity: 0.9 }, { opacity: 0.9 }, "<0")
                             .to(".Vision-bgCircle", { opacity: 0 })
                             .to(".Vision .BackgroundCross-inner", { opacity: 0 }, "<0");
 
-                        // forcing the values, as they get distrupted by above one
-                        // gsap.set(".Vision-bgCircle", { scale: 2, opacity: 0 });
 
                     }
 
@@ -1183,7 +1160,7 @@ function MyApp({ Component, pageProps }) {
 
                         let visionItem_tl = gsap.timeline({
                             defaults:{
-                                duration: 0.25
+                                duration: 0.2
                             },
                             scrollTrigger:{
                                 trigger: ".Vision-item:first-child",
@@ -1206,24 +1183,29 @@ function MyApp({ Component, pageProps }) {
                             .fromTo(".Vision-bgItem:first-child", {
                             }, {
                                 onUpdate: ()=> {
-                                    anim_img(1, [1, 4])
+                                    anim_img(1, [1, 5])
                                 }
                             }, 0)
                             .fromTo(".Vision-bgItem:nth-child(2)", {}, {
                                 onUpdate: ()=> {
-                                    anim_img(2, [1, 4])
+                                    anim_img(2, [1, 5])
                                 }
-                            }, 0.25)
+                            }, 0.2)
                             .fromTo(".Vision-bgItem:nth-child(3)", {}, {
                                 onUpdate: ()=> {
-                                    anim_img(3, [1, 4])
+                                    anim_img(3, [1, 5])
                                 }
-                            }, 0.5)
+                            }, 0.4)
                             .fromTo(".Vision-bgItem:nth-child(4)", {}, {
                                 onUpdate: ()=> {
-                                    anim_img(4, [1, 4])
+                                    anim_img(4, [1, 5])
                                 }
-                            }, 0.75)
+                            }, 0.6)
+                            .fromTo(".Vision-bgItem:nth-child(5)", {}, {
+                                onUpdate: ()=> {
+                                    anim_img(5, [1, 5])
+                                }
+                            }, 0.8)
 
                         // nullifyinh errors caused by code above
                         let last_index = 4;
@@ -1439,7 +1421,7 @@ function MyApp({ Component, pageProps }) {
         }
     }
 
-    const s_trigger_anim = ( callBack ) =>{
+    const initialize_triggers = ( callBack ) =>{
         let inter_ref = setInterval(() => {
 
             if ( locomotiveScrollInstance.current === undefined && window.innerWidth >= 1024 ) return;
@@ -1550,20 +1532,20 @@ function MyApp({ Component, pageProps }) {
         }
 
         // data fetching from control panel
-        if ( true ){
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://7872-2401-4900-4173-4b12-acfe-890e-81a7-3f9d.in.ngrok.io/api/image/load-image");
-            [{ name : "Content-Type", value: "application/json" }].forEach( (val) => { xhr.setRequestHeader(val.name, val.value); });
+        // if ( true ){
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open("GET", "https://7872-2401-4900-4173-4b12-acfe-890e-81a7-3f9d.in.ngrok.io/api/image/load-image");
+        //     [{ name : "Content-Type", value: "application/json" }].forEach( (val) => { xhr.setRequestHeader(val.name, val.value); });
 
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+        //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        //     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 
-            xhr.onload = (xhrRes) => {
-                console.log(xhrRes.currentTarget.responseText);
-            }
+        //     xhr.onload = (xhrRes) => {
+        //         console.log(xhrRes.currentTarget.responseText);
+        //     }
 
-            xhr.send();
-        }
+        //     xhr.send();
+        // }
 
 
         pageMicroHistory.current = {prevPage: pageMicroHistory.current.currentPage, currentPage: router.asPath};
@@ -1782,7 +1764,7 @@ function MyApp({ Component, pageProps }) {
                             // Onscroll Animation
                             if ( true ){
                                 // Making web gsap scroll trigger compatible
-                                s_trigger_anim(()=>{});
+                                initialize_triggers(()=>{});
                             }
 
                             // on scroll triggers header changes
@@ -1858,12 +1840,12 @@ function MyApp({ Component, pageProps }) {
 
             // Handling on page change
             if (true){
-                var menuButtonRef = document.querySelector(".MenuButton");
-                var menuContainerRef = document.querySelector(".Header .Menu")
+                var menu_btn_el = document.querySelector(".MenuButton");
+                var menu_el = document.querySelector(".Header .Menu")
 
-                gsap.set(menuContainerRef, {display:"none"});
+                gsap.set(menu_el, {display:"none"});
                 (document.body || window).style.removeProperty("overflow-y");
-                menuButtonRef.classList.remove("menu-open")
+                menu_btn_el.classList.remove("menu-open")
 
                 menuState.current = false;
             }
@@ -2087,7 +2069,7 @@ function MyApp({ Component, pageProps }) {
                     locomotiveScrollInstance={locomotiveScrollInstance}
                     cursor_events_listen={m_cursor_eventListeners}
                     m_cursor_states={m_cursor_states}
-                    s_trigger_anim={s_trigger_anim}
+                    s_trigger_anim={initialize_triggers}
                     s_ref={s_ref}
                     sendSwiperInstance={getSwiperInstance}
                 />

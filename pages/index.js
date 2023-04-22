@@ -873,14 +873,9 @@ export default function Home(props) {
 							<VisionbgItem alt="Art" imgSrc = "/assets/text_slides_thumbnail/Scram 411 - Royal Enfield.png" />
 							<VisionbgItem alt="Dynamism" imgSrc = "/assets/text_slides_thumbnail/OLA Electric MoveSO3 -3.png" />
 							<VisionbgItem alt="Excellence" imgSrc = "/assets/text_slides_thumbnail/TATA YODHA 2.0 -04.png" />
+							<VisionbgItem alt="Excellence" imgSrc = "/assets/text_slides_thumbnail/TATA YODHA 2.0 -04.png" />
 						</div>
 					</div>
-
-					{/* <h2 className="SplitText-component HomeTitle Vision-title">
-						<span className="HomeTitle-surtitle app-title--small">Nous associons</span>
-						<span className="HomeTitle-title HomeTitle-title--l1 app-title--regular">stratégie &amp;</span>
-						<span className="HomeTitle-title HomeTitle-title--l2 app-title--regular">exécution</span>
-					</h2> */}
 
 					<div className="Vision-wrapper">
 						<div className="Vision-item">
@@ -934,6 +929,20 @@ export default function Home(props) {
 									<h2 data-label="make" className="Vision-itemTitle app-title--regular">
 										20000+
 									</h2>
+								</div>
+								<div className="Vision-itemSkills"></div>
+							</div>
+						</div>
+
+						<div className="Vision-item">
+							<div className="Vision-itemInner">
+								<div className="Vision-itemHead">
+									<h2 data-label="Think" className="Vision-itemTitle app-title--regular">
+										30+
+									</h2>
+									<div className="Vision-itemSubtitle app-text--large">
+										<p>Years of Legacy</p>
+									</div>
 								</div>
 								<div className="Vision-itemSkills"></div>
 							</div>
