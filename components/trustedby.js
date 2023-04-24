@@ -27,9 +27,13 @@ function Left_click(){
     return <button id="trust_Left" onClick={() => swiper.slidePrev(1000, false)}>prev</button>
 }
 
+
+const TRUSTER_LOGO_COUNT_PER_SLIDE = 15;
+
 export default function Trustedby(props) {
 
     const executed = useRef(false);
+    const TRUSTERS_ROW_COUNT = useRef(5);
     const [trusters, setTrusters] = useState([]);
     const [slides, setSlides] = useState([]);
 
@@ -44,38 +48,38 @@ export default function Trustedby(props) {
 			//  Trusters Logo sourcing
 			if (true) {
 
-                let n_logos_row = 5;
-                if (document.body.clientWidth <= 1023) { n_logos_row = 3 }
+                TRUSTERS_ROW_COUNT.current = 5;
+                if (document.body.clientWidth <= 1023) { TRUSTERS_ROW_COUNT.current = 3 }
 
-                let logo_rows = [];
+                let copyToTrusters = [];
+                let trustersCount = 69;
 
-                let no_of_logos = 69;
+                let numberOfRows = Math.ceil(trustersCount/TRUSTERS_ROW_COUNT.current)
 
-                for (let row_n = 1; row_n <= Math.ceil( no_of_logos/n_logos_row ); row_n++) {
+                for (let rowIteration = 1; rowIteration <= numberOfRows; rowIteration++) {
 
-                    let oneRow_logos = [];
-                    for (let num = 1; num <= n_logos_row; num++) {
+                    let currentRow = [];
+                    for (let relativeLogoNumber = 1; relativeLogoNumber <= TRUSTERS_ROW_COUNT.current; relativeLogoNumber++) {
 
-                        if ( ((row_n-1)*n_logos_row + num) > no_of_logos ){
-                            continue;
-                        }
+                        if ( ((rowIteration-1)*TRUSTERS_ROW_COUNT.current + relativeLogoNumber) > trustersCount ) continue; // in case of exceedence due to ceil function
+
                         let trustedSliderItem = (<div className="trusterSliderItem">
                                                     <img
+                                                        key={(rowIteration-1)*TRUSTERS_ROW_COUNT.current + relativeLogoNumber}
+                                                        src={`/assets/truster/logo (${(rowIteration-1)*TRUSTERS_ROW_COUNT.current + relativeLogoNumber}).png`}
                                                         loading="lazy"
-                                                        src={`/assets/truster/logo (${(row_n-1)*n_logos_row + num}).png`}
                                                         alt=""
-                                                        key={(row_n-1)*n_logos_row + num}
                                                     />
                                                 </div>)
 
-                        oneRow_logos.push( trustedSliderItem );
+                        currentRow.push( trustedSliderItem );
                     }
 
-                    logo_rows.push([<div className="trusterSlider" key={row_n}> {oneRow_logos} </div> ]);
+                    copyToTrusters.push([<div className="trusterSlider" key={rowIteration}> {currentRow} </div>]);
 
                 }
 
-                setTrusters(logo_rows);
+                setTrusters(copyToTrusters);
 			}
 
 
@@ -86,11 +90,13 @@ export default function Trustedby(props) {
     useEffect(() => {
         if (true) {
 
-            let no_column_per_slide = (trusters.length/(14/3));
+            let rowsPerSlide = TRUSTER_LOGO_COUNT_PER_SLIDE/TRUSTERS_ROW_COUNT.current;
+
+            console.log(rowsPerSlide)
 
             let slides_copy = [];
-            for (let i = 0; i < Math.ceil((trusters.length)/3); i++) {
-                slides_copy.push( <SwiperSlide> <div className="trusterSlideWrapper">{trusters.slice(i*no_column_per_slide, (i+1)*no_column_per_slide)}</div></SwiperSlide>)
+            for (let i = 0; i < Math.ceil((trusters.length)/rowsPerSlide); i++) {
+                slides_copy.push( <SwiperSlide> <div className="trusterSlideWrapper">{trusters.slice(i*rowsPerSlide, (i+1)*rowsPerSlide)}</div></SwiperSlide>)
             }
 
             setSlides(slides_copy);

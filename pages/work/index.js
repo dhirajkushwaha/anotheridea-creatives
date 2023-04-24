@@ -39,7 +39,7 @@ export function WorkHero(prop){
                     </h1>
                     <h2 className="WorkHero-subtitle app-text--large">
                         <p>
-                            {prop.heroCopy}
+                            {(prop.heroCopy)}
                         </p>
                     </h2>
                 </div>

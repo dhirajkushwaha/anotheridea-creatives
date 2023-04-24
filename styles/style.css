@@ -4228,3 +4228,6 @@ button.FormButton .AppButton-label{
 }
 
 
+.Campaign-list li{
+	list-style: disc;
+}

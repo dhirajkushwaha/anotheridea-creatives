@@ -3,7 +3,7 @@ import React from 'react'
 import Work, { WorkHero } from '.'
 
 
-function StrategyListItem(prop){
+export function StrategyListItem(prop){
 
     return (
         <li className="ListIconTitleText-listItem">
