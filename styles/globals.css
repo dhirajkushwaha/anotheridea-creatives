@@ -1,5 +1,5 @@
 /* Font */
-@font-face {
+/* @font-face {
   font-family: "Neue Montreal";
   src: url("/assets/fonts/PPNeueMontreal-Thin.otf");
   font-weight: 300;
@@ -22,10 +22,32 @@
 
 @font-face {
   font-family: "Neue Montreal";
+  src: url("https://cdn.shopify.com/s/files/1/2642/6578/t/28/assets/PPNeueMontreal-Variable.woff2?v=169719616912379019201647548636");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
   src: url("/assets/fonts/PPNeueMontreal-Bold.otf");
   font-weight: 700;
   font-display: swap;
+} */
+
+/* @font-face {
+  font-family: 'neue-montreal';
+  src: url("https://cdn.shopify.com//s/files/1/2642/6578/t/28/assets/PPNeueMontreal-Variable.woff2?v=169719616912379019201647548636") format('truetype');
+  font-weight: 200 800;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'neue-montreal';
+  src: url("https://cdn.shopify.com//s/files/1/2642/6578/t/28/assets/PPNeueMontreal-Variable.woff2?v=169719616912379019201647548636") format('truetype');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: italic;
+} */
 
 
 html,
@@ -54,6 +76,21 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 
 html *, html :after, html :before {
   box-sizing: border-box;
+}
+
+html {
+  --sbw: 0px;
+  min-height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background: #050505;
+  color: #fff;
+  font-weight: 400;
+  font-family: neue-montreal, neue_montreal, sans-serif;
+  font-size: 2.66667vw;
+  font-size: calc(2.66667vw - var(--sbw)/37.5);
 }
 
 @media (min-width: 1024px) {

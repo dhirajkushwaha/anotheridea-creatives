@@ -52,7 +52,7 @@ function NavItem(props){
             {
             props.subnav ?
                 (<div className="Menu-subnav" >
-                    <div className="Menu-subnavItem" ><svg xmlns="http://www.w3.org/2000/svg" className="Menu-subnavArrow icon sprite-icons"><path d="M0 0h2v10H0V0z"/><path d="M10 9v2H0V9h10z"/><path d="M13 10l-4.5 4.33V5.67L13 10z"/></svg></div>
+                    <div><svg xmlns="http://www.w3.org/2000/svg" className="Menu-subnavArrow icon sprite-icons"><path d="M0 0h2v10H0V0z"/><path d="M10 9v2H0V9h10z"/><path d="M13 10l-4.5 4.33V5.67L13 10z"/></svg></div>
                     <div className="Menu-subnavItem" >
                         <a href="/work/branding" className="Menu-subnavItemLink">Branding</a>
                     </div>
@@ -321,11 +321,21 @@ function MyApp({ Component, pageProps }) {
 
                 gsap.set(menu_el, { "--x": ((menuButtonBoundingRect.left + (menuButtonBoundingRect.width)/2).toString() + "px"), "--y": ((menuButtonBoundingRect.top + (menuButtonBoundingRect.height)/2).toString() + "px")})
                 gsap.fromTo(menu_el, { "--r":"0px" }, { duration:duration, "--r":(((window.innerWidth >= window.innerHeight ? window.innerWidth : window.innerHeight)*1.3).toString() + "px"), ease:"none", delay:delay });
-                gsap.fromTo(".Menu-subnavItem", {x: "200px", opacity: 0}, {x: 0, opacity: 1, ease:"power1" ,duration:0.5, stagger:{
+                gsap.fromTo(".Menu-subnav > *", {x: "200px", opacity: 0}, {x: 0, opacity: 1, ease:"power2" ,duration:0.7, stagger:{
                     from: "end",
                     axis: "x",
                     amount: 0.7
                 }});
+                // gsap.fromTo(".Menu-subnav > *", {x: "200px"}, {x: 0, ease:"sine", dAuration:0.7, stagger:{
+                //     from: "end",
+                //     axis: "x",
+                //     amount: 0.7
+                // }});
+                // gsap.fromTo(".Menu-subnav > *", {opacity: 0}, {opacity: 1, ease:"sine.in", duration:0.5, stagger:{
+                //     from: "end",
+                //     axis: "x",
+                //     amount: 0.9
+                // }});
 
                 menu_nav_el.forEach((element, index) => {
                     let delay;
@@ -1687,7 +1697,7 @@ function MyApp({ Component, pageProps }) {
                                     let video_url_str = "https://player.vimeo.com/video/7990256990?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/799025729?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/7990257290?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     xhr.onload = function(){

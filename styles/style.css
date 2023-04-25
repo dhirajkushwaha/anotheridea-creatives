@@ -559,10 +559,6 @@
 	height: auto;
 }
 
-.Menu-navItem {
-	position: relative;
-	margin: 3vh 0;
-}
 
 /* subnav */
 .Menu-subnav {
@@ -571,18 +567,12 @@
     margin-bottom: 1.2rem;
 }
 
-.Menu-subnav {
-    margin-left: 6vw;
-    margin-top: 0.5vh;
-    margin-bottom: 9.5vh;
-}
-
 .Menu-subnavItem{
 	text-transform: uppercase;
-    font-size: 1.66vw;
-    line-height: 1.9vw;
-    margin-right: 1.2vw;
-    padding: 0.6vw 0;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    margin-right: 1.7rem;
+    padding: 0.5rem 0;
 
 	margin-right: 2.4vw;
 
@@ -590,9 +580,9 @@
 }
 
 .Menu-subnavArrow {
-    width: 1vw;
-    height: 1vw;
-    margin-right: 1.6vw;
+    width: 1.3rem;
+    height: 1.4rem;
+    margin-right: 2rem;
     fill: #fff;
 
 }
@@ -616,6 +606,31 @@
 		transform: scaleX(1);
 	}
 
+}
+
+@media only screen and (min-width: 1024px) {
+
+	.Menu-subnav {
+		margin-left: 6vw;
+		margin-top: 0.5vh;
+		margin-bottom: 9.5vh;
+	}
+
+}
+
+@media only screen and (max-width: 1023px) {
+
+	.Menu-subnav {
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.Menu-subnavItem {
+		padding: 0.5rem 0;
+		margin-right: 1rem;
+	}
 }
 
 .Menu-navItemNum {
@@ -753,10 +768,6 @@
 		z-index: 10;
 	}
 
-	/* .Menu-navItemLink {
-		letter-spacing: 10px;
-	} */
-
 	.Menu-socialsItem {
 		margin-left: calc(1vw * 20/19.2);
 	}
@@ -822,28 +833,21 @@
 	}
 
 	.Menu-wrapper {
-		width: 80vw;
+		width: 29.16667rem;
 		height: fit-content;
 
-		padding-top: 33vw;
-		margin-bottom: 7rem;
-	}
-
-	.Menu-navItem {
-		margin: 5px 0;
+		padding: 12rem 0 0;
 	}
 
 	.Menu-navItemNum {
-		margin-right: 3.9vw;
-		margin-left: -4vw;
-		top: -5.9vw;
-
-		font-size: 3.8vw;
+		margin-right: 1rem;
+		margin-left: -3rem;
+		top: -1.5rem;
 	}
 
 	.Menu-navItemLink {
-		font-size: 13.5vw;
-		line-height: 21vw;
+		font-size: 4.5rem;
+		line-height: 6rem;
 		transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
@@ -870,6 +874,8 @@
 	.Menu-logoContainer {
 		text-align: center;
 		margin-top: 7rem;
+
+		display: none;
 	}
 
 	.Menu-logoContainer svg {
