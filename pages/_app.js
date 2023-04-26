@@ -155,11 +155,10 @@ function MyApp({ Component, pageProps }) {
     }
 
     // for Header
-    const scrollTrigger = () => {
+    const headerAnimation = () => {
         var scroller = document.querySelector(scroll_trigger_scroller.current);
-        var scrollMag, prevScrollMag, headerTrigDist; // header animation
-
-        headerTrigDist = document.querySelector(".Header").clientHeight*1.2;
+        var lastscrollY = 0,
+            stickyDisplacement = document.querySelector(".Header").clientHeight*1.2; // header animation
 
         let iframe, player;
 
@@ -174,108 +173,83 @@ function MyApp({ Component, pageProps }) {
             }
         }
 
-        const scrollMagSet = (scrollMag, prevScrollMag) => {
+        const setHeaderscrollY = (scrollY) => {
 
             headerTriggerStart.current = "init";
 
-            if ( scrollMag >= headerTrigDist ){ // just after scrolled above trigger -_
-                if ( prevScrollMag <= headerTrigDist ){
+            if ( scrollY >= stickyDisplacement ){ // just after scrolled above trigger -_
+                if ( lastscrollY <= stickyDisplacement ){
                     gsap.set(".Header", {y:"0px"});
                     document.querySelector('.Header').classList.add("fixed");
                     gsap.fromTo(".MenuButton", { scale: 0 }, { duration: 0.5, scale: 1, ease:"circ"});
                     headerTriggerStart.current = "init";
                 }
 
-            } else if (scrollMag < headerTrigDist && prevScrollMag >= headerTrigDist) { // just after scrolled below trigger -^
-                gsap.set(".Header", {y:((-scrollMag).toString()+"px")});
+            } else if (scrollY < stickyDisplacement && lastscrollY >= stickyDisplacement) { // just after scrolled below trigger -^
+                gsap.set(".Header", {y:((-scrollY).toString()+"px")});
                 document.querySelector('.Header').classList.remove("fixed");
                 headerTriggerStart.current = "fixed";
-            } else if ( scrollMag < headerTrigDist ) { // inbetween scrolling init and fixed =-
-                gsap.set(".Header", {y:((-scrollMag).toString()+"px")});
+            } else if ( scrollY < stickyDisplacement ) { // inbetween scrolling init and fixed =-
+                gsap.set(".Header", {y:((-scrollY).toString()+"px")});
             }
 
-            if ( scrollMag < headerTrigDist && scrollMag > 0 ) { // inbetween scrolling init and fixed =-
+            if ( scrollY < stickyDisplacement && scrollY > 0 ) { // inbetween scrolling init and fixed =-
                 headerTriggerStart.current = "noheader";
             }
+
+            // popups
+            if ( router.asPath == "/work" ) { gsap.set(".List-popup", {y:scrollY}); }
+            if ( router.asPath == "/" ) { gsap.set(".Slide-popup", {y:scrollY}); }
+
+            // video pausing
+            if ( player != undefined ){
+                if ( scrollY >= window.innerHeight*0.7 ){
+                    player.pause();
+                } else {player.getPaused().then(function(paused) {
+                    if ( paused ) player.play();
+                    });
+                }
+            }
+
+            lastscrollY = scrollY.toFixed(2);
         }
 
-        if ( document.body.clientWidth > 1023 ){
-            var styleEventListener = new MutationObserver((mutations) => {
-                mutations.forEach((MutationRecord) => {
+        const relateToScrollY = (getScrollY) => {
+            let scrollY;
 
-                    // header animation
-                    scrollMag = scroller.style.getPropertyValue("transform").split("(")[1].split(")")[0].split(",")[13]*(-1);
-
-                    scrollMagSet(scrollMag, prevScrollMag);
-                    prevScrollMag = scrollMag;
-
-                    // popups
-                    if ( router.asPath == "/work" ) { gsap.set(".List-popup", {y:scrollMag}); }
-                    if ( router.asPath == "/" ) { gsap.set(".Slide-popup", {y:scrollMag}); }
-                    // if ( router.asPath == "/work" ) { gsap.set(".List-popup:not(.popup-hidden)", {y:scrollMag}); }
-                    // if ( router.asPath == "/" ) { gsap.set(".Slide-popup:not(.popup-hidden)", {y:scrollMag-window.innerHeight}); }
-
-                    // video pausing
-                    if ( player != undefined ){
-
-                        if ( scrollMag >= window.innerHeight*0.7 ){
-                            player.pause();
-                        } else {player.getPaused().then(function(paused) {
-                            if ( paused ) player.play();
-                          });
-                        }
-
-                    }
+            if ( document.body.clientWidth > 1023 ){
+                var styleEventListener = new MutationObserver((mutations) => {
+                    mutations.forEach((MutationRecord) => {
+                        // header animation
+                        scrollY = scroller.style.getPropertyValue("transform").split("(")[1].split(")")[0].split(",")[13]*(-1);
+                        getScrollY(scrollY)
+                    })
                 })
-            })
 
-            styleEventListener.observe(scroller, { attributes : true, attributeFilter : ['style'] });
+                styleEventListener.observe(scroller, { attributes : true, attributeFilter : ['style'] });
+            }
+            else if ( document.body.clientWidth <= 1023 ){ // evidently it's for mobile
+                const onScrollFunc = ()=>{
+                    scrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+                    getScrollY(scrollY);
+                }
+                (window).addEventListener("scroll", onScrollFunc);
+            }
         }
 
-        if ( document.body.clientWidth <= 1023 ){
+        relateToScrollY((scrollY)=>{
 
-            const scroll_listener = ()=>{
-                scrollMag = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            // for header
+            setHeaderscrollY(scrollY)
 
-                scrollMagSet(scrollMag, prevScrollMag);
-                prevScrollMag = scrollMag.toFixed(2);
-
-                // popups
-                if ( router.asPath == "/work" ) { gsap.set(".List-popup", {y:scrollMag}); }
-                if ( router.asPath == "/" ) { gsap.set(".Slide-popup", {y:scrollMag}); }
-
-                // Text Animation <1023px
-                if ( router.asPath == "/" && false ) {
-                    let vision_bg_pos = scrollMag;
-                    let vision_height = document.querySelector(".Vision").getBoundingClientRect().height
-                    let vision_pos = document.querySelector(".Vision").getBoundingClientRect().y + scrollMag - vision_height/2
-
-                    console.log(vision_pos+vision_height-window.innerHeight, vision_bg_pos)
-
-                    if ( scrollMag < vision_pos ){
-                        vision_bg_pos = vision_pos
-                    }
-                    if ( scrollMag > vision_pos+vision_height ){ // -window.innerHeight
-                        vision_bg_pos = vision_pos+vision_height
-                    }
-
-                    gsap.set(".Vision-bg", {y:vision_bg_pos})
-
-                }
-
-                // video pausing
-                if ( player != undefined ){
-                    if ( scrollMag >= window.innerHeight*0.7 ){
-                        player.pause();
-                    } else {player.getPaused().then((paused) => {
-                        if ( paused ) player.play();
-                      });
-                    }
-                }
+            if ( router.asPath.indexOf("/work") != -1 ){
 
             }
-            (window).addEventListener("scroll", scroll_listener);
-        }
+        });
+
+
+
+
     }
 
     // button animation
@@ -1779,7 +1753,7 @@ function MyApp({ Component, pageProps }) {
 
                             // on scroll triggers header changes
                             if ( true ){
-                                scrollTrigger();
+                                headerAnimation();
                             }
 
                         }, load_s_t);

@@ -396,7 +396,8 @@
 	}
 
 	.MenuButton-label {
-		font-size: 2vw;
+		font-size: 1rem;
+		line-height: 1.2rem;
 	}
 }
 
@@ -2133,7 +2134,7 @@ video::-webkit-media-controls-start-playback-button {
 /*  */ /*  *//*  *//*  */ /*  */
 
 .Work-page {
-	padding-top: 15vw;
+	padding-top: 22rem;
 }
 
 /* Some Utility classes */
@@ -3953,6 +3954,9 @@ button.FormButton .AppButton-label{
 .WorkNav .WorkNav-itemLabel {
     transition: transform .5s cubic-bezier(.165,.84,.44,1);
     transform: translate3d(0,3rem,0);
+
+	font-size: 2.4rem;
+    line-height: 5.6rem;
 }
 
 .WorkNav-itemArrow {
@@ -3990,7 +3994,7 @@ button.FormButton .AppButton-label{
 }
 
 
-@media (min-width: 1024px){
+@media only screen and (min-width: 1024px){
 
 	.WorkNav{
 		pointer-events: none;
@@ -4009,6 +4013,48 @@ button.FormButton .AppButton-label{
 	.WorkNav-item {
 		margin: 0 2.5rem;
 		padding: 0 2rem;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.WorkNav{
+		height: 20rem;
+		margin-bottom: 0;
+	}
+
+	.WorkNav-wrapper{
+		padding-bottom: 5rem;
+		overflow-x: scroll;
+		width: 37.5rem;
+	}
+
+	.WorkNav-item:first-child{
+		margin-left: 11.5rem;
+	}
+
+	.WorkNav-item:last-child{
+		margin-right: 11.5rem;
+	}
+
+	.WorkNav-item{
+		width: 15rem;
+		height: 15rem;
+	}
+
+	.WorkNav-wrapper:after {
+		content: "";
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 5rem;
+		pointer-events: none;
+		background: linear-gradient(90deg,transparent,#050505);
+	}
+
+	.WorkHero-subtitle{
+		width: 35rem;
 	}
 }
 
