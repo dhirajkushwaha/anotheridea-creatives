@@ -2465,8 +2465,6 @@ video::-webkit-media-controls-start-playback-button {
 	}
 
 	.WorksListItem-thumbnail {
-		/* height: calc(36vw * var(--scale_f)); */
-
 		/* 16:9 ratio */
 		height: calc(30.9782vw * var(--scale_f));
 	}
@@ -3558,7 +3556,7 @@ button.FormButton .AppButton-label{
 	margin-left: calc(5/19.2 * 1vw);
 }
 
-.Popup-video{
+.Popup-pdf{
 	height: min-content;
 	width: min-content;
 
@@ -3569,7 +3567,7 @@ button.FormButton .AppButton-label{
     height: calc((1140 / 1.77)/19.2 * 1vw);
 }
 
-.Popup-video iframe {
+.Popup-pdf iframe {
 	width: calc(1140/19.2 * 1vw);
     height: calc((1140 / 1.77)/19.2 * 1vw);
 }
@@ -3586,14 +3584,14 @@ button.FormButton .AppButton-label{
 
 	}
 
-	.Popup-video{
+	.Popup-pdf{
 		border-radius: calc(1vw * 1 * 2.677/0.69);
 
 		width: calc(85 * 1vw);
 		height: calc((85/1.77) * 1vw);
 	}
 
-	.Popup-video iframe{
+	.Popup-pdf iframe{
 		width: calc(85 * 1vw);
 		height: calc((85/1.77) * 1vw);
 	}
@@ -4279,7 +4277,53 @@ button.FormButton .AppButton-label{
 
 }
 
-
 .Campaign-list li{
 	list-style: disc;
+}
+
+.LOGO-list-item{
+	background-color: #1c1c1c8c;
+    border-radius: 2rem;
+}
+
+.LOGO-list-item .AppImage.fit-contain .AppImage-image{
+	object-fit: contain;
+}
+
+.LOGO-list-item .AppImage.loaded .AppImage-image{
+	scale: 0.8;
+}
+
+.LOGO-list-item .WorksListItem-title{
+	display: none;
+}
+
+.List-items{
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: space-evenly;
+	column-gap: 6rem;
+	row-gap: 2rem;
+
+	margin-bottom: 10rem;
+}
+
+.WorksListItem{
+	cursor: pointer;
+}
+
+@media only screen and (min-width: 1140px){
+
+	.List-item{
+		width: 20rem;
+		margin-bottom: 0rem;
+
+
+	}
+
+	.List-item .WorksListItem-thumbnail{
+		height: 20rem;
+		margin-bottom: 0rem;
+	}
+
 }

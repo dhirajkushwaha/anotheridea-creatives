@@ -162,7 +162,7 @@ function MyApp({ Component, pageProps }) {
 
         let iframe, player;
 
-        // to be uncommented
+        // each time takes reference to the player as to change it
         if ( router.asPath == "/" ){
             iframe = document.querySelector('.homeHeadSection iframe');
 
@@ -199,6 +199,7 @@ function MyApp({ Component, pageProps }) {
 
             // popups
             if ( router.asPath == "/work" ) { gsap.set(".List-popup", {y:scrollY}); }
+            if ( router.asPath == "/work/branding" ) { gsap.set(".List-popup", {y:scrollY}); }
             if ( router.asPath == "/" ) { gsap.set(".Slide-popup", {y:scrollY}); }
 
             // video pausing
@@ -243,7 +244,13 @@ function MyApp({ Component, pageProps }) {
             setHeaderscrollY(scrollY)
 
             if ( router.asPath.indexOf("/work") != -1 ){
+                const WORKNAV = document.querySelector(".WorkNav");
+                const WORKNAV_COMPUTED_STYLE = window.getComputedStyle(WORKNAV);
+                const WORKSCROLL_LEVEL =  (WORKNAV_COMPUTED_STYLE.top + WORKNAV_COMPUTED_STYLE.height)*1.5;
 
+                if (scrollY > WORKSCROLL_LEVEL){
+
+                }
             }
         });
 
@@ -300,16 +307,6 @@ function MyApp({ Component, pageProps }) {
                     axis: "x",
                     amount: 0.7
                 }});
-                // gsap.fromTo(".Menu-subnav > *", {x: "200px"}, {x: 0, ease:"sine", dAuration:0.7, stagger:{
-                //     from: "end",
-                //     axis: "x",
-                //     amount: 0.7
-                // }});
-                // gsap.fromTo(".Menu-subnav > *", {opacity: 0}, {opacity: 1, ease:"sine.in", duration:0.5, stagger:{
-                //     from: "end",
-                //     axis: "x",
-                //     amount: 0.9
-                // }});
 
                 menu_nav_el.forEach((element, index) => {
                     let delay;
@@ -567,11 +564,11 @@ function MyApp({ Component, pageProps }) {
         // classes having link
         var cl_h_link = {
             "/" : [".Works-slideContent", ".ideasBehind-item", ".AppButton", ".Menu-navItemLink"],
-            "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
-            "/directors" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
-            "/team" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
+            "/work/branding" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
+            "/about" : [".AppButton", ".Menu-navItemLink"],
+            "/team" : [".AppButton", ".Menu-navItemLink"],
             "/contact" : [".AppButton", ".ContactDetailsInfo.Contact-Map"],
-            "/about" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
         }
 
         if ( cl_h_link[router.asPath] !== undefined ){
