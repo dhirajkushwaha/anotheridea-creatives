@@ -773,7 +773,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(1).jpg"
 								label="Peninsula"
-								dirName="Lloyd Baptista"
 								overlayColor="#777799"
 								videoSrc="https://player.vimeo.com/video/703566550?h=9420574f64&amp;quality=240p"
 								addPopup={addPopup}
@@ -782,7 +781,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(2).jpg"
 								label="Alcove"
-								dirName="Lloyd Baptista"
 								videoSrc="https://player.vimeo.com/video/757567353?h=48603657bf&amp;quality=240p"
 								addPopup={addPopup}
 								index="1"
@@ -790,7 +788,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(3).jpg"
 								label="Gaurs"
-								dirName="Vasan Bala"
 								videoSrc="https://player.vimeo.com/video/674292817?h=8b0a629b30&amp;quality=240p"
 								addPopup={addPopup}
 								index="2"
@@ -798,7 +795,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(4).jpg"
 								label="AMAZON KHEER"
-								dirName="Prosit Roy"
 								videoSrc="https://player.vimeo.com/video/674290692?h=6042c3a705&amp;quality=240p"
 								addPopup={addPopup}
 								index="3"
@@ -806,7 +802,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(5).jpg"
 								label="OLA PROXIMITY UNLOCK"
-								dirName="Ken Rolston"
 								videoSrc="https://player.vimeo.com/video/765214457?h=b5716ad29c&amp;quality=240p"
 								addPopup={addPopup}
 								index="4"
@@ -814,7 +809,6 @@ export default function Home(props) {
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(6).jpg"
 								label="Mi TV"
-								dirName="Adam Johnson"
 								videoSrc="https://player.vimeo.com/video/674301398?h=515f40e64f&amp;quality=240p"
 								addPopup={addPopup}
 								index="5"

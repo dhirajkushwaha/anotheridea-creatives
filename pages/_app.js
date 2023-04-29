@@ -614,8 +614,8 @@ function MyApp({ Component, pageProps }) {
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColorPresets[index]});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColorPresets[index]});
-
                             }
+
                             if ( cl == ".Menu-navItemLink" ){
                                 // changes menu background color
                                 let menuColor = "#5541f8";
@@ -627,11 +627,11 @@ function MyApp({ Component, pageProps }) {
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColor});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColor});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColor});
-
                             }
 
                             conserveCursorState = prevCursor.current;
                             m_cursor_states("link");
+                            e.cancelBubble = true;
                         });
                         h_link.addEventListener("mouseleave", (e)=>{
 
@@ -640,6 +640,7 @@ function MyApp({ Component, pageProps }) {
                             }
 
                             m_cursor_states(conserveCursorState);
+                            e.cancelBubble = true;
                         });
 
                         el_h_event.current.push(h_link);
@@ -1644,7 +1645,7 @@ function MyApp({ Component, pageProps }) {
                     const load_fn = () => {
                         let load_s_t = 2520; // loading screen time
 
-                        /* test declaration */ load_s_t = 100
+                        // /* test declaration */ load_s_t = 100
 
                         let locomotice_interv = setInterval(() => {
                             // Locomotive
@@ -1683,10 +1684,10 @@ function MyApp({ Component, pageProps }) {
                             if ( router.asPath == "/" ){ // vimeo video
 
                                 if ( window.navigator.onLine ){
-                                    let video_url_str = "https://player.vimeo.com/video/7990256990?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                    let video_url_str = "https://player.vimeo.com/video/799025699?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/7990257290?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/799025729?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     xhr.onload = function(){
