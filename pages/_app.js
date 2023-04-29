@@ -200,6 +200,7 @@ function MyApp({ Component, pageProps }) {
             // popups
             if ( router.asPath == "/work" ) { gsap.set(".List-popup", {y:scrollY}); }
             if ( router.asPath == "/work/branding" ) { gsap.set(".List-popup", {y:scrollY}); }
+            if ( router.asPath == "/work/campaigns" ) { gsap.set(".List-popup", {y:scrollY}); }
             if ( router.asPath == "/" ) { gsap.set(".Slide-popup", {y:scrollY}); }
 
             // video pausing

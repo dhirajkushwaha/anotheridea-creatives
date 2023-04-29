@@ -52,7 +52,7 @@ export function WorkHero(prop){
     )
 }
 
-const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES"];
+const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES"];
 
 function GallaryListitem(props){
 
