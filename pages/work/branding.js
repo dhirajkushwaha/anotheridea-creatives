@@ -1,230 +1,10 @@
 // React
 import { React, useEffect, useLayoutEffect, useRef, useState } from "react";
 
-// Nextjs components
-import Head from "next/head";
-import Image from "next/image";
 
-import Work, { WorkHero } from '.'
-
-// GSAP
-import { gsap } from "gsap/dist/gsap";
-
-// vimeo
-import Player from '@vimeo/player';
-
-const LIST_WITH_POPUP = ["BROCHURES", "GUIDELINES"];
-
-// Fragmented Components
-function GallaryListitem(props){
-
-    if ( props.href === undefined ) props.href = "/"
-    const rootElRef = useRef();
-    const executed = useRef(0);
-
-    const cl_name = `.list-${props.LIST_NAME}-${props.index}`;
-
-    useLayoutEffect(() => {
-		if (typeof window === "undefined") { return; }
-        if ( !executed.current){
-
-            // if ( LIST_WITH_POPUP.findIndex(props.LIST_NAME) !== -1 ) {
-
-                // adding the popup
-                document.querySelector(cl_name).addEventListener("click", (e)=>{
-                    document.querySelector(cl_name+" .List-popup").classList.remove("popup-hidden");
-                    document.querySelector(".Header").classList.add("Header-under-element");
-                    e.preventDefault();
-                })
-
-                // popup remove fn
-                let popup_r_fn = (e)=>{
-                    document.querySelector(cl_name+" .List-popup").classList.add("popup-hidden");
-                    document.querySelector(".Header").classList.remove("Header-under-element");
-                    e.cancelBubble = true;
-                }
-
-                // removing the popup
-                document.querySelector(cl_name+" .Popup-cross").addEventListener("click", popup_r_fn)
-                document.querySelector(cl_name+" .List-popup").addEventListener("click", popup_r_fn)
-
-            // }
+import Work, { WorkHero, GallaryList } from '.'
 
 
-            executed.current += 1;
-        }
-    }, [])
-
-    return(
-        <div className={`List-item ${props.LIST_NAME}-list-item list-${props.LIST_NAME}-${props.index}`} ref={rootElRef} >
-                <div className="WorksListItem in-view" >
-                    <div className="AppImage fit-contain loaded plane WorksListItem-thumbnail">
-                        <div className="AppImage-overlay"></div>
-                        <picture>
-                            { props.source }
-                            <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
-                        </picture>
-                    </div>
-                    <h3 className="WorksListItem-title u-textUppercase app-title--small">{ props.label }</h3>
-                </div>
-            <div className="List-popup popup-hidden">
-                <div className="Popup-frame">
-                    <div className="Popup-cross">close <img alt="cross" src="/assets/delete-sign--v2.png"/></div>
-                    <div className="Popup-pdf">
-                        <embed
-                            src={props.pdfSrc}
-                            type="application/pdf"
-                            width="100%"
-                            height="100%"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function GallaryList(props){
-
-    const gallaryData = useRef([]);
-
-
-
-    const executed = useRef(0);
-    const work_el_added_count = useRef(0);
-    const [GallaryList, setGallaryList] = useState([]);
-
-    // Functions
-    const makeListItemsAnimated = () => {
-
-        document.querySelectorAll(".List-item").forEach((listItemEl) => {
-
-            listItemEl.querySelector(".AppImage-overlay").style.setProperty("opacity", 1);
-            gsap.set(listItemEl.querySelector(".WorksListItem-title"), { opacity:0, x:"20%" });
-            gsap.set(listItemEl.querySelector(".WorksListItem-details"), { opacity:0, x:"20%" });
-
-            const worksItemScrollTimeLine = gsap.timeline({ defaults:{ },
-                scrollTrigger:{
-                    trigger: listItemEl,
-                    scroller: (window.innerWidth > 1024 ? "[data-scroll-container]" : undefined),
-                    start: "top bottom-=15%",
-                    end: "top 30%",
-                }
-            });
-
-            worksItemScrollTimeLine
-                .fromTo(listItemEl.querySelector(".AppImage-overlay"), { x:"0%" }, { duration: 0.5, x:"-200%", ease:"none", onComplete:()=>{
-                    gsap.set(listItemEl.querySelector(".AppImage-overlay"), { opacity: 0, onComplete:()=>{
-                        listItemEl.querySelector(".AppImage-overlay").style.removeProperty("transform");
-                    }})
-                }})
-                .fromTo(listItemEl.querySelector(".WorksListItem-title"), { opacity:0, x:"20%" }, { opacity:1, x:"0%" }, "<0.05")
-                .fromTo(listItemEl.querySelector(".WorksListItem-details"), { opacity:0, x:"20%" }, { opacity:1, x:"0%" }, "<0.1");
-        })
-    }
-
-    const waitUntilLocomotiveTrue = (props) => {
-
-        props.s_trigger_anim(() => {
-
-            let l_s = document.querySelector(".Load-screen");
-            let load_s_t = 2520; // loading screen time
-
-            let intervalRef = setInterval(() => {
-
-                let c_s_t, s_t_a;
-
-                try {
-                    c_s_t = getComputedStyle(l_s).getPropertyValue("transform");
-                    s_t_a = parseInt(c_s_t.split("(")[1].split(")")[0].split(",")[5]*(-1)) > window.innerHeight*0.6;
-                } catch (error) { }
-
-
-                if ( work_el_added_count.current > 1 ){
-                    c_s_t = null;
-                    s_t_a = true;
-                }
-
-                if (window.innerWidth > 1024){
-
-                    if ( c_s_t === "none"  ) return;
-                    if ( props.locomotiveScrollInstance.current === undefined || !( s_t_a ) ) return;
-
-                    props.locomotiveScrollInstance.current.update();
-
-                } else {
-
-                    if ( c_s_t === "none"  ) return;
-                    if ( !( s_t_a ) ) return;
-
-                }
-
-
-                // Adding the animation
-                makeListItemsAnimated();
-
-                work_el_added_count.current++;
-                if ( props.locomotiveScrollInstance.current !== undefined ) clearInterval(intervalRef);
-
-            // }, (window.innerWidth > 1024) ? 0 : load_s_t*0.5);
-            }, 0);
-
-        });
-
-
-    }
-
-    const createWorksComponent = () => {
-        setGallaryList([]);
-        let localGallaryList = [];
-        gallaryData.current.forEach((data, i) => {
-            localGallaryList.push(<GallaryListitem
-                            key={i}
-                            index={i}
-                            LIST_NAME={props.LIST_NAME}
-                            href={data[0]}
-                            imgUrl={data[1]}
-                            label={data[2]}
-                            pdfSrc={data[3]}
-                            imgSrc={data[4]}
-                        />);
-
-        });
-
-        setGallaryList(localGallaryList);
-    }
-
-    useEffect(() => {
-		if (typeof window === "undefined") { return; }
-        if ( executed.current < 1){
-
-            // Make Works Component
-            if (true){
-                gallaryData.current = props.gallaryData;
-                createWorksComponent();
-            }
-
-            executed.current += 1;
-        }
-    }, [])
-
-
-    useEffect(() => {
-
-        // Locomotive with scrollTrigger
-        if ( true ){
-            waitUntilLocomotiveTrue(props.parentProp);
-            props.parentProp.cursor_events_listen();
-        }
-
-    }, [GallaryList])
-
-     return (
-        <div className={`List-items ${props.LIST_NAME}-list`}>
-            {GallaryList}
-        </div>
-     )
-}
 
 const LOGO_DATA = [
     ["/", "/assets/truster/logo (1).png"],
@@ -239,6 +19,63 @@ const LOGO_DATA = [
     ["/", "/assets/truster/logo (10).png"],
     ["/", "/assets/truster/logo (11).png"],
     ["/", "/assets/truster/logo (12).png"],
+    ["/", "/assets/truster/logo (13).png"],
+    ["/", "/assets/truster/logo (14).png"],
+    ["/", "/assets/truster/logo (15).png"],
+    ["/", "/assets/truster/logo (16).png"],
+    ["/", "/assets/truster/logo (17).png"],
+    ["/", "/assets/truster/logo (18).png"],
+    ["/", "/assets/truster/logo (19).png"],
+    ["/", "/assets/truster/logo (20).png"],
+    ["/", "/assets/truster/logo (21).png"],
+    ["/", "/assets/truster/logo (22).png"],
+    ["/", "/assets/truster/logo (23).png"],
+    ["/", "/assets/truster/logo (24).png"],
+    ["/", "/assets/truster/logo (25).png"],
+    ["/", "/assets/truster/logo (26).png"],
+    ["/", "/assets/truster/logo (27).png"],
+    ["/", "/assets/truster/logo (28).png"],
+    ["/", "/assets/truster/logo (29).png"],
+    ["/", "/assets/truster/logo (30).png"],
+    ["/", "/assets/truster/logo (31).png"],
+    ["/", "/assets/truster/logo (32).png"],
+    ["/", "/assets/truster/logo (33).png"],
+    ["/", "/assets/truster/logo (34).png"],
+    ["/", "/assets/truster/logo (35).png"],
+    ["/", "/assets/truster/logo (36).png"],
+    ["/", "/assets/truster/logo (37).png"],
+    ["/", "/assets/truster/logo (38).png"],
+    ["/", "/assets/truster/logo (39).png"],
+    ["/", "/assets/truster/logo (40).png"],
+    ["/", "/assets/truster/logo (41).png"],
+    ["/", "/assets/truster/logo (42).png"],
+    ["/", "/assets/truster/logo (43).png"],
+    ["/", "/assets/truster/logo (44).png"],
+    ["/", "/assets/truster/logo (45).png"],
+    ["/", "/assets/truster/logo (46).png"],
+    ["/", "/assets/truster/logo (47).png"],
+    ["/", "/assets/truster/logo (48).png"],
+    ["/", "/assets/truster/logo (49).png"],
+    ["/", "/assets/truster/logo (50).png"],
+    ["/", "/assets/truster/logo (51).png"],
+    ["/", "/assets/truster/logo (52).png"],
+    ["/", "/assets/truster/logo (53).png"],
+    ["/", "/assets/truster/logo (54).png"],
+    ["/", "/assets/truster/logo (55).png"],
+    ["/", "/assets/truster/logo (56).png"],
+    ["/", "/assets/truster/logo (57).png"],
+    ["/", "/assets/truster/logo (58).png"],
+    ["/", "/assets/truster/logo (59).png"],
+    ["/", "/assets/truster/logo (60).png"],
+    ["/", "/assets/truster/logo (61).png"],
+    ["/", "/assets/truster/logo (62).png"],
+    ["/", "/assets/truster/logo (63).png"],
+    ["/", "/assets/truster/logo (64).png"],
+    ["/", "/assets/truster/logo (65).png"],
+    ["/", "/assets/truster/logo (66).png"],
+    ["/", "/assets/truster/logo (67).png"],
+    ["/", "/assets/truster/logo (68).png"],
+    ["/", "/assets/truster/logo (69).png"],
 ]
 
 const STATIONERY_DATA = [
@@ -259,37 +96,43 @@ export default function Branding(props) {
         <Work>
             <WorkHero title="Branding" heroCopy="We help co-create brands, not only advertise your projects. Consider us the Google Maps equivalent for your brand.
             We’ll enable your brand to not only set the right success destinations, but also pick the most optimal routes to get to these goals." />
-            <div className="TitleTextButton app-container">
-                <div className="TitleTextButton-wrapper">
-                    <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>LOGO DESIGNS</p>
+            <div className="List-container">
+                <div className="TitleTextButton app-container branding-title">
+                    <div className="TitleTextButton-wrapper">
+                        <div className="TitleTextButton-wrapperSmall">
+                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>LOGO DESIGNS</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={LOGO_DATA} LIST_NAME={"LOGO"} />
+                <div className="List-wrapper">
+                    <GallaryList parentProp={props} gallaryData={LOGO_DATA} LIST_NAME={"LOGO"} />
+                </div>
             </div>
 
-            <div className="TitleTextButton app-container">
-                <div className="TitleTextButton-wrapper">
-                    <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>STATIONERY</p>
+            <div className="List-container">
+                <div className="TitleTextButton app-container branding-title">
+                    <div className="TitleTextButton-wrapper">
+                        <div className="TitleTextButton-wrapperSmall">
+                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>STATIONERY</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={STATIONERY_DATA} LIST_NAME={"STATIONERY"} />
+                <div className="List-wrapper">
+                    <GallaryList parentProp={props} gallaryData={STATIONERY_DATA} LIST_NAME={"STATIONERY"} />
+                </div>
             </div>
 
-            <div className="TitleTextButton app-container">
-                <div className="TitleTextButton-wrapper">
-                    <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>GUIDELINES</p>
+            <div className="List-container">
+                <div className="TitleTextButton app-container branding-title">
+                    <div className="TitleTextButton-wrapper">
+                        <div className="TitleTextButton-wrapperSmall">
+                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>GUIDELINES</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={GUIDELINES_DATA} LIST_NAME={"GUIDELINES"} />
+                <div className="List-wrapper">
+                    <GallaryList parentProp={props} gallaryData={GUIDELINES_DATA} LIST_NAME={"GUIDELINES"} />
+                </div>
             </div>
 
         </Work>

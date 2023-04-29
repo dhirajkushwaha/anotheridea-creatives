@@ -1,8 +1,12 @@
-
-import React, { useRef, useState, useEffect } from 'react'
-import Head from 'next/head'
+import { React, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
 
+// Nextjs components
+import Head from "next/head";
+import Image from "next/image";
+
+// GSAP
+import { gsap } from "gsap/dist/gsap";
 
 import Worknav from './worknav'
 import Footer from '../../components/footer/footer';
@@ -48,6 +52,216 @@ export function WorkHero(prop){
     )
 }
 
+const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES"];
+
+function GallaryListitem(props){
+
+    if ( props.href === undefined ) props.href = "/"
+    const rootElRef = useRef();
+    const executed = useRef(0);
+
+    const cl_name = `.list-${props.LIST_NAME}-${props.index}`;
+
+
+    useLayoutEffect(() => {
+		if (typeof window === "undefined") { return; }
+        if ( !executed.current){
+
+            if ( LIST_WITH_POPUP.indexOf(props.LIST_NAME) !== -1 ) {
+
+                // adding the popup
+                document.querySelector(cl_name).addEventListener("click", (e)=>{
+                    document.querySelector(cl_name+" .List-popup").classList.remove("popup-hidden");
+                    document.querySelector(".Header").classList.add("Header-under-element");
+                    e.preventDefault();
+                })
+
+                // popup remove fn
+                let popup_r_fn = (e)=>{
+                    document.querySelector(cl_name+" .List-popup").classList.add("popup-hidden");
+                    document.querySelector(".Header").classList.remove("Header-under-element");
+                    e.cancelBubble = true;
+                }
+
+                // removing the popup
+                document.querySelector(cl_name+" .Popup-cross").addEventListener("click", popup_r_fn)
+                document.querySelector(cl_name+" .List-popup").addEventListener("click", popup_r_fn)
+
+            }
+
+
+            executed.current += 1;
+        }
+    }, [])
+
+    return(
+        <div className={`List-item ${props.LIST_NAME}-list-item list-${props.LIST_NAME}-${props.index}`} ref={rootElRef} >
+                <div className="WorksListItem in-view" >
+                    <div className="AppImage fit-contain loaded plane WorksListItem-thumbnail">
+                        <div className="AppImage-overlay"></div>
+                        <picture>
+                            { props.source }
+                            <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
+                        </picture>
+                    </div>
+                    <h3 className="WorksListItem-title u-textUppercase app-title--small">{ props.label }</h3>
+                </div>
+            <div className="List-popup popup-hidden">
+                <div className="Popup-frame">
+                    <div className="Popup-cross">close <img alt="cross" src="/assets/delete-sign--v2.png"/></div>
+                    <div className="Popup-pdf">
+                        <embed
+                            src={props.pdfSrc}
+                            type="application/pdf"
+                            width="100%"
+                            height="100%"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function GallaryList(props){
+
+    const gallaryData = useRef([]);
+
+    const executed = useRef(0);
+    const work_el_added_count = useRef(0);
+    const [GallaryList, setGallaryList] = useState([]);
+
+    const makeListItemsAnimated = () => {
+
+        document.querySelectorAll(".List-item").forEach((listItemEl) => {
+
+            listItemEl.querySelector(".AppImage-overlay").style.setProperty("opacity", 1);
+            gsap.set(listItemEl.querySelector(".WorksListItem-title"), { opacity:0, x:"20%" });
+            gsap.set(listItemEl.querySelector(".WorksListItem-details"), { opacity:0, x:"20%" });
+
+            const worksItemScrollTimeLine = gsap.timeline({ defaults:{ },
+                scrollTrigger:{
+                    trigger: listItemEl,
+                    scroller: (window.innerWidth > 1024 ? "[data-scroll-container]" : undefined),
+                    start: "top bottom-=15%",
+                    end: "top 30%",
+                }
+            });
+
+            worksItemScrollTimeLine
+                .fromTo(listItemEl.querySelector(".AppImage-overlay"), { x:"0%" }, { duration: 0.5, x:"-200%", ease:"none", onComplete:()=>{
+                    gsap.set(listItemEl.querySelector(".AppImage-overlay"), { opacity: 0, onComplete:()=>{
+                        listItemEl.querySelector(".AppImage-overlay").style.removeProperty("transform");
+                    }})
+                }})
+                .fromTo(listItemEl.querySelector(".WorksListItem-title"), { opacity:0, x:"20%" }, { opacity:1, x:"0%" }, "<0.05")
+                .fromTo(listItemEl.querySelector(".WorksListItem-details"), { opacity:0, x:"20%" }, { opacity:1, x:"0%" }, "<0.1");
+        })
+    }
+
+    const waitUntilLocomotiveTrue = (props) => {
+
+        props.s_trigger_anim(() => {
+
+            let l_s = document.querySelector(".Load-screen");
+            let load_s_t = 2520; // loading screen time
+
+            let intervalRef = setInterval(() => {
+
+                let c_s_t, s_t_a;
+
+                try {
+                    c_s_t = getComputedStyle(l_s).getPropertyValue("transform");
+                    s_t_a = parseInt(c_s_t.split("(")[1].split(")")[0].split(",")[5]*(-1)) > window.innerHeight*0.6;
+                } catch (error) { }
+
+
+                if ( work_el_added_count.current > 1 ){
+                    c_s_t = null;
+                    s_t_a = true;
+                }
+
+                if (window.innerWidth > 1024){
+
+                    if ( c_s_t === "none"  ) return;
+                    if ( props.locomotiveScrollInstance.current === undefined || !( s_t_a ) ) return;
+
+                    props.locomotiveScrollInstance.current.update();
+
+                } else {
+
+                    if ( c_s_t === "none"  ) return;
+                    if ( !( s_t_a ) ) return;
+
+                }
+
+
+                // Adding the animation
+                makeListItemsAnimated();
+
+                work_el_added_count.current++;
+                if ( props.locomotiveScrollInstance.current !== undefined ) clearInterval(intervalRef);
+
+            // }, (window.innerWidth > 1024) ? 0 : load_s_t*0.5);
+            }, 0);
+
+        });
+
+
+    }
+
+    const createWorksComponent = () => {
+        setGallaryList([]);
+        let localGallaryList = [];
+        gallaryData.current.forEach((data, i) => {
+            localGallaryList.push(<GallaryListitem
+                            key={i}
+                            index={i}
+                            LIST_NAME={props.LIST_NAME}
+                            href={data[0]}
+                            imgUrl={data[1]}
+                            label={data[2]}
+                            pdfSrc={data[3]}
+                            imgSrc={data[4]}
+                        />);
+
+        });
+
+        setGallaryList(localGallaryList);
+    }
+
+    useEffect(() => {
+		if (typeof window === "undefined") { return; }
+        if ( executed.current < 1){
+
+            // Make Works Component
+            if (true){
+                gallaryData.current = props.gallaryData;
+                createWorksComponent();
+            }
+
+            executed.current += 1;
+        }
+    }, [])
+
+
+    useEffect(() => {
+
+        // Locomotive with scrollTrigger
+        if ( true ){
+            waitUntilLocomotiveTrue(props.parentProp);
+            props.parentProp.cursor_events_listen();
+        }
+
+    }, [GallaryList])
+
+     return (
+        <div className={`List-items ${props.LIST_NAME}-list`}>
+            {GallaryList}
+        </div>
+     )
+}
+
 export default function Work({ children }) {
 
     const {push} = useRouter();
@@ -72,7 +286,7 @@ export default function Work({ children }) {
 
 
     return (
-        <main className='Work-page-container' style={{"--page-color":colorIndex[activeIndex]}} data-scroll-container>
+        <main className={`Work-page-container`} style={{"--page-color":colorIndex[activeIndex]}} data-scroll-container>
             <Worknav activeIndex={activeIndex} />
             {children}
             <Footer />

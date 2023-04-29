@@ -3563,8 +3563,8 @@ button.FormButton .AppButton-label{
     border-radius: 2vw;
 	overflow: hidden;
 
-	width: calc(1140/19.2 * 1vw);
-    height: calc((1140 / 1.77)/19.2 * 1vw);
+	width: calc(1440/19.2 * 1vw);
+    height: calc((1440 / 1.77)/19.2 * 1vw);
 }
 
 .Popup-pdf iframe {
@@ -4176,14 +4176,28 @@ button.FormButton .AppButton-label{
 
 .ListIconTitleText-list {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.Strategy-list.ListIconTitleText-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
 }
 
 .ListIconTitleText-listItem {
     position: relative;
     margin-bottom: 7rem;
 }
+
+.Strategy-list .ListIconTitleText-listItem {
+    margin-bottom: 3rem;
+}
+
+
 
 .ListIconTitleText-icon {
     width: 2.7rem;
@@ -4209,12 +4223,12 @@ button.FormButton .AppButton-label{
 		width: 120rem;
 	}
 
-	.ListIconTitleText-list {
-		padding-left: 8rem;
-	}
-
 	.ListIconTitleText-listItem {
 		width: calc(50% - 8rem);
+	}
+
+	.ListIconTitleText-list {
+		padding-left: 8rem;
 	}
 
 	.ListIconTitleText-icon {
@@ -4223,11 +4237,19 @@ button.FormButton .AppButton-label{
 		left: -8rem;
 	}
 
+	.Strategy-list .ListIconTitleText-listItem:nth-child(2n+2){
+		margin-left: 10rem;
+	}
+
 }
 
 .TitleTextButton{
 	text-align: center;
     margin: 10rem 0;
+}
+
+.TitleTextButton.branding-title{
+	margin: 4rem 0;
 }
 
 .app-container {
@@ -4260,6 +4282,10 @@ button.FormButton .AppButton-label{
 
 	width: 80rem;
     margin: auto;
+}
+
+.TitleTextButton.branding-title .TitleTextButton-listItemText{
+	font-weight: 700;
 }
 
 @media (min-width: 1024px){
@@ -4300,12 +4326,11 @@ button.FormButton .AppButton-label{
 
 .List-items{
 	flex-wrap: wrap;
-	display: flex;
-	justify-content: space-evenly;
-	column-gap: 6rem;
-	row-gap: 2rem;
-
-	margin-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    margin-bottom: 10rem;
 }
 
 .WorksListItem{

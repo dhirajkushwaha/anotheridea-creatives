@@ -563,9 +563,13 @@ function MyApp({ Component, pageProps }) {
 
         // classes having link
         var cl_h_link = {
-            "/" : [".Works-slideContent", ".ideasBehind-item", ".AppButton", ".Menu-navItemLink"],
+            "/" : [".Works-slideContent", ".ideasBehind-item", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
-            "/work/branding" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
+            "/work/branding" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work/campaigns" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work/content" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work/strategy" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work/workshops" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/about" : [".AppButton", ".Menu-navItemLink"],
             "/team" : [".AppButton", ".Menu-navItemLink"],
             "/contact" : [".AppButton", ".ContactDetailsInfo.Contact-Map"],
@@ -592,13 +596,13 @@ function MyApp({ Component, pageProps }) {
                         h_link.addEventListener("mouseenter", (e)=>{
 
                             // Conditional cases for special classes
-                            if ( cl === ".ideasBehind-item" ){
+                            if ( cl == ".ideasBehind-item" ){
                                 // changing mouse cursor color when hovered over larged fancy text
                                 m_cursor_states("color", { color: h_link.style.getPropertyValue("--ideasBehindColor")});
                             }
-                            if ( cl === ".Menu-navItemLink" ){
+                            if ( cl == ".Menu-subnavItemLink" ){
                                 // changes menu background color
-                                let menuColorPresets = ["rgb(85, 65, 248)", "rgb(175, 55, 217)", "rgb(222, 71, 126)", "rgb(242, 173, 69)"];
+                                let menuColorPresets = ["rgb(85, 65, 248)", "rgb(175, 55, 217)", "rgb(222, 71, 126)", "rgb(242, 173, 69)", "#3ab8c9"];
 
                                 gsap.to(".Menu", {background:menuColorPresets[index]});
                                 gsap.to(".Menu-navItemLinkInnerHover", {color:menuColorPresets[index]});
@@ -1665,10 +1669,10 @@ function MyApp({ Component, pageProps }) {
                             if ( router.asPath == "/" ){ // vimeo video
 
                                 if ( window.navigator.onLine ){
-                                    let video_url_str = "https://player.vimeo.com/video/799025699?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                    let video_url_str = "https://player.vimeo.com/video/7990256990?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/799025729?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/7990257290?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     xhr.onload = function(){
