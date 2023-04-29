@@ -1628,7 +1628,7 @@ function MyApp({ Component, pageProps }) {
                     const load_fn = () => {
                         let load_s_t = 2520; // loading screen time
 
-                        /* test declaration */ load_s_t = 100
+                        // /* test declaration */ load_s_t = 100
 
                         let locomotice_interv = setInterval(() => {
                             // Locomotive
@@ -1669,10 +1669,10 @@ function MyApp({ Component, pageProps }) {
                             if ( router.asPath == "/" ){ // vimeo video
 
                                 if ( window.navigator.onLine ){
-                                    let video_url_str = "https://player.vimeo.com/video/7990256990?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                    let video_url_str = "https://player.vimeo.com/video/799025699?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/7990257290?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/799025729?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     xhr.onload = function(){
