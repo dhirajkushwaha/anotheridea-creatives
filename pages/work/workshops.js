@@ -19,6 +19,13 @@ export default function Workshops() {
   return (
     <Work>
         <WorkHero title="Workshops" heroCopy={<>How we can empower your Teams:<br/>The Credo Range of Skilling Workshops:</>} />
+
+        <div className="Workshops-video">
+            <div className="Workshops-video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/apiu3pTIwuY?controls=0&mute=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; modestbranding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
         <div className="ListIconTitleText">
             <div className="ListIconTitleText-wrapper">
                 <ul className="ListIconTitleText-list">
@@ -47,8 +54,6 @@ export default function Workshops() {
                 </ul>
             </div>
         </div>
-
-
     </Work>
   )
 }

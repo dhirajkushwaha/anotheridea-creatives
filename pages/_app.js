@@ -28,8 +28,7 @@ import "splitting/dist/splitting-cells.css";
 // vimeo
 import Player from '@vimeo/player';
 
-// swiper slider
-import { useSwiper } from 'swiper/react';
+import { colorIndex, pageIndex } from "./work";
 
 
 // Fractional Component
@@ -559,7 +558,10 @@ function MyApp({ Component, pageProps }) {
 
         m_cursor_states("link-end");
 
-        if ( pageMicroHistory.current.currentPage == "/contact" ) m_cursor_states("color", {color: "black"});
+        if ( router.asPath == "/contact" ) m_cursor_states("color", {color: "black"});
+        else if ( router.asPath.indexOf("/work") !== -1 ) {
+            m_cursor_states("color", {color: colorIndex[pageIndex[router.asPath.split("/").at(-1)]]});
+        }
         else m_cursor_states("color", {color: "default"});
 
         // classes having link
@@ -603,7 +605,7 @@ function MyApp({ Component, pageProps }) {
                             }
                             if ( cl == ".Menu-subnavItemLink" ){
                                 // changes menu background color
-                                let menuColorPresets = ["rgb(85, 65, 248)", "rgb(175, 55, 217)", "rgb(222, 71, 126)", "rgb(242, 173, 69)", "#3ab8c9"];
+                                let menuColorPresets = ["#af37d9", "#de477e", "#f2ad45", "#3ab8c9", "#3b33b3"];
 
                                 gsap.to(".Menu", {background:menuColorPresets[index]});
                                 gsap.to(".Menu-navItemLinkInnerHover", {color:menuColorPresets[index]});
@@ -612,6 +614,19 @@ function MyApp({ Component, pageProps }) {
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColorPresets[index]});
                                 gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColorPresets[index]});
+
+                            }
+                            if ( cl == ".Menu-navItemLink" ){
+                                // changes menu background color
+                                let menuColor = "#5541f8";
+
+                                gsap.to(".Menu", {background:menuColor});
+                                gsap.to(".Menu-navItemLinkInnerHover", {color:menuColor});
+
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColor});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColor});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColor});
+                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColor});
 
                             }
 
@@ -1652,10 +1667,8 @@ function MyApp({ Component, pageProps }) {
                                 let loadingScreenInterval = setInterval(() => {
                                     if ( router.isReady === true && ( document.readyState === 'complete' || document.readyState === "interactive" ) )
                                         gsap.to(".Load-screen", {
-                                            // duration:1,
                                             duration:0.7,
                                             y:"-100vh",
-                                            // ease:"power3",
                                             onComplete:()=>{
 
                                                 document.querySelector(".Load-screen").classList.add("--is-hidden");

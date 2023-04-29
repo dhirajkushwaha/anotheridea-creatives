@@ -20,7 +20,7 @@ export const colorIndex = {
     4 : "#3b33b3"
 }
 
-const pageIndex = {
+export const pageIndex = {
     "branding" : 0,
     "campaigns" : 1,
     "content" : 2,
