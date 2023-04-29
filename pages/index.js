@@ -462,12 +462,7 @@ function WorksSliderItem(props) {
 						<div className="Works-slideWrapTitle" style={{touchAction: "pan-y"}}>
 							<span data-label={ props.label } style={{touchAction: "pan-y"}} className="Works-slideTitle colorFill">{ props.label }</span>
 							<div className="Works-slideHover" style={{touchAction:"pan-y"}}>
-								<div className="Works-slideSubtitle" style={{touchAction:"pan-y", opacity: 0}}>
-									{/* <span style={{touchAction:"pan-y"}}>
-										Director : { props.dirName }
-									</span> */}
-								</div>
-								<div className="Works-slideOffice" style={{touchAction:"pan-y", opacity: 0}}> Director : { props.dirName } </div>
+								{/* <div className="Works-slideOffice" style={{touchAction:"pan-y", opacity: 0}}> Director : { props.dirName } </div> */}
 							</div>
 						</div>
 					</div>
@@ -777,7 +772,7 @@ export default function Home(props) {
 						>
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(1).jpg"
-								label="SCRAM 411"
+								label="Peninsula"
 								dirName="Lloyd Baptista"
 								overlayColor="#777799"
 								videoSrc="https://player.vimeo.com/video/703566550?h=9420574f64&amp;quality=240p"
@@ -786,7 +781,7 @@ export default function Home(props) {
 							/>
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(2).jpg"
-								label="YODHA 2.0"
+								label="Alcove"
 								dirName="Lloyd Baptista"
 								videoSrc="https://player.vimeo.com/video/757567353?h=48603657bf&amp;quality=240p"
 								addPopup={addPopup}
@@ -794,7 +789,7 @@ export default function Home(props) {
 							/>
 							<WorksSliderItem
 								src="/assets/work_slider_thumbnail/image-(3).jpg"
-								label="MINNAL MURALI"
+								label="Gaurs"
 								dirName="Vasan Bala"
 								videoSrc="https://player.vimeo.com/video/674292817?h=8b0a629b30&amp;quality=240p"
 								addPopup={addPopup}
