@@ -2626,6 +2626,7 @@ img.OtherDirectors-Image {
 	text-align: center;
 }
 
+
 /* Other Directors */
 
 .OtherDirectors-List {
@@ -4316,3 +4317,13 @@ button.FormButton .AppButton-label{
 	border-radius: 2rem;
 }
 
+
+.OnBoardDirector-Profile .ExpertItem-image{
+	filter: grayscale(1);
+	transition: filter 0.5s ease;
+}
+
+.OnBoardDirector-Profile .ExpertItem-image:hover{
+	filter: grayscale(0);
+	transition: filter 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}

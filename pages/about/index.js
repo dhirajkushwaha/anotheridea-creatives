@@ -116,10 +116,6 @@ function OnBoardItem(props){
                         particles[i].render();
                     }
                 };
-
-                // canvas.addEventListener("mousemove", onMouseMove);
-                // initScene();
-                // requestAnimationFrame(render);
             }
 
             executed.current = 1;
@@ -231,7 +227,7 @@ export default function About(){
                 [<OnBoardItem
                     key={1}
                     index={1}
-                    imgSrc = "/assets/jaideep_gandhi.jpeg"
+                    imgSrc = "/assets/Jaideep-Gandhi-Photo_Square.jpg"
                     name = "Jaideep Gandhi"
                     G_El_prop = {["#5541f8", `${20 + 50*Math.random()}s`, random_pos[0].not_hov, random_pos[0].hov]}
                     postion = {
