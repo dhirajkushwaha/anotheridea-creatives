@@ -173,6 +173,10 @@ function OnBoardItem(props){
                         style={{opacity: 1, transform: "translate3d(0px, 0px, 0px)"}}>
                         {props.name}
                     </div>
+                    <div className="ExpertItem-position"
+                        style={{opacity: 1, transform: "translate3d(0px, 0px, 0px)"}}>
+                        {props.postion}
+                    </div>
                 </div>
                 <div className={"ExpertItem-canvas ExpertItem-canvas-"+props.index}>
                     <canvas width="1152" height="1152"></canvas>
@@ -227,10 +231,13 @@ export default function About(){
                 [<OnBoardItem
                     key={1}
                     index={1}
-                    imgSrc = "/assets/prosit_roy.png"
+                    imgSrc = "/assets/jaideep_gandhi.jpeg"
                     name = "Jaideep Gandhi"
                     G_El_prop = {["#5541f8", `${20 + 50*Math.random()}s`, random_pos[0].not_hov, random_pos[0].hov]}
-                    about = {<>Founder of Another Idea - A 360 degree Marketing Agency specialized in the realm of Real Estate. Someone who has eaten, breathed & survived in the real-estate industry panning strategy, creativity, sales, consultation, events, workshops, and still adding new feathers to his hat.<br/><br/>Along with breathing through the bricks and beams,<br/>
+                    postion = {
+                        <>Founder of Another Idea - A 360 degree Marketing Agency specialized in the realm of Real Estate. Someone who has eaten, breathed & survived in the real-estate industry panning strategy, creativity, sales, consultation, events, workshops, and still adding new feathers to his hat.</>
+                    }
+                    about = {<>Along with breathing through the bricks and beams,<br/>
                     Serving the advertising, real estate and educational sector as:<br/>
                     - Honorable Treasurer of the IAA, since September 2022<br/>
                     - Honorable Secretary of the IAA, since September 2019<br/>
@@ -262,7 +269,7 @@ export default function About(){
 
             <section className="Directors-onBoard">
                 <div className="Title u-textUppercase">
-                    <h1>Empanelled Directors</h1>
+                    <h1>About US</h1>
                 </div>
                 <div className="Paragraph">
                     <p className="Aboutus-p onlyDesk" >We are an advertising agency that can help deliver strategic value to our clients.
@@ -270,7 +277,7 @@ export default function About(){
                     To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you. As well as to percolate this brand essence into project based communication endeavours.
                     We optimize a brand’s success potential through accurate planning and insightful implementation of communication initiatives.
                     </p>
-                    <p className="onlyMob" >We are an advertising agency that can help deliver strategic value to our clients.
+                    <p className="Aboutus-p onlyMob" >We are an advertising agency that can help deliver strategic value to our clients.
                     We provide a complete spectrum of services that enable brands to interface with target audiences at multiple touch points.
                     To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you. As well as to percolate this brand essence into project based communication endeavours.
                     We optimize a brand’s success potential through accurate planning and insightful implementation of communication initiatives.

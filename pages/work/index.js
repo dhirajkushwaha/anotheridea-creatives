@@ -53,6 +53,7 @@ export function WorkHero(prop){
 }
 
 const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES"];
+const LIST_WITH_PDF = ["STATIONERY", "GUIDELINES", "BROCHURES"];
 
 function GallaryListitem(props){
 
@@ -67,28 +68,27 @@ function GallaryListitem(props){
 		if (typeof window === "undefined") { return; }
         if ( !executed.current){
 
-            if ( LIST_WITH_POPUP.indexOf(props.LIST_NAME) !== -1 ) {
+            if ( LIST_WITH_POPUP.indexOf(props.LIST_NAME) !== -1 ){
 
-                // adding the popup
+                // on click popup
                 document.querySelector(cl_name).addEventListener("click", (e)=>{
                     document.querySelector(cl_name+" .List-popup").classList.remove("popup-hidden");
                     document.querySelector(".Header").classList.add("Header-under-element");
                     e.preventDefault();
                 })
 
-                // popup remove fn
+                // remove popup
                 let popup_r_fn = (e)=>{
                     document.querySelector(cl_name+" .List-popup").classList.add("popup-hidden");
                     document.querySelector(".Header").classList.remove("Header-under-element");
                     e.cancelBubble = true;
                 }
 
-                // removing the popup
+                // adding listeners for removal
                 document.querySelector(cl_name+" .Popup-cross").addEventListener("click", popup_r_fn)
                 document.querySelector(cl_name+" .List-popup").addEventListener("click", popup_r_fn)
 
             }
-
 
             executed.current += 1;
         }
@@ -109,14 +109,21 @@ function GallaryListitem(props){
             <div className="List-popup popup-hidden">
                 <div className="Popup-frame">
                     <div className="Popup-cross">close <img alt="cross" src="/assets/delete-sign--v2.png"/></div>
-                    <div className="Popup-pdf">
-                        <embed
-                            src={props.pdfSrc}
-                            type="application/pdf"
-                            width="100%"
-                            height="100%"
-                        />
-                    </div>
+                    {
+                        LIST_WITH_PDF.indexOf(props.LIST_NAME) !== -1 ?
+                                    <div className="Popup-pdf">
+                                        <embed
+                                            src={props.pdfSrc}
+                                            type="application/pdf"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                    </div>
+                                    :
+                                    <div className="Popup-img">
+                                        <Image fill src={ props.imgSrc } alt={ props.label } className="AppImage-image" />
+                                    </div>
+                    }
                 </div>
             </div>
         </div>

@@ -50,6 +50,7 @@ function number(item, array) {
 
 function lerp(a, b, n) {
 	return (1 - n) * a + n * b
+	// return a + (b - n)*n
 }
 
 function mapVal(x1, x2, y1, y2, x){
@@ -129,7 +130,7 @@ class Slider {
 		this.currentX = this.offX + ((window.innerWidth >= 1024 ? e.clientX : e.touches[0].clientX ) - this.onX) * (window.innerWidth >= 1024 ? 1 : 3);
 	}
 
-	mathVals(translationVal,slide, index){
+	mathVals(translationVal, slide, index){
 		let transformOrigin, scale, textDisp, opacity1st, mobTranslation;
 		let ranges, itemCount;
 
@@ -156,9 +157,8 @@ class Slider {
 			const diff = this.currentX - this.lastX
 			const start = (bounds.x + diff) + (0)
 			const fromStart = this.startX - start
-			// numbers.push(fromStart)
 
-			// textDisp *= 0.69 * 1.8 //*((window.innerWidth*1.1 - fromStart))/window.innerWidth;
+
 			textDisp *= 1.2 //*(2 - ((window.innerWidth*2 - fromStart))/window.innerWidth);
 		} else {
 			transformOrigin = 0;
@@ -192,7 +192,6 @@ class Slider {
 
 					document.querySelectorAll(".SliderBullets-item").forEach((slideBulletItem, slideBulletItemIndex) => {
 						if ( index == slideBulletItemIndex ){
-							console.log()
 							slideBulletItem.classList.add("is-active")
 						} else {
 							slideBulletItem.classList.remove("is-active")
@@ -869,11 +868,11 @@ export default function Home(props) {
 						"transform": "translate3d(0px, 0px, 0px) scale(2, 2)"
 						}}></div>
 						<div className="Vision-bgItems" >
-							<VisionbgItem alt="Visual" imgSrc = "/assets/text_slides_thumbnail/Amazon Rakhi.png" />
-							<VisionbgItem alt="Art" imgSrc = "/assets/text_slides_thumbnail/Scram 411 - Royal Enfield.png" />
-							<VisionbgItem alt="Dynamism" imgSrc = "/assets/text_slides_thumbnail/OLA Electric MoveSO3 -3.png" />
-							<VisionbgItem alt="Excellence" imgSrc = "/assets/text_slides_thumbnail/TATA YODHA 2.0 -04.png" />
-							<VisionbgItem alt="Excellence" imgSrc = "/assets/text_slides_thumbnail/TATA YODHA 2.0 -04.png" />
+							<VisionbgItem alt="National Clients" imgSrc = "/assets/text_slides_thumbnail/national icon - 2.jpeg" />
+							<VisionbgItem alt="International Clients" imgSrc = "/assets/text_slides_thumbnail/international - 3.png" />
+							<VisionbgItem alt="Partnered Consultants" imgSrc = "/assets/text_slides_thumbnail/partnered-consultants-2.jpg" />
+							<VisionbgItem alt="Acres Associated" imgSrc = "/assets/text_slides_thumbnail/acres 3.jpeg" />
+							<VisionbgItem alt="Years of Legacy" imgSrc = "/assets/text_slides_thumbnail/legacy-1.png" />
 						</div>
 					</div>
 
@@ -965,21 +964,21 @@ export default function Home(props) {
 
 					<Ideasbehindtextitem
 						label="Branding"
-						href="/work"
+						href="/work/branding"
 						color="#af37d9"
 						skill=""
 						slidemag="2vw"
 					></Ideasbehindtextitem>
 					<Ideasbehindtextitem
 						label="Campaigns"
-						href="/work"
+						href="/work/campaigns"
 						color="#de477e"
 						skill=""
 						slidemag="14vw"
 					></Ideasbehindtextitem>
 					<Ideasbehindtextitem
 						label="Content Production"
-						href="/work"
+						href="/work/content"
 						color="#f2ad45"
 						// skill="Bringing ideas to focus"
 						skill=""
@@ -987,7 +986,7 @@ export default function Home(props) {
 					></Ideasbehindtextitem>
 					<Ideasbehindtextitem
 						label="Strategy"
-						href="/work"
+						href="/work/strategy"
 						color="#3ab8c9"
 						// skill="Lorem Ipsum"
 						skill=""
@@ -997,7 +996,7 @@ export default function Home(props) {
 						label="Workshops"
 						label_left={"Post Production"}
 						label_right={"Post Production"}
-						href="/work"
+						href="/work/workshops"
 						color="#3b33b3"
 						// skill="Lorem Ipsum"
 						skill=""

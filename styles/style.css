@@ -1598,7 +1598,7 @@ h4 {
     width: 100% !important;
     height: 100% !important;
 
-	transform: scale(0.5);
+	transform: scale(0.6);
 
 	object-fit: contain;
 
@@ -1623,75 +1623,6 @@ h4 {
 /* size according to the  size */
 
 /* @media only screen and ( min-width: 1024px ) {
-
-	.swiper-slide:nth-child(1) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(1) img{
-		transform: scale(0.65);
-	}
-
-	.swiper-slide:nth-child(1) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(5) img{
-		transform: scale(0.7);
-	}
-
-	.swiper-slide:nth-child(1) .trusterSlider:nth-child(2) .trusterSliderItem:nth-child(3) img{
-		transform: scale(0.8);
-	}
-
-	.swiper-slide:nth-child(1) .trusterSlider:nth-child(3) .trusterSliderItem:nth-child(1) img{
-		transform: scale(0.8);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(2) img{
-		transform: scale(0.7);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(3) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(4) img{
-		transform: scale(0.65);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(5) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(3) .trusterSliderItem:nth-child(2) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(2) .trusterSlider:nth-child(3) .trusterSliderItem:nth-child(4) img{
-		transform: scale(0.7);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(3) img{
-		transform: scale(0.65);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(1) .trusterSliderItem:nth-child(5) img{
-		transform: scale(0.65);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(2) .trusterSliderItem:nth-child(1) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(2) .trusterSliderItem:nth-child(3) img{
-		transform: scale(0.7);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(2) .trusterSliderItem:nth-child(4) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(2) .trusterSliderItem:nth-child(5) img{
-		transform: scale(0.6);
-	}
-
-	.swiper-slide:nth-child(3) .trusterSlider:nth-child(3) .trusterSliderItem:nth-child(1) img{
-		transform: scale(0.65);
-	}
-
 }
 
 @media only screen and ( max-width: 1023px ) {
@@ -2596,11 +2527,26 @@ video::-webkit-media-controls-start-playback-button {
 	padding-top: 24rem;
 }
 
-.Aboutus-p{
-	width: 80rem;
-
+.Aboutus-p.onlyDesk{
+    width: 85rem;
 	margin: auto;
+}
 
+.Aboutus-p{
+	font-size: 2rem;
+	font-weight: 400;
+}
+
+.OnBoard-p{
+	font-size: 2rem;
+	font-weight: 400;
+	margin: 2rem 0 5rem;
+}
+
+.OnBoard-p h1{
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin: 1rem;
 }
 
 .Directors-onBoard .Title {
@@ -2643,7 +2589,7 @@ video::-webkit-media-controls-start-playback-button {
 .OnBoard-listItem {
 	display: flex;
 	padding: 4vw 5vw;
-	justify-content: center;
+    justify-content: space-around;
 	border: 1px solid rgb(255, 255, 255, 0.2);
 }
 
@@ -2669,14 +2615,10 @@ img.OtherDirectors-Image {
 
 .OnBoardDirector-About {
 	font-size: 0.9vw;
-	line-height: 1.9vw;
-	font-weight: 300;
-
-	display: flex;
-	align-items: center;
-	width: 60%;
-
-	letter-spacing: calc( 1vw/19.2 );
+    line-height: 1.9vw;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
 }
 
 .OnBoardDirector-Profile,
@@ -2709,6 +2651,7 @@ img.OtherDirectors-Image {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	justify-content: center;
 }
 
 .OtherDirectors-Name {
@@ -2738,9 +2681,9 @@ img.OtherDirectors-Image {
 		width: 100%;
 	}
 
-	.OnBoardDirector-About{
+	/* .OnBoardDirector-About{
 		margin-left: 6vw;
-	}
+	} */
 }
 
 @media only screen and (max-width: 1023px) {
@@ -3822,6 +3765,14 @@ button.FormButton .AppButton-label{
     /* margin-bottom: calc(1 * var(--scale_f) * 1vw); */
 }
 
+.ExpertItem-position{
+	font-size: 1.4rem;
+	line-height: 1.9rem;
+	margin-top: 1rem;
+
+	max-width: 30rem;
+}
+
 .ExpertItem-designation {
 	display: inline-block;
 
@@ -4308,7 +4259,7 @@ button.FormButton .AppButton-label{
     border-radius: 2rem;
 }
 
-.LOGO-list-item .AppImage.fit-contain .AppImage-image{
+.AppImage.fit-contain .AppImage-image{
 	object-fit: contain;
 }
 
@@ -4335,14 +4286,12 @@ button.FormButton .AppButton-label{
 
 @media only screen and (min-width: 1140px){
 
-	.List-item{
+	.LOGO-list-item{
 		width: 20rem;
 		margin-bottom: 0rem;
-
-
 	}
 
-	.List-item .WorksListItem-thumbnail{
+	.LOGO-list-item .WorksListItem-thumbnail{
 		height: 20rem;
 		margin-bottom: 0rem;
 	}

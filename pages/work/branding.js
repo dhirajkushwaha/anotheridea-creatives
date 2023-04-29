@@ -79,16 +79,16 @@ const LOGO_DATA = [
 ]
 
 const STATIONERY_DATA = [
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "GBD", "/assets/stationerypdf/GBD Logo Option.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Mani", "/assets/stationerypdf/Mani Group Stationary _ Giveaway.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "OLR", "/assets/stationerypdf/OLR Stationary.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "real+", "/assets/stationerypdf/real+ Stationary.pdf"],
+    ["/", "/assets/stationeryimg/gbd.png", "GBD", "/assets/stationerypdf/GBD Logo Option.pdf"],
+    ["/", "/assets/stationeryimg/mani.png", "Mani", "/assets/stationerypdf/Mani Group Stationary _ Giveaway.pdf"],
+    ["/", "/assets/stationeryimg/olr.png", "OLR", "/assets/stationerypdf/OLR Stationary.pdf"],
+    ["/", "/assets/stationeryimg/realplus.png", "realplus", "/assets/stationerypdf/real+ Stationary.pdf"],
 ]
 
 const GUIDELINES_DATA = [
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Vibe", "/assets/guidelinespdf/Basic Ref_Vibe Brand guideline Low.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "OLR", "/assets/guidelinespdf/Elaborate Version_OLR Brand Guidelines.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Rubberwala", "/assets/guidelinespdf/Mid-Level Ref_Rubberwala Brand Manual 2022.pdf"],
+    ["/", "/assets/guidelinesimg/vibe.png", "Vibe", "/assets/guidelinespdf/Basic Ref_Vibe Brand guideline Low.pdf"],
+    ["/", "/assets/guidelinesimg/olr.png", "OLR", "/assets/guidelinespdf/Elaborate Version_OLR Brand Guidelines.pdf"],
+    ["/", "/assets/guidelinesimg/rubberwala.png", "Rubberwala", "/assets/guidelinespdf/Mid-Level Ref_Rubberwala Brand Manual 2022.pdf"],
 ]
 
 export default function Branding(props) {

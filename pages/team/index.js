@@ -74,17 +74,8 @@ export default function Team(){
     const [profiles_comp, set_profiles_comp] = useState([]);
 
     const profiles = [
-        ["/assets/team_profiles/gaurav_gandhi.jpg", "Gaurav Gandhi", "Executive Producer"],
-        ["/assets/team_profiles/smaran_gandhi.JPG", "Smaran Gandhi", "Executive Producer"],
-        ["/assets/team_profiles/nidhi_gandhi.jpg", "Nidhi Gandhi", "Senior Producer"],
-        ["/assets/team_profiles/srushti_iyer.JPG", "Srushti Iyer", "Senior Producer"],
-        ["/assets/team_profiles/ishaandeep_awasty.jpg", "Ishaan Deep Awasty", "Producer"],
-        ["/assets/team_profiles/anindita_mukherjee.jpg", "Anindita Mukherjee", "Producer"],
-        ["/assets/team_profiles/natasha_agarwal_jagtap.jpg", "Natasha Jagtap", "Associate Producer"],
-        ["/assets/team_profiles/manish_chougule.jpg", "Manish Chougule", "Post Producer"],
-        ["/assets/team_profiles/a_aakash_rao.jpg", "A Aakash Rao", "Post Producer"],
-        ["/assets/team_profiles/nadeem_shaikh_.jpg", "Nadeem Shaikh", "Admin Executive"],
-        ["/assets/team_profiles/inigo_nadar.jpg", "Inigo Nadar", "Online Artist"],
+        ["/assets/jaideep_gandhi.jpeg", "Jaideep Gandhi", "Founder"],
+        ["/assets/chetna_gandhi.jpeg", "Chetna Gandhi", "Co-Founder"],
     ]
 
 
@@ -108,7 +99,6 @@ export default function Team(){
                             name = {profiles[i][1]}
                             about = {profiles[i][2]}
                             G_El_prop = {["#5541f8",
-                                        // `${49 - Math.random()*5 + Math.random()*10}s`,
                                         `${20 + 50*Math.random()}s`,
                                         `translate3d(calc(${random_pos_n_hov[0]} * var(--scale_f) * 1vw), calc(${random_pos_n_hov[1]} * var(--scale_f) * 1vw), 0px) rotate(${random_orientation}deg)`,
                                         `translate3d(calc(${random_pos_hov[0]} * var(--scale_f) * 1vw), calc(${random_pos_hov[1]} * var(--scale_f) * 1vw), 0px) rotate(${random_orientation}deg)`]
@@ -181,11 +171,6 @@ export default function Team(){
 
             Particle.prototype.render = function() {
 
-                // if ( Math.sqrt(this.ivx**2 + this.ivy**2) != Math.sqrt(this.vx**2 + this.vy**2) ){
-                //     this.vx = this.vx + Math.sign(this.ivx - this.vx)*friction;
-                //     this.vy = this.vy + Math.sign(this.ivy - this.vy)*friction;
-                // }
-
                 if ( this.x + this.vx > ww - this.r ){
                     this.vx = -this.vx;
                 } else if ( this.x + this.vx < 0 + this.r ) {
@@ -204,18 +189,6 @@ export default function Team(){
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
                 ctx.fill();
-
-                // mouse avoiding
-                // var a = this.x - mouse.x;
-                // var b = this.y - mouse.y;
-
-                // var distance = Math.sqrt( a*a + b*b );
-                // if(distance<(radius*70)){
-                //     this.accX = (this.x - mouse.x)/100;
-                //     this.accY = (this.y - mouse.y)/100;
-                //     this.vx += this.accX;
-                //     this.vy += this.accY;
-                // }
 
             }
 
@@ -273,6 +246,13 @@ export default function Team(){
                         <div className="OnBoard-listItem OtherDirectors-List">
                             <div className="OtherDirectors-ListItems">
                                 {profiles_comp}
+                            </div>
+                            <div className="OnBoard-p" >
+                                <h1>Our Team consists: </h1>
+                                Client Team of 8 brand managers <br/>
+                                Creative Team of 10 innovators <br/>
+                                Copy Team of 10 wordsmiths <br/>
+                                Digital Technical Team of 11 experts <br/>
                             </div>
                         </div>
                     </div>
