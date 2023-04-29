@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Work, { WorkHero, GallaryList } from '.'
+import Work, { WorkHero, GallaryList, colorIndex } from '.'
 
 const BROCHURES_DATA = [
     ["/", "/assets/brochuresimg/auris.png", "Auris Serenity", "/assets/brochurespdf/Auris Serenity brochure.pdf"],
@@ -44,7 +44,7 @@ export default function Campaigns(props) {
                 </div>
             </div>
             <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={BROCHURES_DATA} LIST_NAME={"BROCHURES"} />
+                <GallaryList parentProp={props} gallaryData={BROCHURES_DATA} LIST_NAME={"BROCHURES"} pageColor={colorIndex[1]} />
             </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function Campaigns(props) {
                 </div>
             </div>
             <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={SHORTLISTED_DATA} LIST_NAME={"SHORTLISTED"} />
+                <GallaryList parentProp={props} gallaryData={SHORTLISTED_DATA} LIST_NAME={"SHORTLISTED"} pageColor={colorIndex[1]} />
             </div>
         </div>
 
@@ -70,7 +70,7 @@ export default function Campaigns(props) {
                 </div>
             </div>
             <div className="List-wrapper">
-                <GallaryList parentProp={props} gallaryData={NEWSPAPER_DATA} LIST_NAME={"NEWSPAPER"} />
+                <GallaryList parentProp={props} gallaryData={NEWSPAPER_DATA} LIST_NAME={"NEWSPAPER"} pageColor={colorIndex[1]} />
             </div>
         </div>
 

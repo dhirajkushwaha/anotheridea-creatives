@@ -1,8 +1,8 @@
 // React
-import { React, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { React } from "react";
 
 
-import Work, { WorkHero, GallaryList } from '.'
+import Work, { WorkHero, GallaryList, colorIndex } from '.';
 
 
 
@@ -105,7 +105,7 @@ export default function Branding(props) {
                     </div>
                 </div>
                 <div className="List-wrapper">
-                    <GallaryList parentProp={props} gallaryData={LOGO_DATA} LIST_NAME={"LOGO"} />
+                    <GallaryList parentProp={props} gallaryData={LOGO_DATA} LIST_NAME={"LOGO"} pageColor={colorIndex[0]} />
                 </div>
             </div>
 
@@ -118,7 +118,7 @@ export default function Branding(props) {
                     </div>
                 </div>
                 <div className="List-wrapper">
-                    <GallaryList parentProp={props} gallaryData={STATIONERY_DATA} LIST_NAME={"STATIONERY"} />
+                    <GallaryList parentProp={props} gallaryData={STATIONERY_DATA} LIST_NAME={"STATIONERY"} pageColor={colorIndex[0]} />
                 </div>
             </div>
 
@@ -131,7 +131,7 @@ export default function Branding(props) {
                     </div>
                 </div>
                 <div className="List-wrapper">
-                    <GallaryList parentProp={props} gallaryData={GUIDELINES_DATA} LIST_NAME={"GUIDELINES"} />
+                    <GallaryList parentProp={props} gallaryData={GUIDELINES_DATA} LIST_NAME={"GUIDELINES"} pageColor={colorIndex[0]} />
                 </div>
             </div>
 

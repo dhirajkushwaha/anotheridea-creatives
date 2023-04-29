@@ -3602,7 +3602,7 @@ button.FormButton .AppButton-label{
 .AppImage-overlay:after {
     content: "";
     display: block;
-    background: #5541f8;
+    background: var(--color);
     left: 100%;
 }
 

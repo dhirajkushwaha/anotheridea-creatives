@@ -263,7 +263,7 @@ export function GallaryList(props){
     }, [GallaryList])
 
      return (
-        <div className={`List-items ${props.LIST_NAME}-list`}>
+        <div className={`List-items ${props.LIST_NAME}-list`}  style={{"--color":(props.pageColor)}}>
             {GallaryList}
         </div>
      )
