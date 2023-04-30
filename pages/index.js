@@ -857,11 +857,11 @@ export default function Home(props) {
 						"transform": "translate3d(0px, 0px, 0px) scale(2, 2)"
 						}}></div>
 						<div className="Vision-bgItems" >
-							<VisionbgItem alt="National Clients" imgSrc = "/assets/text_slides_thumbnail/national icon - 2.jpeg" />
-							<VisionbgItem alt="International Clients" imgSrc = "/assets/text_slides_thumbnail/international - 3.png" />
-							<VisionbgItem alt="Partnered Consultants" imgSrc = "/assets/text_slides_thumbnail/partnered-consultants-2.jpg" />
-							<VisionbgItem alt="Acres Associated" imgSrc = "/assets/text_slides_thumbnail/acres 3.jpeg" />
-							<VisionbgItem alt="Years of Legacy" imgSrc = "/assets/text_slides_thumbnail/legacy-1.png" />
+							<VisionbgItem alt="National Clients" imgSrc = "/assets/text_slides_thumbnail/1.png" />
+							<VisionbgItem alt="International Clients" imgSrc = "/assets/text_slides_thumbnail/2.png" />
+							<VisionbgItem alt="Partnered Consultants" imgSrc = "/assets/text_slides_thumbnail/4.png" />
+							<VisionbgItem alt="Acres Associated" imgSrc = "/assets/text_slides_thumbnail/5.png" />
+							<VisionbgItem alt="Years of Legacy" imgSrc = "/assets/text_slides_thumbnail/6.png" />
 						</div>
 					</div>
 

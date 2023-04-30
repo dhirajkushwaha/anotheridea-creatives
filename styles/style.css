@@ -4260,6 +4260,10 @@ button.FormButton .AppButton-label{
     border-radius: 2rem;
 }
 
+.rect-list-item .AppImage{
+    border-radius: 2rem;
+}
+
 .AppImage.fit-contain .AppImage-image{
 	object-fit: contain;
 }
@@ -4326,4 +4330,8 @@ button.FormButton .AppButton-label{
 .OnBoardDirector-Profile .ExpertItem-image:hover{
 	filter: grayscale(0);
 	transition: filter 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.Double-AppImage-image{
+	
 }

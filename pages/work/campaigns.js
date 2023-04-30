@@ -12,12 +12,7 @@ const BROCHURES_DATA = [
 ]
 
 const SHORTLISTED_DATA = [
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Auris Serenity", "/assets/brochurespdf/Auris Serenity brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "IBS Bro", "/assets/brochurespdf/IBS Bro.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Quantum E-Bro", "/assets/brochurespdf/Quantum E-Bro.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Rodas", "/assets/brochurespdf/Rodas brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Sheth - Montana", "/assets/brochurespdf/Sheth - Montana Brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Sheth Cnergy", "/assets/brochurespdf/Sheth Cnergy - Commercial brochure.pdf"],
+    ["/", ["/assets/shortlistedimg/Picture 3 A.jpg", "/assets/shortlistedimg/Picture 3 B.jpg"], "Hiranandini", "/assets/brochurespdf/Auris Serenity brochure.pdf"],
 ]
 
 const NEWSPAPER_DATA = [

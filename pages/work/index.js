@@ -52,8 +52,11 @@ export function WorkHero(prop){
     )
 }
 
-const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES"];
+const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED", "NEWSPAPER"];
 const LIST_WITH_PDF = ["STATIONERY", "GUIDELINES", "BROCHURES"];
+const LIST_WITH_IMG = ["SHORTLISTED", "NEWSPAPER"];
+const LIST_WITH_RECT_STYLE = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED", "NEWSPAPER"];
+const LIST_WITH_DOUBLE_IMAGE = ["SHORTLISTED", "NEWSPAPER"];
 
 function GallaryListitem(props){
 
@@ -95,14 +98,24 @@ function GallaryListitem(props){
     }, [])
 
     return(
-        <div className={`List-item ${props.LIST_NAME}-list-item list-${props.LIST_NAME}-${props.index}`} ref={rootElRef} >
+        <div className={`List-item ${LIST_WITH_RECT_STYLE.indexOf(props.LIST_NAME) !== -1 ? 'rect' : 'simple'}-list-item ${props.LIST_NAME}-list-item list-${props.LIST_NAME}-${props.index}`} ref={rootElRef} >
                 <div className="WorksListItem in-view" >
-                    <div className="AppImage fit-contain loaded plane WorksListItem-thumbnail">
+                    <div className={`AppImage fit-${LIST_WITH_RECT_STYLE.indexOf(props.LIST_NAME) !== -1 ? 'cover' : 'contain'} loaded plane WorksListItem-thumbnail`}>
                         <div className="AppImage-overlay"></div>
-                        <picture>
+                        {/* <picture> */}
                             { props.source }
-                            <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
-                        </picture>
+                            {
+                                LIST_WITH_DOUBLE_IMAGE.indexOf(props.LIST_NAME) !== -1 ?
+                                            <div className="Double-AppImage-image" >
+                                                <Image fill src={ props.imgUrl[0] } alt={ props.label } className="AppImage-image" />
+                                                <Image fill src={ props.imgUrl[1] } alt={ props.label } className="AppImage-image" />
+                                            </div>
+                                            :
+                                            <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
+
+                            }
+
+                        {/* </picture> */}
                     </div>
                     <h3 className="WorksListItem-title u-textUppercase app-title--small">{ props.label }</h3>
                 </div>
@@ -208,8 +221,6 @@ export function GallaryList(props){
 
                 work_el_added_count.current++;
                 if ( props.locomotiveScrollInstance.current !== undefined ) clearInterval(intervalRef);
-
-            // }, (window.innerWidth > 1024) ? 0 : load_s_t*0.5);
             }, 0);
 
         });
