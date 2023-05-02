@@ -249,7 +249,7 @@ function MyApp({ Component, pageProps }) {
                 const WORKSCROLL_LEVEL =  (WORKNAV_COMPUTED_STYLE.top + WORKNAV_COMPUTED_STYLE.height)*1.5;
 
                 if (scrollY > WORKSCROLL_LEVEL){
-
+                    // to be developed once needed the on scroll header in work page
                 }
             }
         });
@@ -1007,7 +1007,6 @@ function MyApp({ Component, pageProps }) {
                 const w_s_tl =  gsap.timeline({
                     defaults : {
                         duration: 1,
-                        // ease: "sine",
                     },
                     scrollTrigger:{
                         trigger: ".Works-slider",
@@ -1023,16 +1022,37 @@ function MyApp({ Component, pageProps }) {
                 })
 
                 w_s_tl
-                    .fromTo(".Works-slider", { opacity: 0 }, { opacity: 1, duration: 1 })
-                    // .from(".Works-slideInner", { x: `${( 80 * 0.69 )}vw` }, "<0")
+                    .fromTo(".Works-slider", { opacity: 0 }, { opacity: 1, duration: 1.5 })
                     .to(s_ref.current, {
                         currentX: 0,
-                        duration: 1.5,
+                        duration: 2,
+                        // ease: CustomEase.create("custom", "M0,0,C0.165,0.84,0.182,0.718,0.448,0.908,0.579,1.001,0.44,1,1,1"),
                         ease: "circ",
                         onComplete: ()=>{
+                            gsap.set(s_ref.current, {
+                                currentX: 0
+                            })
+                            
                             s_ref.current.snappingState = 1
+
                         }
                     }, "<0");
+                    // .fromTo(".Works-slideInner", {
+                    //     x: "40rem", scale: 0.4
+                    // }, {
+                    //     x: "0rem",
+                    //     scale: "1",
+                    //     duration: 1,
+                    //     ease: CustomEase.create("custom", "M0,0,C0.165,0.84,0.182,0.718,0.448,0.908,0.579,1.001,0.44,1,1,1"),
+                    //     stagger:{
+                    //         grid: [1, 6],
+                    //         from: "start",
+                    //         axis: "x",
+                    //         amount: 0.8
+                    //     }
+                    // })
+
+
             }
 
             if ( window.innerWidth >= 1024  ){
@@ -1645,7 +1665,7 @@ function MyApp({ Component, pageProps }) {
                     const load_fn = () => {
                         let load_s_t = 2520; // loading screen time
 
-                        // /* test declaration */ load_s_t = 100
+                        /* test declaration */ load_s_t = 100
 
                         let locomotice_interv = setInterval(() => {
                             // Locomotive
@@ -1684,10 +1704,10 @@ function MyApp({ Component, pageProps }) {
                             if ( router.asPath == "/" ){ // vimeo video
 
                                 if ( window.navigator.onLine ){
-                                    let video_url_str = "https://player.vimeo.com/video/799025699?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                    let video_url_str = "https://player.vimeo.com/video/7990256990?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/799025729?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/7990257290?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     xhr.onload = function(){

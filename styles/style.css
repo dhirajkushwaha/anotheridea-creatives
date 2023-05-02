@@ -1185,7 +1185,7 @@ section.homeHeadSection {
 	width: 100%;
 	height: 100%;
 
-	/* will-change: transform; */
+	will-change: transform;
 }
 
 .Works-slideImage {
@@ -2271,7 +2271,6 @@ video::-webkit-media-controls-start-playback-button {
 .WorksListItem-thumbnail {
 	width: 100%;
 	height: 14.3vw;
-	margin-bottom: 1vw;
 }
 
 .app-title--small {
@@ -2464,7 +2463,6 @@ video::-webkit-media-controls-start-playback-button {
 	.WorksListItem-thumbnail {
 		/* height: 54.8vw; */
 		height: 49.50vw;/* 16:9 */
-		margin-bottom: 4vw;
 	}
 
 	.app-title--small {
@@ -3496,16 +3494,27 @@ button.FormButton .AppButton-label{
 	margin-left: calc(5/19.2 * 1vw);
 }
 
-.Popup-pdf{
-	height: min-content;
-	width: min-content;
-
+.Popup-pdf, .Popup-img{
     border-radius: 2vw;
 	overflow: hidden;
 
 	width: calc(1440/19.2 * 1vw);
     height: calc((1440 / 1.77)/19.2 * 1vw);
 }
+
+.Popup-img{
+    height: 80vh;
+	width: auto;
+}
+
+.Popup-img img{
+	object-fit: cover;
+
+	height: 100%;
+	width: auto;
+}
+
+
 
 .Popup-pdf iframe {
 	width: calc(1140/19.2 * 1vw);
@@ -3524,11 +3533,24 @@ button.FormButton .AppButton-label{
 
 	}
 
-	.Popup-pdf{
+	.Popup-pdf, .Popup-img{
 		border-radius: calc(1vw * 1 * 2.677/0.69);
 
 		width: calc(85 * 1vw);
 		height: calc((85/1.77) * 1vw);
+	}
+
+
+	.Popup-img{
+		height: auto;
+		width: 90vw;
+	}
+
+	.Popup-img img{
+		object-fit: cover;
+
+		height: auto;
+		width: 100%;
 	}
 
 	.Popup-pdf iframe{
@@ -3903,6 +3925,8 @@ button.FormButton .AppButton-label{
 
 	font-size: 2.4rem;
     line-height: 5.6rem;
+
+	text-transform: capitalize;
 }
 
 .WorkNav-itemArrow {
@@ -4166,7 +4190,7 @@ button.FormButton .AppButton-label{
 }
 
 
-@media (min-width: 1024px){
+@media only screen and (min-width: 1024px){
 	.ListIconTitleText-wrapper {
 		width: 120rem;
 	}
@@ -4189,7 +4213,27 @@ button.FormButton .AppButton-label{
 		margin-left: 10rem;
 	}
 
+	.TitleTextButton-listItemText{
+		width: 80rem;
+	}
+
 }
+
+@media only screen and (max-width: 1023px){
+	.ListIconTitleText-listItem {
+		width: 80vw;
+		margin: auto;
+	}
+
+	.ListIconTitleText-list{
+		gap: 4rem;
+	}
+
+	.TitleTextButton-listItemText{
+		width: 90vw;
+	}
+}
+
 
 .TitleTextButton{
 	text-align: center;
@@ -4228,7 +4272,6 @@ button.FormButton .AppButton-label{
     line-height: 3.4rem;
     color: #b5b5b5;
 
-	width: 80rem;
     margin: auto;
 }
 
@@ -4307,7 +4350,6 @@ button.FormButton .AppButton-label{
 	width: 100rem;
 	height: calc( 100rem * 9/16 );
     margin: auto;
-
 }
 
 .Workshops-video-wrapper{
@@ -4332,6 +4374,13 @@ button.FormButton .AppButton-label{
 	transition: filter 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
-.Double-AppImage-image{
-	
+
+@media only screen and ( max-width: 1023px ){
+
+	.Workshops-video{
+		width: 90vw;
+		height: calc( 90vw * 9/16 );
+		margin: auto;
+	}
+
 }

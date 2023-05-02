@@ -16,12 +16,13 @@ const SHORTLISTED_DATA = [
 ]
 
 const NEWSPAPER_DATA = [
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Auris Serenity", "/assets/brochurespdf/Auris Serenity brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "IBS Bro", "/assets/brochurespdf/IBS Bro.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Quantum E-Bro", "/assets/brochurespdf/Quantum E-Bro.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Rodas", "/assets/brochurespdf/Rodas brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Sheth - Montana", "/assets/brochurespdf/Sheth - Montana Brochure.pdf"],
-    ["/", "https://img.icons8.com/material-rounded/96/FFFFFF/pdf-2.png", "Sheth Cnergy", "/assets/brochurespdf/Sheth Cnergy - Commercial brochure.pdf"],
+    ["/", "/assets/newspaperimg/Picture2.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture15.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture22.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture42.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture51.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture53.jpg", ""],
+    ["/", "/assets/newspaperimg/Picture56.jpg", ""],
 ]
 
 export default function Campaigns(props) {

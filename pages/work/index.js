@@ -28,6 +28,14 @@ export const pageIndex = {
     "workshops" : 4
 }
 
+export const pageIndexInv = {
+    0 : "branding",
+    1 :"campaigns",
+    2 : "content",
+    3 : "strategy",
+    4 : "workshops"
+}
+
 export function WorkHero(prop){
 
     return(
@@ -56,7 +64,7 @@ const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED",
 const LIST_WITH_PDF = ["STATIONERY", "GUIDELINES", "BROCHURES"];
 const LIST_WITH_IMG = ["SHORTLISTED", "NEWSPAPER"];
 const LIST_WITH_RECT_STYLE = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED", "NEWSPAPER"];
-const LIST_WITH_DOUBLE_IMAGE = ["SHORTLISTED", "NEWSPAPER"];
+const LIST_WITH_DOUBLE_IMAGE = ["SHORTLISTED"];
 
 function GallaryListitem(props){
 
@@ -66,6 +74,7 @@ function GallaryListitem(props){
 
     const cl_name = `.list-${props.LIST_NAME}-${props.index}`;
 
+    const [popup, setPopup] = useState();
 
     useLayoutEffect(() => {
 		if (typeof window === "undefined") { return; }
@@ -75,6 +84,23 @@ function GallaryListitem(props){
 
                 // on click popup
                 document.querySelector(cl_name).addEventListener("click", (e)=>{
+
+                    setPopup(
+                        (LIST_WITH_PDF.indexOf(props.LIST_NAME) !== -1 || !(LIST_WITH_IMG.indexOf(props.LIST_NAME) !== -1)) ?
+                            <div className="Popup-pdf">
+                                <embed
+                                    src={props.pdfSrc}
+                                    type="application/pdf"
+                                    width="100%"
+                                    height="100%"
+                                />
+                            </div>
+                            :
+                            <div className="Popup-img">
+                                <Image src={ props.imgUrl } alt={ props.label } width="400" height="400" />
+                            </div>
+                    );
+
                     document.querySelector(cl_name+" .List-popup").classList.remove("popup-hidden");
                     document.querySelector(".Header").classList.add("Header-under-element");
                     e.preventDefault();
@@ -99,44 +125,29 @@ function GallaryListitem(props){
 
     return(
         <div className={`List-item ${LIST_WITH_RECT_STYLE.indexOf(props.LIST_NAME) !== -1 ? 'rect' : 'simple'}-list-item ${props.LIST_NAME}-list-item list-${props.LIST_NAME}-${props.index}`} ref={rootElRef} >
-                <div className="WorksListItem in-view" >
-                    <div className={`AppImage fit-${LIST_WITH_RECT_STYLE.indexOf(props.LIST_NAME) !== -1 ? 'cover' : 'contain'} loaded plane WorksListItem-thumbnail`}>
-                        <div className="AppImage-overlay"></div>
-                        {/* <picture> */}
-                            { props.source }
-                            {
-                                LIST_WITH_DOUBLE_IMAGE.indexOf(props.LIST_NAME) !== -1 ?
-                                            <div className="Double-AppImage-image" >
-                                                <Image fill src={ props.imgUrl[0] } alt={ props.label } className="AppImage-image" />
-                                                <Image fill src={ props.imgUrl[1] } alt={ props.label } className="AppImage-image" />
-                                            </div>
-                                            :
-                                            <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
+            <div className="WorksListItem in-view" >
+                <div className={`AppImage fit-${LIST_WITH_RECT_STYLE.indexOf(props.LIST_NAME) !== -1 ? 'cover' : 'contain'} loaded plane WorksListItem-thumbnail`}>
+                    <div className="AppImage-overlay"></div>
+                    {/* <picture> */}
+                        {
+                            LIST_WITH_DOUBLE_IMAGE.indexOf(props.LIST_NAME) !== -1 ?
+                                        <div className="Double-AppImage-image" >
+                                            <Image fill src={ props.imgUrl[0] } alt={ props.label } className="AppImage-image" />
+                                            <Image fill src={ props.imgUrl[1] } alt={ props.label } className="AppImage-image" />
+                                        </div>
+                                        :
+                                        <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
 
-                            }
+                        }
 
-                        {/* </picture> */}
-                    </div>
-                    <h3 className="WorksListItem-title u-textUppercase app-title--small">{ props.label }</h3>
+                    {/* </picture> */}
                 </div>
+                <h3 className="WorksListItem-title u-textUppercase app-title--small">{ props.label }</h3>
+            </div>
             <div className="List-popup popup-hidden">
                 <div className="Popup-frame">
                     <div className="Popup-cross">close <img alt="cross" src="/assets/delete-sign--v2.png"/></div>
-                    {
-                        LIST_WITH_PDF.indexOf(props.LIST_NAME) !== -1 ?
-                                    <div className="Popup-pdf">
-                                        <embed
-                                            src={props.pdfSrc}
-                                            type="application/pdf"
-                                            width="100%"
-                                            height="100%"
-                                        />
-                                    </div>
-                                    :
-                                    <div className="Popup-img">
-                                        <Image fill src={ props.imgSrc } alt={ props.label } className="AppImage-image" />
-                                    </div>
-                    }
+                    {popup}
                 </div>
             </div>
         </div>
@@ -153,7 +164,7 @@ export function GallaryList(props){
 
     const makeListItemsAnimated = () => {
 
-        document.querySelectorAll(".List-item").forEach((listItemEl) => {
+        document.querySelectorAll(`.${props.LIST_NAME}-list-item`).forEach((listItemEl) => {
 
             listItemEl.querySelector(".AppImage-overlay").style.setProperty("opacity", 1);
             gsap.set(listItemEl.querySelector(".WorksListItem-title"), { opacity:0, x:"20%" });

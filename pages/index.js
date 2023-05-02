@@ -50,7 +50,6 @@ function number(item, array) {
 
 function lerp(a, b, n) {
 	return (1 - n) * a + n * b
-	// return a + (b - n)*n
 }
 
 function mapVal(x1, x2, y1, y2, x){
@@ -98,6 +97,12 @@ class Slider {
 		this.startX = 0
 
 		this.snappingState = 0
+
+		this.lerp = 0
+
+		this.v = 0;
+
+		this.snapInterval;
 	}
 
 	bind() {
@@ -127,7 +132,8 @@ class Slider {
 
 	setPos(e) {
 		if (!this.isDragging) return;
-		this.currentX = this.offX + ((window.innerWidth >= 1024 ? e.clientX : e.touches[0].clientX ) - this.onX) * (window.innerWidth >= 1024 ? 1 : 3);
+		if (this.lerp) gsap.to(this, {currentX: (this.offX + ((window.innerWidth >= 1024 ? e.clientX : e.touches[0].clientX ) - this.onX) * (window.innerWidth >= 1024 ? 1 : 3)), duration: 0.1});
+		else this.currentX = this.offX + ((window.innerWidth >= 1024 ? e.clientX : e.touches[0].clientX ) - this.onX) * (window.innerWidth >= 1024 ? 1 : 3);
 	}
 
 	mathVals(translationVal, slide, index){
@@ -177,8 +183,12 @@ class Slider {
 	}
 
 	run() {
-		this.lastX = lerp(this.lastX, this.currentX, this.opts.ease);
-		this.lastX = Math.floor(this.lastX * 10) / 10;
+		if ( this.snappingState == 1 ){
+			this.lastX = lerp(this.lastX, this.currentX, this.opts.ease);
+			this.lastX = Math.floor(this.lastX * 10) / 10;
+		} else {
+			this.lastX = this.currentX;
+		}
 
 		this.slides.forEach((slide, index) => {
 
@@ -268,8 +278,10 @@ class Slider {
 
 		if ( !this.snappingState ) return;
 
-		const { closest } = this.closest()
-		this.currentX = this.currentX + closest
+		const { closest } = this.closest();
+
+		this.currentX += closest;
+
 	}
 
 	requestAnimationFrame() {
@@ -342,8 +354,8 @@ function WorksSliderItem(props) {
 				(<div className={"Slide-popup popup-hidden Slide-Popup-"+props.index}>
 					<div className="Popup-frame">
 						<div className="Popup-cross">close <img alt="cross button" src="/assets/delete-sign--v2.png"/> </div>
-						<div className="Popup-video">
-							{/* <iframe src={props.videoSrc} width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe> */}
+						<div className="Popup-img">
+
 						</div>
 					</div>
             	</div>),
@@ -361,10 +373,7 @@ function WorksSliderItem(props) {
 					// adding the popup
 					document.querySelector(".Works-SlideItem-"+props.index+" .Works-slideContent").addEventListener("click", (e)=>{
 
-						document.querySelector(cl_name+" .Popup-video").innerHTML = `<iframe src=${props.videoSrc} width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>`
-
-						iframe = document.querySelector(cl_name+' iframe');
-						player = new Player(iframe);
+						document.querySelector(cl_name+" .Popup-img").innerHTML = `<Image src=${ props.src } alt=${ props.label } className="AppImage-image" />`
 
 						document.querySelector(cl_name).classList.remove("popup-hidden");
 						document.querySelector(".Header").classList.add("Header-under-element");
