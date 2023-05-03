@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 import Work, { WorkHero } from '.'
 
@@ -44,32 +45,28 @@ export default function Strategy() {
         <div className="TitleTextButton app-container">
             <div className="TitleTextButton-wrapper">
                 <div className="TitleTextButton-wrapperSmall">
-                    <p className='TitleTextButton-text app-text--large' style={{color:"var(--page-color)", fontSize:"4rem"}}>We are CREDO Consulting.</p>
+                    <Image width="400" height="400" src="/assets/credo_logo-png.png" alt="CREDO" className="CREDO-image" />
+                    <p className='TitleTextButton-text CREDO-text app-text--large'>We are <br /> CREDO Consulting.</p>
                     <p className='TitleTextButton-text'>A visionary part of Another Idea.</p>
                     <p className='TitleTextButton-listItemText'>Think of us as a Training & Enabling Partner who will help sensitise your Sales and other resources to the true potential of your projects.</p>
                 </div>
             </div>
         </div>
-        <div className="TitleTextButton app-container">
-            <div className="TitleTextButton-wrapper">
-                <div className="TitleTextButton-wrapperSmall">
-                    <p className='TitleTextButton-text' >What sets up apart:</p>
-                    <p className='TitleTextButton-text'>End to end solutions. <br /> Scale of understanding.</p>
-                    <p className='TitleTextButton-listItemText'>Our expertise to help bridge essential skill gaps comes from 33+ years of experience in understanding the Indian real estate market and home buying behaviour.</p>
+
+        <div className="DetailTextButton app-container">
+            <div className="CREDO-details">
+                <div className="CREDO-detailcontainer">
+                    <p className='CREDO-text CREDO-titletext' >What sets up apart:</p>
+                    <p className='CREDO-smalltext'>End to end solutions. <br /> Scale of understanding.</p>
+                    <p className='CREDO-listItemText'>Our expertise to help bridge essential skill gaps comes from 33+ years of experience in understanding the Indian real estate market and home buying behaviour.</p>
+                </div>
+                <div className="CREDO-detailcontainer">
+                    <p className='CREDO-text CREDO-titletext' >What we provide:</p>
+                    <p className='CREDO-smalltext'>Decades of exposure. <br /> From Leads to walk-ins to sales closure.</p>
+                    <p className='CREDO-listItemText'>Successful customer conversions will depend on the performance of the Sales Team, across every stage of the process. Our solutions encompass skill improvement from start to end of the sales journey.</p>
                 </div>
             </div>
         </div>
-        <div className="TitleTextButton app-container">
-            <div className="TitleTextButton-wrapper">
-                <div className="TitleTextButton-wrapperSmall">
-                    <p className='TitleTextButton-text' >What we provide:</p>
-                    <p className='TitleTextButton-text'>Decades of exposure. <br /> From Leads to walk-ins to sales closure.</p>
-                    <p className='TitleTextButton-listItemText'>Successful customer conversions will depend on the performance of the Sales Team, across every stage of the process. Our solutions encompass skill improvement from start to end of the sales journey.</p>
-                </div>
-            </div>
-        </div>
-
-
 
     </Work>
   )

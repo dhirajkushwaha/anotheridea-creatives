@@ -248,11 +248,28 @@ export default function Team(){
                                 {profiles_comp}
                             </div>
                             <div className="OnBoard-p" >
-                                <h1>Our Team consists: </h1>
-                                Client Team of 8 brand managers <br/>
-                                Creative Team of 10 innovators <br/>
-                                Copy Team of 10 wordsmiths <br/>
-                                Digital Technical Team of 11 experts <br/>
+                                <div className="Paragraph">
+                                    <h1>Our Team consists: </h1>
+                                    <ul className="Employee-counts" >
+                                        {/* <li>Client Team of 8 brand managers</li> */}
+                                        <li className="Counts" >
+                                            <h1>8</h1>
+                                            <h4>Brand Manager</h4>
+                                        </li>
+                                        <li className="Counts" >
+                                            <h1>10</h1>
+                                            <h4>Innovators</h4>
+                                        </li>
+                                        <li className="Counts" >
+                                            <h1>10</h1>
+                                            <h4>Wordsmiths</h4>
+                                        </li>
+                                        <li className="Counts" >
+                                            <h1>11</h1>
+                                            <h4>Experts</h4>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

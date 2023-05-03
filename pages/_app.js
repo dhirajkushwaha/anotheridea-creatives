@@ -59,7 +59,7 @@ function NavItem(props){
                         <a href="/work/campaigns" className="Menu-subnavItemLink">Campaigns</a>
                     </div>
                     <div className="Menu-subnavItem" >
-                        <a href="/work/content" className="Menu-subnavItemLink" aria-current="page">Content</a>
+                        <a href="/work/content" className="Menu-subnavItemLink" aria-current="page">Content Production</a>
                     </div>
                     <div className="Menu-subnavItem" >
                         <a href="/work/strategy" className="Menu-subnavItemLink">Strategy</a>
@@ -779,6 +779,14 @@ function MyApp({ Component, pageProps }) {
                         head_obj:[".readyToMake-text"],
                         button_obj:[".AppButton"]},
 
+            "/work/strategy" : {main_target:[".ListIconTitleText-listItem"],
+                        head_obj:[""],
+                        button_obj:[""],
+                        opacity_obj:["h2, div"],
+                        opacity_dur:["1"],
+                        anim_trig: ["h2"]
+                    },
+
             "/directors" : {main_target:[], head_obj:[]},
 
             "/team" : {main_target:[], head_obj:[]},
@@ -1032,7 +1040,7 @@ function MyApp({ Component, pageProps }) {
                             gsap.set(s_ref.current, {
                                 currentX: 0
                             })
-                            
+
                             s_ref.current.snappingState = 1
 
                         }

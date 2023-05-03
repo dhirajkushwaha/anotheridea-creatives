@@ -13,6 +13,15 @@ const BROCHURES_DATA = [
 
 const CAMPAIGN_DATA = [
     ["/", ["/assets/shortlistedimg/Picture 3 A.jpg", "/assets/shortlistedimg/Picture 3 B.jpg"], "Hiranandani"],
+    ["/", ["/assets/shortlistedimg/Picture 4 A.jpg", "/assets/shortlistedimg/Picture 4 B.jpg"], "Omkar"],
+    ["/", ["/assets/shortlistedimg/Picture 12 A.jpg", "/assets/shortlistedimg/Picture 12 B.jpg"], "Vasnat Oasis"],
+    ["/", ["/assets/shortlistedimg/Picture 20 A.jpg", "/assets/shortlistedimg/Picture 20 B.jpg"], "The Times of India"],
+    ["/", ["/assets/shortlistedimg/Picture 26 A.jpg", "/assets/shortlistedimg/Picture 26 B.jpg"], "Alcove"],
+    ["/", ["/assets/shortlistedimg/Picture 32 A.jpg", "/assets/shortlistedimg/Picture 32 B.jpg"], "Omaxe"],
+    ["/", ["/assets/shortlistedimg/Picture 34 A.png", "/assets/shortlistedimg/Picture 34 B.png"], "Aurobindu"],
+    ["/", ["/assets/shortlistedimg/Picture 37 A.jpg", "/assets/shortlistedimg/Picture 37 B.jpg"], "Gaurse"],
+    ["/", ["/assets/shortlistedimg/Picture 39 A.jpg", "/assets/shortlistedimg/Picture 39 B.jpg"], "IRIS Building for life"],
+    ["/", ["/assets/shortlistedimg/Picture 58 A.jpg", "/assets/shortlistedimg/Picture 58 B.jpg"], "Sheth Creators"],
 ]
 
 const MEDIA_DATA = [

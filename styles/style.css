@@ -2521,37 +2521,72 @@ video::-webkit-media-controls-start-playback-button {
 
 .Aboutus-p.onlyDesk{
     width: 85rem;
-	margin: auto;
+	margin: 0rem auto 5rem;
 }
 
 .Aboutus-p{
 	font-size: 2rem;
 	font-weight: 400;
+	text-align: center;
 }
 
 .OnBoard-p{
 	font-size: 2rem;
 	font-weight: 400;
-	margin: 2rem 0 5rem;
+    margin: 2rem auto 5rem;
 }
 
-.OnBoard-p h1{
+.Employee-counts{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4rem;
+    gap: 6rem;
+}
+
+.Counts{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.Counts > h1{
+	font-size: 5rem;
+    font-weight: 600;
+    line-height: 10rem;
+    background-color: var(--web-color);
+    text-align: center;
+    border-radius: 50%;
+    width: 10rem;
+}
+
+.Counts > h4{
+	font-size: 2rem;
+	margin-top: 1rem;
+}
+
+
+.OnBoard-p .Paragraph{
+	width: fit-content;
+}
+
+.OnBoard-p .Paragraph > h1{
 	font-size: 2.5rem;
-	font-weight: 500;
-	margin: 1rem;
+    font-weight: 500;
+
 }
 
 .Directors-onBoard .Title {
 	width: 100vw;
 	text-align: center;
-	margin-bottom: 1vw;
+	margin-bottom: 4rem;
 
 	font-size: 5rem;
-	font-weight: 500;
+	font-weight: 600;
 	color: var(--web-color);
 }
 
-.Directors-onBoard .Paragraph {
+/* .Directors-onBoard .Paragraph {
 	width: 100vw;
 	text-align: center;
 	margin-bottom: 5vw;
@@ -2565,7 +2600,7 @@ video::-webkit-media-controls-start-playback-button {
 	margin-left: auto;
 	margin-right: auto;
 
-}
+} */
 
 /* Directors List */
 
@@ -2608,10 +2643,27 @@ video::-webkit-media-controls-start-playback-button {
 .OnBoard-ProfileExtraDetail li{
 	font-size: 1.4rem;
     line-height: 2rem;
-	font-weight: 400;
-	list-style: disc;
-    margin-left: 1.8rem;
+    font-weight: 400;
+    list-style: none;
+    text-indent: 0.2em;
 }
+
+
+.Campaign-list li,
+.OnBoard-ProfileExtraDetail li
+{
+	list-style: disc;
+	list-style-position: inside;
+}
+
+li::marker{
+	color: var(--web-color);
+}
+
+/* .OnBoard-ProfileExtraDetail li::marker{
+	background-color: var(--m-color);
+
+} */
 
 img.OnBoardDirector-Image,
 img.OtherDirectors-Image {
@@ -4170,10 +4222,10 @@ button.FormButton .AppButton-label{
 }
 
 .ListIconTitleText-list {
-    display: flex;
+	display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .Strategy-list.ListIconTitleText-list {
@@ -4206,6 +4258,10 @@ button.FormButton .AppButton-label{
     margin-bottom: 1.5rem;
 }
 
+.Strategy-list .ListIconTitleText-listItemTitle{
+	color: var(--page-color);
+}
+
 .ListIconTitleText-listItemText {
     font-size: 2rem;
     line-height: 3.4rem;
@@ -4218,9 +4274,9 @@ button.FormButton .AppButton-label{
 		width: 120rem;
 	}
 
-	.ListIconTitleText-listItem {
-		width: calc(50% - 8rem);
-	}
+	/* .ListIconTitleText-listItem {
+		width: calc(50% - 4rem);
+	} */
 
 	.ListIconTitleText-list {
 		padding-left: 8rem;
@@ -4229,11 +4285,15 @@ button.FormButton .AppButton-label{
 	.ListIconTitleText-icon {
 		position: absolute;
 		top: 0.5rem;
-		left: -8rem;
+    	left: -5rem;
 	}
 
 	.Strategy-list .ListIconTitleText-listItem:nth-child(2n+2){
 		margin-left: 10rem;
+	}
+
+	.Strategy-list .ListIconTitleText-listItem:nth-child(3n){
+		margin-left: 20rem;
 	}
 
 	.TitleTextButton-listItemText{
@@ -4293,6 +4353,51 @@ button.FormButton .AppButton-label{
     margin: 0 auto;
 }
 
+.CREDO-text{
+	font-size: 4rem;
+    line-height: 4.4rem;
+    margin-bottom: 1.5rem;
+	color: var(--page-color);
+}
+
+.CREDO-titletext{
+	font-size: 3.4rem;
+    line-height: 4rem;
+    font-weight: 500;
+}
+
+.CREDO-details{
+	display: flex;
+    width: 120rem;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.CREDO-smalltext{
+
+	font-size: 2.4rem;
+	line-height: 2.8rem;
+	margin-bottom: 1.5rem;
+	font-weight: 500;
+	margin: 0 auto;
+
+}
+
+.CREDO-detailcontainer{
+    width: 48rem;
+}
+
+.CREDO-image{
+	width: 20rem;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.DetailTextButton{
+    text-align: center;
+    margin: 10rem 0;
+}
+
 .TitleTextButton-text a{
 	color: var(--page-color);
 }
@@ -4301,12 +4406,16 @@ button.FormButton .AppButton-label{
 	border-bottom: 1px solid var(--page-color);
 }
 
-.TitleTextButton-listItemText{
+.TitleTextButton-listItemText, .CREDO-listItemText{
     font-size: 2rem;
-    line-height: 3.4rem;
+    line-height: 2.4rem;
     color: #b5b5b5;
 
     margin: auto;
+}
+
+.CREDO-listItemText{
+	margin-top: 1rem;
 }
 
 .TitleTextButton.branding-title .TitleTextButton-listItemText{
@@ -4328,9 +4437,10 @@ button.FormButton .AppButton-label{
 
 }
 
-.Campaign-list li{
-	list-style: disc;
-}
+/* .Campaign-list li{
+	list-style: circle;
+    margin-left: 2rem;
+} */
 
 .LOGO-list-item{
 	background-color: #1c1c1c8c;

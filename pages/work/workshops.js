@@ -5,8 +5,8 @@ export function StrategyListItem(prop){
 
     return (
         <li className="ListIconTitleText-listItem">
-            {/* <div className="ListIconTitleText-icon" style={{WebkitMask: 'url("/assets/ex
-            pertise-picto-ux.svg") center center no-repeat', transform: "translate3d(0px, 0px, 0px)", opacity: 1}} ></div> */}
+            <div className="ListIconTitleText-icon"
+            style={{WebkitMask: 'url("/assets/expertise-picto-ux.svg") center center no-repeat', transform: "translate3d(0px, 0px, 0px)", opacity: 1}} ></div>
             <h2 className="ListIconTitleText-listItemTitle">{prop.title}</h2>
             <div className="ListIconTitleText-listItemText">
                 {prop.text}
