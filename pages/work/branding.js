@@ -21,7 +21,7 @@ const LOGO_DATA = [
 ]
 
 const STATIONERY_DATA = [
-    ["/", "/assets/stationeryimg/gbd.png", "GBD", "/assets/stationerypdf/GBD Logo Option.pdf"],
+    ["/", "/assets/stationeryimg/gbd.png", "Gravah", "/assets/stationerypdf/GBD Logo Option.pdf"],
     ["/", "/assets/stationeryimg/mani.png", "Mani", "/assets/stationerypdf/Mani Group Stationary _ Giveaway.pdf"],
     ["/", "/assets/stationeryimg/olr.png", "OLR", "/assets/stationerypdf/OLR Stationary.pdf"],
     ["/", "/assets/stationeryimg/realplus.png", "realplus", "/assets/stationerypdf/real+ Stationary.pdf"],

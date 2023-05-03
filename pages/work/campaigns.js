@@ -12,16 +12,28 @@ const BROCHURES_DATA = [
 ]
 
 const CAMPAIGN_DATA = [
-    ["/", ["/assets/shortlistedimg/Picture 3 A.jpg", "/assets/shortlistedimg/Picture 3 B.jpg"], "Hiranandani"],
-    ["/", ["/assets/shortlistedimg/Picture 4 A.jpg", "/assets/shortlistedimg/Picture 4 B.jpg"], "Omkar"],
-    ["/", ["/assets/shortlistedimg/Picture 12 A.jpg", "/assets/shortlistedimg/Picture 12 B.jpg"], "Vasnat Oasis"],
-    ["/", ["/assets/shortlistedimg/Picture 20 A.jpg", "/assets/shortlistedimg/Picture 20 B.jpg"], "The Times of India"],
-    ["/", ["/assets/shortlistedimg/Picture 26 A.jpg", "/assets/shortlistedimg/Picture 26 B.jpg"], "Alcove"],
-    ["/", ["/assets/shortlistedimg/Picture 32 A.jpg", "/assets/shortlistedimg/Picture 32 B.jpg"], "Omaxe"],
-    ["/", ["/assets/shortlistedimg/Picture 34 A.png", "/assets/shortlistedimg/Picture 34 B.png"], "Aurobindu"],
-    ["/", ["/assets/shortlistedimg/Picture 37 A.jpg", "/assets/shortlistedimg/Picture 37 B.jpg"], "Gaurse"],
-    ["/", ["/assets/shortlistedimg/Picture 39 A.jpg", "/assets/shortlistedimg/Picture 39 B.jpg"], "IRIS Building for life"],
-    ["/", ["/assets/shortlistedimg/Picture 58 A.jpg", "/assets/shortlistedimg/Picture 58 B.jpg"], "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture 3 A.jpg", "Hiranandani"],
+    ["/", "/assets/shortlistedimg/Picture 4 A.jpg", "Omkar"],
+    ["/", "/assets/shortlistedimg/Picture 12 A.jpg", "Vasnat Oasis"],
+    ["/", "/assets/shortlistedimg/Picture 20 A.jpg", "The Times of India"],
+    ["/", "/assets/shortlistedimg/Picture 26 A.jpg", "Alcove"],
+    ["/", "/assets/shortlistedimg/Picture 32 A.jpg", "Omaxe"],
+    ["/", "/assets/shortlistedimg/Picture 34 A.png", "Aurobindu"],
+    ["/", "/assets/shortlistedimg/Picture 37 A.jpg", "Gaurse"],
+    ["/", "/assets/shortlistedimg/Picture 39 A.jpg", "IRIS Building for life"],
+    ["/", "/assets/shortlistedimg/Picture 58 A.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture7.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture9.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture17.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture23.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture24.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture25.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture41.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture44.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture47.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture50.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture63.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture20_Pixelate.jpg", "Sheth Creators"],
 ]
 
 const MEDIA_DATA = [

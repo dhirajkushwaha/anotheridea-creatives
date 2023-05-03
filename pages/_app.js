@@ -779,12 +779,12 @@ function MyApp({ Component, pageProps }) {
                         head_obj:[".readyToMake-text"],
                         button_obj:[".AppButton"]},
 
-            "/work/strategy" : {main_target:[".ListIconTitleText-listItem"],
-                        head_obj:[""],
-                        button_obj:[""],
-                        opacity_obj:["h2, div"],
-                        opacity_dur:["1"],
-                        anim_trig: ["h2"]
+            "/work/strategy" : {main_target:[".ListIconTitleText-listItem", ".TitleTextButton-wrapper"],
+                        head_obj:["", ""],
+                        button_obj:["", ""],
+                        opacity_obj:["h2, div", "p"],
+                        opacity_dur:["1", "0.5"],
+                        anim_trig: ["h2", ".TitleTextButton-wrapperSmall"]
                     },
 
             "/directors" : {main_target:[], head_obj:[]},
