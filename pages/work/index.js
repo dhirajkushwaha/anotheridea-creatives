@@ -60,11 +60,11 @@ export function WorkHero(prop){
     )
 }
 
-const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED", "NEWSPAPER"];
+const LIST_WITH_POPUP = ["STATIONERY", "GUIDELINES", "BROCHURES", "CAMPAIGN", "MEDIA"];
 const LIST_WITH_PDF = ["STATIONERY", "GUIDELINES", "BROCHURES"];
-const LIST_WITH_IMG = ["SHORTLISTED", "NEWSPAPER"];
-const LIST_WITH_RECT_STYLE = ["STATIONERY", "GUIDELINES", "BROCHURES", "SHORTLISTED", "NEWSPAPER"];
-const LIST_WITH_DOUBLE_IMAGE = ["SHORTLISTED"];
+const LIST_WITH_IMG = ["CAMPAIGN", "MEDIA"];
+const LIST_WITH_RECT_STYLE = ["STATIONERY", "GUIDELINES", "BROCHURES", "CAMPAIGN", "MEDIA"];
+const LIST_WITH_DOUBLE_IMAGE = ["CAMPAIGN"];
 
 function GallaryListitem(props){
 
@@ -97,7 +97,9 @@ function GallaryListitem(props){
                             </div>
                             :
                             <div className="Popup-img">
-                                <Image src={ props.imgUrl } alt={ props.label } width="400" height="400" />
+                                {LIST_WITH_DOUBLE_IMAGE.indexOf(props.LIST_NAME) !== -1 ?
+                                <Image src={ props.imgUrl[1]} alt={ props.label } width="400" height="400" /> :
+                                <Image src={ props.imgUrl } alt={ props.label } width="400" height="400" />}
                             </div>
                     );
 
@@ -131,12 +133,9 @@ function GallaryListitem(props){
                     {/* <picture> */}
                         {
                             LIST_WITH_DOUBLE_IMAGE.indexOf(props.LIST_NAME) !== -1 ?
-                                        <div className="Double-AppImage-image" >
-                                            <Image fill src={ props.imgUrl[0] } alt={ props.label } className="AppImage-image" />
-                                            <Image fill src={ props.imgUrl[1] } alt={ props.label } className="AppImage-image" />
-                                        </div>
-                                        :
-                                        <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
+                                <Image fill src={ props.imgUrl[0] } alt={ props.label } className="AppImage-image" />
+                                :
+                                <Image fill src={ props.imgUrl } alt={ props.label } className="AppImage-image" />
 
                         }
 

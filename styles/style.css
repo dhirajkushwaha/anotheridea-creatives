@@ -16,7 +16,7 @@
 }
 
 .mouseCursor {
-	background-color: #5542F7;
+	background-color: var(--m-color);
 	border-radius: 50%;
 
 	height: 120px;
@@ -31,7 +31,7 @@
     transform: scale(.2);
 
 	overflow: hidden;
-    border: 1px solid #5542F7;
+    border: 1px solid var(--m-color);
 
 }
 
@@ -120,12 +120,6 @@
 	}
 }
 
-/* .mouseCursor img,
-.mouseCursor svg {
-	width: 35px;
-	transform: translate(-2px, 2px);
-} */
-
 /* Swiper style Change */
 
 .swiper-pagination-bullet {
@@ -192,7 +186,7 @@
     top: -100%;
     left: 0%;
     width: 100vw;
-    background: #5541f8;
+    background: var(--web-color);
 }
 
 .Load-screen.--is-hidden{
@@ -430,7 +424,7 @@
 
 .MenuButton-bg {
 	transform: scale(1);
-	background: #5541f8;
+	background: var(--web-color);
 	border-radius: 100%;
 	-webkit-clip-path: ellipse(var(--r) var(--r) at var(--x) var(--y));
 	clip-path: ellipse(var(--r) var(--r) at var(--x) var(--y));
@@ -1354,7 +1348,7 @@ section.homeHeadSection {
 
 	/* .Works-slide:hover .Works-slideImageInner{ */
 	.Works-slideImageInnerImg:hover{
-		border: 2px solid #5541f8;
+		border: 2px solid var(--web-color);
 	}
 }
 
@@ -2223,7 +2217,7 @@ video::-webkit-media-controls-start-playback-button {
 .AppImage-overlay::after {
 	content: "";
 	display: block;
-	background: #5541f8;
+	background: var(--web-color);
 	left: 100%;
 }
 
@@ -2550,10 +2544,11 @@ video::-webkit-media-controls-start-playback-button {
 .Directors-onBoard .Title {
 	width: 100vw;
 	text-align: center;
-	margin-bottom: 3vw;
+	margin-bottom: 1vw;
 
-	font-size: 2.7vw;
+	font-size: 5rem;
 	font-weight: 500;
+	color: var(--web-color);
 }
 
 .Directors-onBoard .Paragraph {
@@ -2584,11 +2579,38 @@ video::-webkit-media-controls-start-playback-button {
 	flex-direction: column;
 }
 
-.OnBoard-listItem {
-	display: flex;
+.OnBoard-listItem{
 	padding: 4vw 5vw;
-    justify-content: space-around;
 	border: 1px solid rgb(255, 255, 255, 0.2);
+	width: 100%;
+}
+
+.OnBoard-ProfileDetail {
+	display: flex;
+    justify-content: center;
+}
+
+.OnBoard-ProfileExtraDetail{
+
+    margin-top: 6rem;
+    padding-top: 6rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
+
+}
+
+.OnBoard-ProfileExtraDetail h1{
+	line-height: 2.8rem;
+	margin-bottom: 2rem;
+}
+
+.OnBoard-ProfileExtraDetail li{
+	font-size: 1.4rem;
+    line-height: 2rem;
+	font-weight: 400;
+	list-style: disc;
+    margin-left: 1.8rem;
 }
 
 img.OnBoardDirector-Image,
@@ -2612,12 +2634,15 @@ img.OtherDirectors-Image {
 }
 
 .OnBoardDirector-About {
-	font-size: 0.9vw;
-    line-height: 1.9vw;
+	font-size: 1.6rem;
+    line-height: 2.4rem;
     font-weight: 400;
     display: flex;
     align-items: center;
+    width: 35%;
 }
+
+
 
 .OnBoardDirector-Profile,
 .OtherDirectors-List {
@@ -2676,13 +2701,9 @@ img.OtherDirectors-Image {
 		width: 88vw;
 	}
 
-	.OnBoard-listItem {
-		width: 100%;
-	}
-
-	/* .OnBoardDirector-About{
+	.OnBoardDirector-About{
 		margin-left: 6vw;
-	} */
+	}
 }
 
 @media only screen and (max-width: 1023px) {
@@ -2690,13 +2711,15 @@ img.OtherDirectors-Image {
 		width: 88vw;
 	}
 
-	.OnBoard-listItem {
-		width: 100%;
+	.OnBoard-listItem{
+		padding: 11vw 5vw;
+	}
+
+	.OnBoard-ProfileDetail {
 		flex-direction: column;
 		align-items: center;
 
 		text-align: center;
-		padding: 11vw 5vw;
 	}
 
 	.About-page {
@@ -3212,14 +3235,14 @@ button.FormButton .AppButton-label{
 .Vision .AppImage-overlay:after {
     content: "";
     display: block;
-    background: #5541f8;
+    background: var(--web-color);
     left: 100%;
 }
 
 .Vision .AppImage-overlay:after {
     content: "";
     display: block;
-    background: #5541f8;
+    background: var(--web-color);
     left: 100%;
 }
 
@@ -3472,9 +3495,9 @@ button.FormButton .AppButton-label{
 
 	margin-right: 2vw;
 
-	background: #5541f8;
+	background: var(--web-color);
 
-	border: solid #5541f8 2px;
+	border: solid var(--web-color) 2px;
 
 	box-sizing: border-box;
 
@@ -3788,13 +3811,13 @@ button.FormButton .AppButton-label{
     /* margin-bottom: calc(1 * var(--scale_f) * 1vw); */
 }
 
-.ExpertItem-position{
+/* .ExpertItem-position{
 	font-size: 1.4rem;
 	line-height: 1.9rem;
 	margin-top: 1rem;
 
 	max-width: 30rem;
-}
+} */
 
 .ExpertItem-designation {
 	display: inline-block;
@@ -4125,13 +4148,13 @@ button.FormButton .AppButton-label{
 	}
 
 	.app-text--large {
-		font-size: 3.6rem;
-		line-height: 4.8rem;
+		font-size: 3.24rem;
+    	line-height: 4.32rem;
 	}
 
 	.WorkHero .HomeTitle-title{
-		font-size: 12rem;
-		line-height: 12.2rem;
+		font-size: 10.8rem;
+    	line-height: 10.98rem;
 	}
 
 
@@ -4265,6 +4288,17 @@ button.FormButton .AppButton-label{
     margin-bottom: 1.5rem;
 
     font-weight: 500;
+
+	width: 60rem;
+    margin: 0 auto;
+}
+
+.TitleTextButton-text a{
+	color: var(--page-color);
+}
+
+.TitleTextButton-text a:hover{
+	border-bottom: 1px solid var(--page-color);
 }
 
 .TitleTextButton-listItemText{

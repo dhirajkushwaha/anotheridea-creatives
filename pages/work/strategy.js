@@ -44,7 +44,7 @@ export default function Strategy() {
         <div className="TitleTextButton app-container">
             <div className="TitleTextButton-wrapper">
                 <div className="TitleTextButton-wrapperSmall">
-                    <p className='TitleTextButton-text app-text--large' style={{color:"var(--page-color)", fontSize:"4rem"}}>We are Credo Consulting.</p>
+                    <p className='TitleTextButton-text app-text--large' style={{color:"var(--page-color)", fontSize:"4rem"}}>We are CREDO Consulting.</p>
                     <p className='TitleTextButton-text'>A visionary part of Another Idea.</p>
                     <p className='TitleTextButton-listItemText'>Think of us as a Training & Enabling Partner who will help sensitise your Sales and other resources to the true potential of your projects.</p>
                 </div>
