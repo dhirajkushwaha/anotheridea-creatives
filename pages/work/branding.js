@@ -41,7 +41,7 @@ export default function Branding(props) {
                 <div className="TitleTextButton app-container branding-title">
                     <div className="TitleTextButton-wrapper">
                         <div className="TitleTextButton-wrapperSmall">
-                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>LOGOS</p>
+                            <p className='TitleTextButton-text app-text--large'>LOGOS</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ export default function Branding(props) {
                 <div className="TitleTextButton app-container branding-title">
                     <div className="TitleTextButton-wrapper">
                         <div className="TitleTextButton-wrapperSmall">
-                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>STATIONERY</p>
+                            <p className='TitleTextButton-text app-text--large'>STATIONERY</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ export default function Branding(props) {
                 <div className="TitleTextButton app-container branding-title">
                     <div className="TitleTextButton-wrapper">
                         <div className="TitleTextButton-wrapperSmall">
-                            <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>GUIDELINES</p>
+                            <p className='TitleTextButton-text app-text--large'>GUIDELINES</p>
                         </div>
                     </div>
                 </div>

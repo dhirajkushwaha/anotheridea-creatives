@@ -239,8 +239,12 @@ export default function About(){
                         <>Founder of Another Idea - A 360 degree Marketing Agency specialized in the realm of Real Estate. Someone who has eaten, breathed & survived in the real-estate industry panning strategy, creativity, sales, consultation, events, workshops, and still adding new feathers to his hat.</>
                     }
                     detail = {<>
-                        <h1 className="app-text--regular" >
+                        <h1 className="app-text--regular onlyDesk" >
                             Along with breathing through the bricks and beams,<br/>
+                            Serving the advertising, real estate and educational sector as:
+                        </h1>
+                        <h1 className="app-text--regular onlyMob" >
+                            Along with breathing through the bricks and beams,
                             Serving the advertising, real estate and educational sector as:
                         </h1>
                         <ul>

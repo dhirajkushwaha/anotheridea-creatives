@@ -56,7 +56,7 @@ export default function Campaigns(props) {
             <div className="TitleTextButton app-container branding-title">
                 <div className="TitleTextButton-wrapper">
                     <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>BROCHURES</p>
+                        <p className='TitleTextButton-text app-text--large'>BROCHURES</p>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export default function Campaigns(props) {
             <div className="TitleTextButton app-container branding-title">
                 <div className="TitleTextButton-wrapper">
                     <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>CAMPAIGNS</p>
+                        <p className='TitleTextButton-text app-text--large'>CAMPAIGNS</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@ export default function Campaigns(props) {
             <div className="TitleTextButton app-container branding-title">
                 <div className="TitleTextButton-wrapper">
                     <div className="TitleTextButton-wrapperSmall">
-                        <p className='TitleTextButton-text app-text--large' style={{fontSize:"4rem"}}>MEDIA</p>
+                        <p className='TitleTextButton-text app-text--large'>MEDIA</p>
                     </div>
                 </div>
             </div>

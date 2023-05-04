@@ -1849,18 +1849,23 @@ function MyApp({ Component, pageProps }) {
                 // Desk or Mob
                 if ( true ){
 
-                    let onlyDesk = document.querySelectorAll(".onlyDesk");
-                    let onlyMob = document.querySelectorAll(".onlyMob");
+                    setTimeout(() => {
 
-                    if ( window.innerWidth <= 1023 ) {
-                        onlyDesk.forEach(element => {
-                            element.style.setProperty("display", "none");
-                        });
-                    } else {
-                        onlyMob.forEach(element => {
-                            element.style.setProperty("display", "none");
-                        });
-                    }
+                        let onlyDesk = document.querySelectorAll(".onlyDesk");
+                        let onlyMob = document.querySelectorAll(".onlyMob");
+
+                        if ( window.innerWidth <= 1023 ) {
+                            onlyDesk.forEach(element => {
+                                element.style.setProperty("display", "none");
+                            });
+                        } else {
+                            onlyMob.forEach(element => {
+                                element.style.setProperty("display", "none");
+                            });
+                        }
+                        
+                    }, 1000);
+
 
                 }
 

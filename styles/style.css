@@ -2644,15 +2644,22 @@ video::-webkit-media-controls-start-playback-button {
 	padding-top: 24rem;
 }
 
-.Aboutus-p.onlyDesk{
-    width: 85rem;
-	margin: 0rem auto 5rem;
-}
 
 .Aboutus-p{
 	font-size: 2rem;
 	font-weight: 400;
 	text-align: center;
+}
+
+.Aboutus-p.onlyDesk{
+    width: 85rem;
+	margin: 0rem auto 5rem;
+}
+
+.Aboutus-p.onlyMob{
+	width: 90vw;
+	margin: 0rem auto 5rem;
+	font-size: 1.8rem;
 }
 
 .OnBoard-p{
@@ -2778,7 +2785,8 @@ video::-webkit-media-controls-start-playback-button {
 .OnBoard-ProfileExtraDetail li
 {
 	list-style: disc;
-	list-style-position: inside;
+	/* list-style-position: inside; */
+    margin-left: 2rem;
 }
 
 li::marker{
@@ -4335,8 +4343,14 @@ button.FormButton .AppButton-label{
 		font-size: 10.8rem;
     	line-height: 10.98rem;
 	}
+}
 
+@media (max-width: 1023px){
 
+	.app-text--large{
+		font-size: 2.2rem;
+		line-height: 3rem;
+	}
 }
 
 .ListIconTitleText {
@@ -4452,6 +4466,10 @@ button.FormButton .AppButton-label{
 
 .TitleTextButton.branding-title{
 	margin: 4rem 0;
+}
+
+.TitleTextButton.branding-title .TitleTextButton-text{
+	font-size: 4rem;
 }
 
 .app-container {
@@ -4646,6 +4664,10 @@ button.FormButton .AppButton-label{
 	transition: filter 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
+.Campaign-list li{
+
+}
+
 
 @media only screen and ( max-width: 1023px ){
 
@@ -4653,6 +4675,77 @@ button.FormButton .AppButton-label{
 		width: 90vw;
 		height: calc( 90vw * 9/16 );
 		margin: auto;
+	}
+
+	.TitleTextButton-text{
+		width: 100%;
+
+
+		font-size: 2.2rem;
+		line-height: 3rem;
+	}
+
+	.TitleTextButton.branding-title{
+		margin: 4rem 0 2rem;
+	}
+
+	.TitleTextButton.branding-title .TitleTextButton-text{
+		font-size: 2.8rem;
+	}
+
+	.WorkHero .HomeTitle-title{
+		font-size: 4.5rem;
+		line-height: 5rem;
+	}
+
+	.Content-text .TitleTextButton-text{
+		font-size: 2.4rem;
+		line-height: 3.2rem;
+	}
+
+	.app-container{
+		width: 90vw;
+	}
+
+	.DetailTextButton{
+		margin: 0rem auto 8rem;
+	}
+
+	.CREDO-details{
+		width: auto;
+		margin: auto;
+		flex-direction: column;
+
+		gap: 4rem;
+	}
+
+	.CREDO-text{
+		font-size: 3.4rem;
+		line-height: 3.8rem;
+	}
+
+	.CREDO-details{
+		width: auto;
+		margin: auto;
+		flex-direction: column;
+	}
+
+	.CREDO-details{
+		width: auto;
+		margin: auto;
+		flex-direction: column;
+	}
+
+	.CREDO-detailcontainer{
+		width: 100%;
+	}
+
+	.ListIconTitleText-listItemText{
+		font-size: 1.8rem;
+	}
+
+	.ListIconTitleText-icon{
+		margin-bottom: 2rem;
 	}
 
 }
