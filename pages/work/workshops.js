@@ -18,7 +18,7 @@ export function StrategyListItem(prop){
 export default function Workshops() {
   return (
     <Work>
-        <WorkHero title="Workshops" heroCopy={<>How we can empower your Teams:<br/>The Credo Range of Skilling Workshops:</>} />
+        <WorkHero title="Workshops" heroCopy={<>How we can empower your Teams<br/>The Credo Range of Skilling Workshops</>} />
 
         <div className="Workshops-video">
             <div className="Workshops-video-wrapper">

@@ -568,7 +568,7 @@ function MyApp({ Component, pageProps }) {
         var cl_h_link = {
             "/" : [".Works-slideContent", ".ideasBehind-item", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work" : [".WorksListItem", ".AppButton", ".Menu-navItemLink"],
-            "/work/branding" : [".WorksListItem:not(.LOGO-list-item .WorksListItem)", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/work/branding" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work/campaigns" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work/content" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work/strategy" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],

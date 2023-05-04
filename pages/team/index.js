@@ -249,7 +249,7 @@ export default function Team(){
                             </div>
                             <div className="OnBoard-p" >
                                 <div className="Paragraph">
-                                    <h1>Our Team consists: </h1>
+                                    <h1>Our Team consists </h1>
                                     <ul className="Employee-counts" >
                                         {/* <li>Client Team of 8 brand managers</li> */}
                                         <li className="Counts" >

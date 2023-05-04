@@ -56,12 +56,12 @@ export default function Strategy() {
         <div className="DetailTextButton app-container">
             <div className="CREDO-details">
                 <div className="CREDO-detailcontainer">
-                    <p className='CREDO-text CREDO-titletext' >What sets up apart:</p>
+                    <p className='CREDO-text CREDO-titletext' >What sets up apart</p>
                     <p className='CREDO-smalltext'>End to end solutions. <br /> Scale of understanding.</p>
                     <p className='CREDO-listItemText'>Our expertise to help bridge essential skill gaps comes from 33+ years of experience in understanding the Indian real estate market and home buying behaviour.</p>
                 </div>
                 <div className="CREDO-detailcontainer">
-                    <p className='CREDO-text CREDO-titletext' >What we provide:</p>
+                    <p className='CREDO-text CREDO-titletext' >What we provide</p>
                     <p className='CREDO-smalltext'>Decades of exposure. <br /> From Leads to walk-ins to sales closure.</p>
                     <p className='CREDO-listItemText'>Successful customer conversions will depend on the performance of the Sales Team, across every stage of the process. Our solutions encompass skill improvement from start to end of the sales journey.</p>
                 </div>

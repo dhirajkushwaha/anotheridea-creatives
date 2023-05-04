@@ -7,17 +7,16 @@ import Work, { WorkHero, GallaryList, colorIndex } from '.';
 
 
 const LOGO_DATA = [
-    ["/", "/assets/truster/logo (1).png"],
-    ["/", "/assets/truster/logo (2).png"],
-    ["/", "/assets/truster/logo (3).png"],
-    ["/", "/assets/truster/logo (4).png"],
-    ["/", "/assets/truster/logo (5).png"],
-    ["/", "/assets/truster/logo (6).png"],
-    ["/", "/assets/truster/logo (7).png"],
-    ["/", "/assets/truster/logo (8).png"],
-    ["/", "/assets/truster/logo (9).png"],
-    ["/", "/assets/truster/logo (10).png"],
-    ["/", "/assets/truster/logo (11).png"]
+    ["/", "/assets/truster/logo (1).png", "", "/assets/logopdf/18 East_Merlin Group.pdf"],
+    ["/", "/assets/truster/logo (2).png", "", "/assets/logopdf/Aerohub logo.pdf"],
+    ["/", "/assets/truster/logo (3).png", "", "/assets/logopdf/GBD Logo Option.pdf"],
+    ["/", "/assets/truster/logo (4).png", "", "/assets/logopdf/hiranandani falcon identity.pdf"],
+    ["/", "/assets/truster/logo (5).png", "", "/assets/logopdf/mahavir ville logo.pdf"],
+    ["/", "/assets/truster/logo (6).png", "", "/assets/logopdf/TrandINN 1.pdf"],
+    ["/", "/assets/truster/logo (7).png", "", "/assets/logopdf/VIBE LOGO.pdf"],
+    ["/", "/assets/truster/logo (8).png", "", "/assets/logopdf/Westbay_Transcon.pdf"],
+    ["/", "/assets/truster/logo (9).png", "", "/assets/logopdf/Westward_Vraj.pdf"],
+    ["/", "/assets/truster/logo (10).png", "", "/assets/logopdf/Xotel.pdf"],
 ]
 
 const STATIONERY_DATA = [

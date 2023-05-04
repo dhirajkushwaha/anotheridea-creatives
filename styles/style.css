@@ -2827,7 +2827,9 @@ img.OtherDirectors-Image {
 
 @media only screen and (min-width: 1024px) {
 	.OnBoard-wrapper {
-		width: 88vw;
+		width: 72vw;
+		margin-bottom: 10rem;
+
 	}
 
 	.OnBoardDirector-About{
