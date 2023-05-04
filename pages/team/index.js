@@ -74,8 +74,8 @@ export default function Team(){
     const [profiles_comp, set_profiles_comp] = useState([]);
 
     const profiles = [
-        ["/assets/jaideep_gandhi.jpeg", "Jaideep Gandhi", "Founder"],
-        ["/assets/chetna_gandhi.jpeg", "Chetna Gandhi", "Co-Founder"],
+        ["/assets/jaideep-gandhi.jpeg", "Jaideep Gandhi", "Founder"],
+        ["/assets/chetna-gandhi.jpeg", "Chetna Gandhi", "Co-Founder"],
     ]
 
 
