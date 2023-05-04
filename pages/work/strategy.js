@@ -34,7 +34,7 @@ export default function Strategy() {
             </div>
         </div>
 
-        <div className="TitleTextButton app-container">
+        <div className="Funnel-opening TitleTextButton app-container">
             <div className="TitleTextButton-wrapper">
                 <div className="TitleTextButton-wrapperSmall">
                     <p className='TitleTextButton-text'>How can we reduce the gap between Skills and Sales?</p>
