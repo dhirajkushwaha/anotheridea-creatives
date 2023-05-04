@@ -283,12 +283,12 @@ export default function About(){
                     <h1 className="HomeTitle-title">About US</h1>
                 </div>
                 <div className="Paragraph">
-                    <p className="Aboutus-p onlyDesk" >We are an advertising agency that can help deliver strategic value to our clients.
+                    <p className="Aboutus-p onlyDesk app-text--large" >We are an advertising agency that can help deliver strategic value to our clients.
                     We provide a complete spectrum of services that enable brands to interface with target audiences at multiple touch points.
                     To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you. As well as to percolate this brand essence into project based communication endeavours.
                     We optimize a brand’s success potential through accurate planning and insightful implementation of communication initiatives.
                     </p>
-                    <p className="Aboutus-p onlyMob" >We are an advertising agency that can help deliver strategic value to our clients.
+                    <p className="Aboutus-p onlyMob app-text--large" >We are an advertising agency that can help deliver strategic value to our clients.
                     We provide a complete spectrum of services that enable brands to interface with target audiences at multiple touch points.
                     To define the true essence or distinguishing hallmark of your brand vis-a-vis competition is what we oversee for you. As well as to percolate this brand essence into project based communication endeavours.
                     We optimize a brand’s success potential through accurate planning and insightful implementation of communication initiatives.
