@@ -581,6 +581,7 @@ function MyApp({ Component, pageProps }) {
         if ( cl_h_link[router.asPath] !== undefined ){
 
             cl_h_link[router.asPath].forEach(cl => {
+
                 let interv_cl_vis = setInterval(() => {
 
                     const cl_querySelections = document.querySelectorAll(cl);
@@ -666,64 +667,69 @@ function MyApp({ Component, pageProps }) {
 
             cl_h_arrow[router.asPath].forEach((cl, index) => {
 
-                document.querySelectorAll(cl).forEach(h_arrow => {
-                    if ( el_h_event.current.indexOf(h_arrow) === -1 ){
-                        let conserveCursorState = ""
+                let interv_cl_vis = setInterval(() => {
 
-                        let d_arrow = "";
-                        let prev_d_arrow = "";
-                        let centre = window.innerWidth/2;
+                    document.querySelectorAll(cl).forEach(h_arrow => {
+                        if ( el_h_event.current.indexOf(h_arrow) === -1 ){
+                            let conserveCursorState = ""
 
-                        let listener_ref;
+                            let d_arrow = "";
+                            let prev_d_arrow = "";
+                            let centre = window.innerWidth/2;
 
-                        // let slide_interv = setInterval(() => {
-                        h_arrow.addEventListener("mouseenter", (e)=>{
-                            conserveCursorState = prevCursor.current;
-                        })
+                            let listener_ref;
 
-                        h_arrow.addEventListener("mousemove", (e)=>{
-                            // listener_ref = document.addEventListener("mousemove", (e) => {
-                            // if ( swiper_instance_right.current == undefined ) return;
-                            if ( router.asPath != "/" ) { h_arrow.removeEventListener("mousemove", listener_ref) }
+                            // let slide_interv = setInterval(() => {
+                            h_arrow.addEventListener("mouseenter", (e)=>{
+                                conserveCursorState = prevCursor.current;
+                            })
 
-                            if ( e.pageX < centre ){
-                                prev_d_arrow = d_arrow;
-                                d_arrow = "slide-arrow-left"
-                            } else {
-                                prev_d_arrow = d_arrow;
-                                d_arrow ="slide-arrow-right"
-                            }
+                            h_arrow.addEventListener("mousemove", (e)=>{
+                                // listener_ref = document.addEventListener("mousemove", (e) => {
+                                // if ( swiper_instance_right.current == undefined ) return;
+                                if ( router.asPath != "/" ) { h_arrow.removeEventListener("mousemove", listener_ref) }
 
-                            if ( prev_d_arrow != d_arrow ){
-                                m_cursor_states(d_arrow);
-                            }
+                                if ( e.pageX < centre ){
+                                    prev_d_arrow = d_arrow;
+                                    d_arrow = "slide-arrow-left"
+                                } else {
+                                    prev_d_arrow = d_arrow;
+                                    d_arrow ="slide-arrow-right"
+                                }
 
-                        }, 0);
+                                if ( prev_d_arrow != d_arrow ){
+                                    m_cursor_states(d_arrow);
+                                }
 
-                        h_arrow.addEventListener("click", (e)=>{
+                            }, 0);
 
-                            if ( d_arrow == "slide-arrow-right" ){
-                                document.querySelector("#trust_Right").click();
-                            } else {
-                                document.querySelector("#trust_Left").click();
-                            }
-                        })
+                            h_arrow.addEventListener("click", (e)=>{
 
-                        h_arrow.addEventListener("mouseleave", (e)=>{
+                                if ( d_arrow == "slide-arrow-right" ){
+                                    document.querySelector("#trust_Right").click();
+                                } else {
+                                    document.querySelector("#trust_Left").click();
+                                }
+                            })
 
-                            h_arrow.removeEventListener("mousemove", listener_ref)
-                            m_cursor_states(conserveCursorState );
-                            d_arrow = "";
-                            prev_d_arrow = "";
+                            h_arrow.addEventListener("mouseleave", (e)=>{
 
-                        });
+                                h_arrow.removeEventListener("mousemove", listener_ref)
+                                m_cursor_states(conserveCursorState );
+                                d_arrow = "";
+                                prev_d_arrow = "";
+
+                            });
 
 
 
-                        el_h_event.current.push(h_arrow);
+                            el_h_event.current.push(h_arrow);
 
-                    }
-                });
+                        }
+                    });
+
+                    clearInterval(interv_cl_vis);
+                }, 0);
             });
 
         }
@@ -740,24 +746,29 @@ function MyApp({ Component, pageProps }) {
 
         if ( cl_h_slide[router.asPath] !== undefined ){
 
-            cl_h_slide[router.asPath].forEach(cl => {
-                document.querySelectorAll(cl).forEach(h_link => {
-                    if ( el_h_event.current.indexOf(h_link) === -1 ){
-                        let conserveCursorState = ""
+            let interv_cl_vis = setInterval(() => {
 
-                        h_link.addEventListener("mouseenter", (e)=>{
-                            conserveCursorState = prevCursor.current
-                            m_cursor_states("move-slide");
-                        });
-                        h_link.addEventListener("mouseleave", (e)=>{
-                            m_cursor_states(conserveCursorState );
-                        });
+                cl_h_slide[router.asPath].forEach(cl => {
+                    document.querySelectorAll(cl).forEach(h_link => {
+                        if ( el_h_event.current.indexOf(h_link) === -1 ){
+                            let conserveCursorState = ""
 
-                        el_h_event.current.push(h_link);
+                            h_link.addEventListener("mouseenter", (e)=>{
+                                conserveCursorState = prevCursor.current
+                                m_cursor_states("move-slide");
+                            });
+                            h_link.addEventListener("mouseleave", (e)=>{
+                                m_cursor_states(conserveCursorState );
+                            });
 
-                    }
+                            el_h_event.current.push(h_link);
+
+                        }
+                    });
                 });
-            });
+
+                clearInterval(interv_cl_vis);
+            }, 0);
 
         }
 
