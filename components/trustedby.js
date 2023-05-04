@@ -92,8 +92,6 @@ export default function Trustedby(props) {
 
             let rowsPerSlide = TRUSTER_LOGO_COUNT_PER_SLIDE/TRUSTERS_ROW_COUNT.current;
 
-            console.log(rowsPerSlide)
-
             let slides_copy = [];
             for (let i = 0; i < Math.ceil((trusters.length)/rowsPerSlide); i++) {
                 slides_copy.push( <SwiperSlide> <div className="trusterSlideWrapper">{trusters.slice(i*rowsPerSlide, (i+1)*rowsPerSlide)}</div></SwiperSlide>)

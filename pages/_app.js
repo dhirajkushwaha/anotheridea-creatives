@@ -573,80 +573,81 @@ function MyApp({ Component, pageProps }) {
             "/work/content" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work/strategy" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/work/workshops" : [".WorksListItem", ".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
-            "/about" : [".AppButton", ".Menu-navItemLink"],
-            "/team" : [".AppButton", ".Menu-navItemLink"],
+            "/about" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
+            "/team" : [".AppButton", ".Menu-navItemLink", ".Menu-subnavItemLink"],
             "/contact" : [".AppButton", ".ContactDetailsInfo.Contact-Map"],
         }
 
         if ( cl_h_link[router.asPath] !== undefined ){
 
             cl_h_link[router.asPath].forEach(cl => {
+                let interv_cl_vis = setInterval(() => {
 
-                const cl_querySelections = document.querySelectorAll(cl);
+                    const cl_querySelections = document.querySelectorAll(cl);
 
-                if ( cl_querySelections == undefined ) return; // checking if existential or not
+                    if ( cl_querySelections == undefined ) return; // checking if existential or not
 
-                // iterating all the elements contained in query selection
-                cl_querySelections.forEach((h_link, index) => {
-                    // h_link => link dom element
-                    if ( el_h_event.current.indexOf(h_link) === -1 /* avoids dublicates of events */ ){
-                        let conserveCursorState = ""; // in order to conserve before and after states
+                    // iterating all the elements contained in query selection
+                    cl_querySelections.forEach((h_link, index) => {
+                        // h_link => link dom element
+                        if ( el_h_event.current.indexOf(h_link) === -1 /* avoids dublicates of events */ ){
+                            let conserveCursorState = ""; // in order to conserve before and after states
 
+                            // here the h_link considered with Menu elements don't work as supposed not even listeners sets
 
-                        // here the h_link considered with Menu elements don't work as supposed no even listeners sets
+                            h_link.addEventListener("mouseenter", (e)=>{
 
+                                // Conditional cases for special classes
+                                if ( cl == ".ideasBehind-item" ){
+                                    // changing mouse cursor color when hovered over larged fancy text
+                                    m_cursor_states("color", { color: h_link.style.getPropertyValue("--ideasBehindColor")});
+                                }
+                                if ( cl == ".Menu-subnavItemLink" ){
+                                    // changes menu background color
+                                    let menuColorPresets = ["#af37d9", "#de477e", "#f2ad45", "#3ab8c9", "#3b33b3"];
 
-                        h_link.addEventListener("mouseenter", (e)=>{
+                                    gsap.to(".Menu", {background:menuColorPresets[index]});
+                                    gsap.to(".Menu-navItemLinkInnerHover", {color:menuColorPresets[index]});
 
-                            // Conditional cases for special classes
-                            if ( cl == ".ideasBehind-item" ){
-                                // changing mouse cursor color when hovered over larged fancy text
-                                m_cursor_states("color", { color: h_link.style.getPropertyValue("--ideasBehindColor")});
-                            }
-                            if ( cl == ".Menu-subnavItemLink" ){
-                                // changes menu background color
-                                let menuColorPresets = ["#af37d9", "#de477e", "#f2ad45", "#3ab8c9", "#3b33b3"];
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColorPresets[index]});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColorPresets[index]});
+                                }
 
-                                gsap.to(".Menu", {background:menuColorPresets[index]});
-                                gsap.to(".Menu-navItemLinkInnerHover", {color:menuColorPresets[index]});
+                                if ( cl == ".Menu-navItemLink" ){
+                                    // changes menu background color
+                                    let menuColor = "#5541f8";
 
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColorPresets[index]});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColorPresets[index]});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColorPresets[index]});
-                            }
+                                    gsap.to(".Menu", {background:menuColor});
+                                    gsap.to(".Menu-navItemLinkInnerHover", {color:menuColor});
 
-                            if ( cl == ".Menu-navItemLink" ){
-                                // changes menu background color
-                                let menuColor = "#5541f8";
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColor});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColor});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColor});
+                                    gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColor});
+                                }
 
-                                gsap.to(".Menu", {background:menuColor});
-                                gsap.to(".Menu-navItemLinkInnerHover", {color:menuColor});
+                                conserveCursorState = prevCursor.current;
+                                m_cursor_states("link");
+                                e.cancelBubble = true;
+                            });
+                            h_link.addEventListener("mouseleave", (e)=>{
 
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(2) > a > svg > g > path:nth-child(2)", {fill:menuColor});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(2)", {fill:menuColor});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(3)", {fill:menuColor});
-                                gsap.to("#__next > header > div.Menu > div.Menu-wrapper > div > div.Menu-socials > div:nth-child(1) > a > svg > g > path:nth-child(4)", {fill:menuColor});
-                            }
+                                if ( cl === ".ideasBehind-item" ){
+                                    m_cursor_states("color", { color: "default" });
+                                }
 
-                            conserveCursorState = prevCursor.current;
-                            m_cursor_states("link");
-                            e.cancelBubble = true;
-                        });
-                        h_link.addEventListener("mouseleave", (e)=>{
+                                m_cursor_states(conserveCursorState);
+                                e.cancelBubble = true;
+                            });
 
-                            if ( cl === ".ideasBehind-item" ){
-                                m_cursor_states("color", { color: "default" });
-                            }
+                            el_h_event.current.push(h_link);
+                        }
+                    });
 
-                            m_cursor_states(conserveCursorState);
-                            e.cancelBubble = true;
-                        });
-
-                        el_h_event.current.push(h_link);
-                    }
-                });
-
+                    clearInterval(interv_cl_vis);
+                }, 0);
             });
 
         }
