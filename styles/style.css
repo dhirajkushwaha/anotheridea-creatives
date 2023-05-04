@@ -2271,7 +2271,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .CAMPAIGN-list-item:nth-child(2) .WorksListItem-thumbnail{
-	background-color: #000000;
+	background-color: #252223;
 }
 
 .CAMPAIGN-list-item:nth-child(3) .WorksListItem-thumbnail{
@@ -2304,6 +2304,54 @@ video::-webkit-media-controls-start-playback-button {
 
 .CAMPAIGN-list-item:nth-child(10) .WorksListItem-thumbnail{
 	background-color: #bccdd5;
+}
+
+.CAMPAIGN-list-item:nth-child(11) .WorksListItem-thumbnail{
+	background-color: #6076a4;
+}
+
+.CAMPAIGN-list-item:nth-child(12) .WorksListItem-thumbnail{
+	background-color: #54a5ba;
+}
+
+.CAMPAIGN-list-item:nth-child(13) .WorksListItem-thumbnail{
+	background-color: #1eb4a5;
+}
+
+.CAMPAIGN-list-item:nth-child(14) .WorksListItem-thumbnail{
+	background-color: #8cb0b0;
+}
+
+.CAMPAIGN-list-item:nth-child(15) .WorksListItem-thumbnail{
+	background-color: #1dacbd;
+}
+
+.CAMPAIGN-list-item:nth-child(16) .WorksListItem-thumbnail{
+	background-color: #2d2d4a;
+}
+
+.CAMPAIGN-list-item:nth-child(17) .WorksListItem-thumbnail{
+	background-color: #373a43;
+}
+
+.CAMPAIGN-list-item:nth-child(18) .WorksListItem-thumbnail{
+	background-color: #b19877;
+}
+
+.CAMPAIGN-list-item:nth-child(19) .WorksListItem-thumbnail{
+	background-color: #454142;
+}
+
+.CAMPAIGN-list-item:nth-child(20) .WorksListItem-thumbnail{
+	background-color: #d6cecb;
+}
+
+.CAMPAIGN-list-item:nth-child(21) .WorksListItem-thumbnail{
+	background-color: #9c8284;
+}
+
+.CAMPAIGN-list-item:nth-child(22) .WorksListItem-thumbnail{
+	background-color: #ffde07;
 }
 
 
@@ -4536,6 +4584,7 @@ button.FormButton .AppButton-label{
 
 .LOGO-list-item .AppImage.loaded .AppImage-image{
 	scale: 0.8;
+    border-radius: 1rem;
 }
 
 .LOGO-list-item .WorksListItem-title{
