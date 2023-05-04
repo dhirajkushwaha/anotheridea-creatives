@@ -9,8 +9,8 @@ import Work, { WorkHero, GallaryList, colorIndex } from '.';
 const LOGO_DATA = [
     ["/", "/assets/logoimg/18 East.png", "", "/assets/logopdf/18 East_Merlin Group.pdf"],
     ["/", "/assets/logoimg/Aerohub.png", "", "/assets/logopdf/Aerohub logo.pdf"],
-    ["/", "/assets/logoimg/Falcon.png", "", "/assets/logopdf/GBD Logo Option.pdf"],
-    ["/", "/assets/logoimg/Gravah.png", "", "/assets/logopdf/hiranandani falcon identity.pdf"],
+    ["/", "/assets/logoimg/Gravah.png", "", "/assets/logopdf/GBD Logo Option.pdf"],
+    ["/", "/assets/logoimg/Falcon.png", "", "/assets/logopdf/hiranandani falcon identity.pdf"],
     ["/", "/assets/logoimg/Mahavir.png", "", "/assets/logopdf/mahavir ville logo.pdf"],
     ["/", "/assets/logoimg/Trend.png", "", "/assets/logopdf/TrandINN 1.pdf"],
     ["/", "/assets/logoimg/Vibe.png", "", "/assets/logopdf/VIBE LOGO.pdf"],

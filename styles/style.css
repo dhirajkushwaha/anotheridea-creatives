@@ -2682,14 +2682,31 @@ video::-webkit-media-controls-start-playback-button {
     align-items: center;
 }
 
-.Counts > h1{
+.Counts-figure > h1{
 	font-size: 5rem;
     font-weight: 600;
-    line-height: 10rem;
-    background-color: var(--web-color);
+    line-height: 6rem;
+    width: 6rem;
+
+    /* background-color: var(--web-color);
     text-align: center;
     border-radius: 50%;
-    width: 10rem;
+    width: 10rem; */
+}
+
+.Counts-figure{
+	position: relative;
+}
+
+.Figure-background{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+    border-radius: 50%;
+	background-color: var(--web-color);
+	top: 0;
+    z-index: -1;
+    scale: 0.5;
 }
 
 .Counts > h4{
@@ -2890,6 +2907,11 @@ img.OtherDirectors-Image {
 
 	.OnBoardDirector-About{
 		margin-left: 6vw;
+	}
+
+	.Directors-onBoard .Title{
+		font-size: 10.8rem;
+    	line-height: 10.98rem;
 	}
 }
 
@@ -4364,9 +4386,8 @@ button.FormButton .AppButton-label{
 
 .ListIconTitleText-list {
 	display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-between;
 }
 
 .Strategy-list.ListIconTitleText-list {
@@ -4746,6 +4767,17 @@ button.FormButton .AppButton-label{
 
 	.ListIconTitleText-icon{
 		margin-bottom: 2rem;
+	}
+
+	.Employee-counts {
+		margin-top: 4rem;
+		flex-wrap: wrap;
+		column-gap: 0rem;
+		row-gap: 4rem;
+	}
+
+	.Counts {
+		width: 50%;
 	}
 
 }

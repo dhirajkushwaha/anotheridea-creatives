@@ -253,20 +253,32 @@ export default function Team(){
                                     <ul className="Employee-counts" >
                                         {/* <li>Client Team of 8 brand managers</li> */}
                                         <li className="Counts" >
-                                            <h1>8</h1>
+                                            <div className="Counts-figure" >
+                                                <h1>8</h1>
+                                                <div className="Figure-background" ></div>
+                                            </div>
                                             <h4>Brand Manager</h4>
                                         </li>
                                         <li className="Counts" >
-                                            <h1>10</h1>
-                                            <h4>Innovators</h4>
+                                            <div className="Counts-figure" >
+                                                <h1>10</h1>
+                                                <div className="Figure-background" ></div>
+                                            </div>
+                                            <h4>Design Innovators</h4>
                                         </li>
                                         <li className="Counts" >
-                                            <h1>10</h1>
-                                            <h4>Wordsmiths</h4>
+                                            <div className="Counts-figure" >
+                                                <h1>10</h1>
+                                                <div className="Figure-background" ></div>
+                                            </div>
+                                            <h4>Creative Copywriters</h4>
                                         </li>
                                         <li className="Counts" >
-                                            <h1>11</h1>
-                                            <h4>Experts</h4>
+                                            <div className="Counts-figure" >
+                                                <h1>11</h1>
+                                                <div className="Figure-background" ></div>
+                                            </div>
+                                            <h4>Technical Experts</h4>
                                         </li>
                                     </ul>
                                 </div>

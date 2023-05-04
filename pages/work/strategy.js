@@ -45,8 +45,8 @@ export default function Strategy() {
         <div className="TitleTextButton app-container">
             <div className="TitleTextButton-wrapper">
                 <div className="TitleTextButton-wrapperSmall">
+                    <p className='TitleTextButton-text CREDO-text app-text--large'>We are </p>
                     <Image width="400" height="400" src="/assets/credo_logo-png.png" alt="CREDO" className="CREDO-image" />
-                    <p className='TitleTextButton-text CREDO-text app-text--large'>We are <br /> CREDO Consulting.</p>
                     <p className='TitleTextButton-text'>A visionary part of Another Idea.</p>
                     <p className='TitleTextButton-listItemText'>Think of us as a Training & Enabling Partner who will help sensitise your Sales and other resources to the true potential of your projects.</p>
                 </div>

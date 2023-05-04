@@ -10,30 +10,41 @@ const BROCHURES_DATA = [
     ["/", "/assets/brochuresimg/montana.png", "Sheth Montana", "/assets/brochurespdf/Sheth - Montana Brochure.pdf"],
     ["/", "/assets/brochuresimg/cnergy.png", "Sheth Cnergy", "/assets/brochurespdf/Sheth Cnergy - Commercial brochure.pdf"],
 ]
-
+// Indiabulls
+// Sheth Creators
+// Suyojit
+// Peninsula Heights
+// Peninsula Heights
+// Mani
+// Sheth Iris Bay
+// Indigo Properties
+// Marathon
+// Sheth Group
+// Anandam
+// Anandam
 const CAMPAIGN_DATA = [
     ["/", "/assets/shortlistedimg/Picture 3 A.jpg", "Hiranandani"],
     ["/", "/assets/shortlistedimg/Picture 4 A.jpg", "Omkar"],
-    ["/", "/assets/shortlistedimg/Picture 12 A.jpg", "Vasnat Oasis"],
+    ["/", "/assets/shortlistedimg/Picture 12 A.jpg", "Sheth"],
     ["/", "/assets/shortlistedimg/Picture 20 A.jpg", "The Times of India"],
     ["/", "/assets/shortlistedimg/Picture 26 A.jpg", "Alcove"],
     ["/", "/assets/shortlistedimg/Picture 32 A.jpg", "Omaxe"],
     ["/", "/assets/shortlistedimg/Picture 34 A.png", "Aurobindu"],
-    ["/", "/assets/shortlistedimg/Picture 37 A.jpg", "Gaurse"],
-    ["/", "/assets/shortlistedimg/Picture 39 A.jpg", "IRIS Building for life"],
+    ["/", "/assets/shortlistedimg/Picture 37 A.jpg", "Gaurs"],
+    ["/", "/assets/shortlistedimg/Picture 39 A.jpg", "Sheth Iris"],
     ["/", "/assets/shortlistedimg/Picture 58 A.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture7.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture7.jpg", "Indiabulls"],
     ["/", "/assets/shortlistedimg/Picture9.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture17.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture23.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture24.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture25.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture41.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture44.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture47.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture50.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture63.jpg", "Sheth Creators"],
-    ["/", "/assets/shortlistedimg/Picture20_Pixelate.jpg", "Sheth Creators"],
+    ["/", "/assets/shortlistedimg/Picture17.jpg", "Suyojit"],
+    ["/", "/assets/shortlistedimg/Picture23.jpg", "Peninsula Heights"],
+    ["/", "/assets/shortlistedimg/Picture24.jpg", "Peninsula Heights"],
+    ["/", "/assets/shortlistedimg/Picture25.jpg", "Mani"],
+    ["/", "/assets/shortlistedimg/Picture41.jpg", "Sheth Iris Bay"],
+    ["/", "/assets/shortlistedimg/Picture44.jpg", "Indigo Properties"],
+    ["/", "/assets/shortlistedimg/Picture47.jpg", "Marathon"],
+    ["/", "/assets/shortlistedimg/Picture50.jpg", "Sheth Group"],
+    ["/", "/assets/shortlistedimg/Picture63.jpg", "Anandam"],
+    ["/", "/assets/shortlistedimg/Picture20_Pixelate.jpg", "Anandam"],
 ]
 
 const MEDIA_DATA = [
