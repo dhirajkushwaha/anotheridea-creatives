@@ -234,7 +234,7 @@ export default function Team(){
 
 
     return (
-        <div className="About-page" data-scroll-container>
+        <div className="About-page Team-page" data-scroll-container>
             <Head><title>Team - Another Idea</title></Head>
 
             <section className="Directors-onBoard">
