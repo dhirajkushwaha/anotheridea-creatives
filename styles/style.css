@@ -2901,7 +2901,7 @@ img.OtherDirectors-Image {
 @media only screen and (min-width: 1024px) {
 	.Team-page .OnBoard-wrapper {
 		width: 88vw;
-		/* margin-bottom: 10rem; */
+		margin-bottom: 0;
 
 	}
 
