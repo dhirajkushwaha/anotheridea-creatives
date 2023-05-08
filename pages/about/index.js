@@ -11,116 +11,116 @@ import Footer from "../../components/footer/footer"
 
 function OnBoardItem(props){
 
-    const executed = useRef(0);
+    // const executed = useRef(0);
 
-    useEffect(() => {
-		if (typeof window === "undefined") { return; }
-        if ( !executed.current){
+    // useEffect(() => {
+	// 	if (typeof window === "undefined") { return; }
+    //     if ( !executed.current){
 
-            { // particles
-                var canvas = document.querySelector(".ExpertItem-canvas-"+props.index+" canvas"),
-                canvasContainer = document.querySelector(".ExpertItem-canvas-"+props.index),
-                ctx = canvas.getContext("2d"),
-                particles = [],
-                amount = 0,
-                mouse = {x:0,y:0},
-                radius = 3;
+    //         { // particles
+    //             var canvas = document.querySelector(".ExpertItem-canvas-"+props.index+" canvas"),
+    //             canvasContainer = document.querySelector(".ExpertItem-canvas-"+props.index),
+    //             ctx = canvas.getContext("2d"),
+    //             particles = [],
+    //             amount = 0,
+    //             mouse = {x:0,y:0},
+    //             radius = 3;
 
-                var colors = ["#fff","#5541F8","#373737"];
-                var amount = 20;
+    //             var colors = ["#fff","#5541F8","#373737"];
+    //             var amount = 20;
 
-                let canvas_ratio = canvasContainer.clientWidth/canvasContainer.clientHeight
+    //             let canvas_ratio = canvasContainer.clientWidth/canvasContainer.clientHeight
 
-                var ww = canvas.width = 1152;
-                var wh = canvas.height = 1152/canvas_ratio;
+    //             var ww = canvas.width = 1152;
+    //             var wh = canvas.height = 1152/canvas_ratio;
 
-                function Particle(x,y){
-                    this.x =  (Math.random()*ww);
-                    this.y =  (Math.random()*wh);
-                    this.dest = {
-                        x: x,
-                        y: y
-                    };
+    //             function Particle(x,y){
+    //                 this.x =  (Math.random()*ww);
+    //                 this.y =  (Math.random()*wh);
+    //                 this.dest = {
+    //                     x: x,
+    //                     y: y
+    //                 };
 
-                    if ( this.x > ww*0.95 ){
-                        this.x = ww*0.95
-                    }
-                    else if ( this.x < ww*0.05 ){
-                        this.x = ww*0.05
-                    }
-                    if ( this.y > wh*0.95 ){
-                        this.y = wh*0.95
-                    }
-                    else if ( this.y < wh*0.05 ){
-                        this.y = wh*0.05
-                    }
+    //                 if ( this.x > ww*0.95 ){
+    //                     this.x = ww*0.95
+    //                 }
+    //                 else if ( this.x < ww*0.05 ){
+    //                     this.x = ww*0.05
+    //                 }
+    //                 if ( this.y > wh*0.95 ){
+    //                     this.y = wh*0.95
+    //                 }
+    //                 else if ( this.y < wh*0.05 ){
+    //                     this.y = wh*0.05
+    //                 }
 
-                    this.r =  (Math.random()*14 + 5);
-                    this.vx = ((Math.random()-0.5));
-                    this.vy = ((Math.random()-0.5));
+    //                 this.r =  (Math.random()*14 + 5);
+    //                 this.vx = ((Math.random()-0.5));
+    //                 this.vy = ((Math.random()-0.5));
 
-                    this.accX = 0;
-                    this.accY = 0;
+    //                 this.accX = 0;
+    //                 this.accY = 0;
 
-                    this.color = colors[Math.floor(Math.random()*(colors.length+1))];
-                }
+    //                 this.color = colors[Math.floor(Math.random()*(colors.length+1))];
+    //             }
 
-                Particle.prototype.render = function() {
+    //             Particle.prototype.render = function() {
 
-                    if ( this.x + this.vx > ww - this.r ){
-                        this.vx = -this.vx;
-                    } else if ( this.x + this.vx < 0 + this.r ) {
-                        this.vx = -this.vx;
-                    }
-                    if ( this.y + this.vy > wh - this.r  ){
-                        this.vy = -this.vy;
-                    } else if ( this.y + this.vy < 0 + this.r ) {
-                        this.vy = -this.vy;
-                    }
+    //                 if ( this.x + this.vx > ww - this.r ){
+    //                     this.vx = -this.vx;
+    //                 } else if ( this.x + this.vx < 0 + this.r ) {
+    //                     this.vx = -this.vx;
+    //                 }
+    //                 if ( this.y + this.vy > wh - this.r  ){
+    //                     this.vy = -this.vy;
+    //                 } else if ( this.y + this.vy < 0 + this.r ) {
+    //                     this.vy = -this.vy;
+    //                 }
 
-                    this.x += this.vx;
-                    this.y += this.vy;
+    //                 this.x += this.vx;
+    //                 this.y += this.vy;
 
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
-                    ctx.fill();
+    //                 ctx.fillStyle = this.color;
+    //                 ctx.beginPath();
+    //                 ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+    //                 ctx.fill();
 
-                }
+    //             }
 
-                function initScene(){
-                    var ww = 1152;
-                    var wh = 1152;
+    //             function initScene(){
+    //                 var ww = 1152;
+    //                 var wh = 1152;
 
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.globalCompositeOperation = "screen";
+    //                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //                 ctx.globalCompositeOperation = "screen";
 
-                    particles = [];
+    //                 particles = [];
 
-                    for (let i = 0; i < amount; i++) {
-                        particles.push(new Particle( Math.round(Math.random()*ww), Math.round(Math.random()*wh)));
-                    }
-                }
+    //                 for (let i = 0; i < amount; i++) {
+    //                     particles.push(new Particle( Math.round(Math.random()*ww), Math.round(Math.random()*wh)));
+    //                 }
+    //             }
 
-                function onMouseMove(e){
-                    // adjusted to take it relative to canvas
-                    mouse.x = ww * Math.floor(1000*(e.clientX - canvas.getBoundingClientRect().left)/canvasContainer.clientWidth)/1000;
-                    mouse.y = wh * Math.floor(1000*(e.clientY - canvas.getBoundingClientRect().top)/canvasContainer.clientWidth)/1000;
-                }
+    //             function onMouseMove(e){
+    //                 // adjusted to take it relative to canvas
+    //                 mouse.x = ww * Math.floor(1000*(e.clientX - canvas.getBoundingClientRect().left)/canvasContainer.clientWidth)/1000;
+    //                 mouse.y = wh * Math.floor(1000*(e.clientY - canvas.getBoundingClientRect().top)/canvasContainer.clientWidth)/1000;
+    //             }
 
-                // this function is called repeatedly many times
-                function render(a) {
-                    requestAnimationFrame(render);
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    for (var i = 0; i < amount; i++) {
-                        particles[i].render();
-                    }
-                };
-            }
+    //             // this function is called repeatedly many times
+    //             function render(a) {
+    //                 requestAnimationFrame(render);
+    //                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //                 for (var i = 0; i < amount; i++) {
+    //                     particles[i].render();
+    //                 }
+    //             };
+    //         }
 
-            executed.current = 1;
-        }
-    }, [])
+    //         executed.current = 1;
+    //     }
+    // }, [])
 
 
 
@@ -197,7 +197,7 @@ export default function About(){
 
     const [profiles, set_profiles] = useState([]);
 
-    let pos_set = [[-10, -10], [10, -10], [10, 10], [-10, 10]];
+    const pos_set = [[-10, -10], [10, -10], [10, 10], [-10, 10]];
 
     useEffect(() => {
 		if (typeof window === "undefined") { return; }
