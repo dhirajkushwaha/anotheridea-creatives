@@ -22,7 +22,7 @@ export default function Workshops() {
 
         <div className="Workshops-video">
             <div className="Workshops-video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/apiu3pTIwuY?controls=0&mute=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; modestbranding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/-C5POWufMQ8?controls=0&mute=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; modestbranding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
 
