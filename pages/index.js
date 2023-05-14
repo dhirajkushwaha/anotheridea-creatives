@@ -986,8 +986,6 @@ export default function Home(props) {
 					></Ideasbehindtextitem>
 					<Ideasbehindtextitem
 						label="Workshops"
-						label_left={"Post Production"}
-						label_right={"Post Production"}
 						href="/work/workshops"
 						color="#3b33b3"
 						// skill="Lorem Ipsum"
