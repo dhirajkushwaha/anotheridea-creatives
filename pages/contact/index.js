@@ -161,11 +161,11 @@ export default function Contact(){
                                 <div className="ContactForm-details">
                                     <div className="ContactDetailsItem">
                                         <h3 className="ContactDetailsLabel">Email</h3>
-                                        <span className="ContactDetailsInfo">abhishek@anotheridea.in</span>
+                                        <span className="ContactDetailsInfo">abdulkadir@anotheridea.in</span>
                                     </div>
                                     <div className="ContactDetailsItem">
                                         <h3 className="ContactDetailsLabel">Phone</h3>
-                                        <span className="ContactDetailsInfo">+91 90040 79140</span>
+                                        <span className="ContactDetailsInfo">+91 75066 37280</span>
                                     </div>
                                     <div className="ContactDetailsItem">
                                         <h3 className="ContactDetailsLabel">Address</h3>
