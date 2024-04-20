@@ -1729,8 +1729,8 @@ function MyApp({ Component, pageProps }) {
                                     if ( document.body.clientWidth < 450 )
                                         video_url_str = "https://player.vimeo.com/video/824751823?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
-                                    var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
-                                    xhr.onload = function(){
+                                    // var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+                                    // xhr.onload = function(){
                                         // setting the innerHtml of required element
                                         document.querySelector(".vimeo-fullscreenVideo").innerHTML = `<iframe
                                             src="${video_url_str}"
@@ -1787,10 +1787,10 @@ function MyApp({ Component, pageProps }) {
 
                                         }, load_s_t*0.1);
 
-                                    }
-                                    xhr.onerror = function(){}
-                                    xhr.open("GET","https://api.publicapis.org/entries",true);
-                                    xhr.send();
+                                    // }
+                                    // xhr.onerror = function(){}
+                                    // xhr.open("GET","https://api.publicapis.org/entries",true);
+                                    // xhr.send();
                                 }
 
                             } else {
