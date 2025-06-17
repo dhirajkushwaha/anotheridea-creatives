@@ -1,5 +1,5 @@
 import { React, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRouter } from 'next/navigation';
+ 
 
 // Nextjs components
 import Head from "next/head";
@@ -10,6 +10,11 @@ import { gsap } from "gsap/dist/gsap";
 
 import Worknav from './worknav'
 import Footer from '../../components/footer/footer';
+
+ 
+import { useRouter } from 'next/router' 
+
+
 
 // work page color definition
 export const colorIndex = {
@@ -291,33 +296,40 @@ export function GallaryList(props){
 }
 
 export default function Work({ children }) {
+  const router = useRouter()
+  const executed = useRef(0)
+  
+  // Better path extraction that handles query params and trailing slashes
+  const currentPath = router.asPath.split('?')[0] // Remove query params
+  const pathParts = currentPath.split('/').filter(part => part !== '') // Split and remove empty parts
+  const currentPage = pathParts[pathParts.length - 1] || 'branding' // Get last part or default
+  
+  const [activeIndex, setActiveIndex] = useState(pageIndex[currentPage] ?? 0)
 
-    const {push} = useRouter();
-    const executed = useRef(0);
-    const [activeIndex, setActiveIndex] = useState();
+  console.log('Current path:', router.asPath) // Debugging
+  console.log('Current page:', currentPage) // Debugging
+  console.log('Active index:', activeIndex) // Debugging
+  console.log('Current color:', colorIndex[activeIndex]) // Debugging
 
+  useEffect(() => {
+    if (executed.current === 0) {
+      // Redirect to branding if at /work
+      if (currentPath === '/work') {
+        router.push('/work/branding')
+      }
+      executed.current++
+    }
+  }, [currentPath, router])
 
-    useEffect(() => {
-
-        if ( executed.current == 0 ){
-
-            setActiveIndex(()=>{
-                let path_array = (window.location.pathname).split("/");
-                return pageIndex[path_array[path_array.length-1]]
-            });
-
-            window.location.pathname === "/work" ? push("/work/branding") : null;
-            executed.current++;
-        }
-
-    }, [])
-
-
-    return (
-        <main className={`Work-page-container`} style={{"--page-color":colorIndex[activeIndex]}} data-scroll-container>
-            <Worknav activeIndex={activeIndex} />
-            {children}
-            <Footer />
-        </main>
-    )
+  return (
+    <main 
+      className="Work-page-container" 
+      style={{ '--page-color': colorIndex[activeIndex] }}
+      data-scroll-container
+    >
+      <Worknav activeIndex={activeIndex} />
+      {children}
+      <Footer />
+    </main>
+  )
 }

@@ -1,63 +1,89 @@
-
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import Router from 'next/router'
-
+import React from 'react'
+import { useRouter } from 'next/router'
 import { colorIndex, pageIndex, pageIndexInv } from '.'
 
-function WorknavItem(props) {
+function WorknavItem({ link, label, index, activeIndex, color }) {
   return (
-    <a href={props.link} className={"WorkNav-item " + (props.activeIndex === props.index ? "Active-item" : "")}>
-        <div className="WorkNav-itemInner">
-            <div className="WorkNav-itemLabel">{props.label}</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="WorkNav-itemArrow icon sprite-icons">
-                <path xmlns="http://www.w3.org/2000/svg" d="M8.3 2.2L15 8.9H0V12h15l-6.7 6.7 2.2 2.2L21 10.4 10.5 0 8.3 2.2z"/>
-            </svg>
-            <div className="WorkNav-itemColorWrap">
-                <div className="WorkNav-itemColor" style={{backgroundColor: props.color}}></div>
-            </div>
+    <a href={link} className={`WorkNav-item ${activeIndex === index ? 'Active-item' : ''}`}>
+      <div className="WorkNav-itemInner">
+        <div className="WorkNav-itemLabel">{label}</div>
+        <svg xmlns="http://www.w3.org/2000/svg" className="WorkNav-itemArrow icon sprite-icons">
+          <path d="M8.3 2.2L15 8.9H0V12h15l-6.7 6.7 2.2 2.2L21 10.4 10.5 0 8.3 2.2z" />
+        </svg>
+        <div className="WorkNav-itemColorWrap">
+          <div className="WorkNav-itemColor" style={{ backgroundColor: color }}></div>
         </div>
+      </div>
     </a>
-  )
+  );
 }
 
+export default function Worknav() {
+  const router = useRouter();
+  
+  // Better path extraction that handles query params and trailing slashes
+  const currentPath = router.asPath.split('?')[0]; // Remove query params
+  const pathParts = currentPath.split('/').filter(part => part !== ''); // Split and remove empty parts
+  const currentPage = pathParts[pathParts.length - 1] || 'branding'; // Get last part or default
+  
+  console.log('Current path:', router.asPath); // Debugging
+  console.log('Current page:', currentPage); // Debugging
+  
+  const activeIndex = pageIndex[currentPage] ?? 0;
+  
+  console.log('Active index:', activeIndex); // Debugging
+  
+  // Check if window is available (Next.js SSR)
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 1023;
 
-export default function Worknav(props) {
+  const navItems = [];
 
-    const [navItem, setNavItem] = useState([]);
+  if (isMobile) {
+    navItems.push(
+      <WorknavItem
+        key={activeIndex}
+        index={activeIndex}
+        activeIndex={activeIndex}
+        link={`/work/${currentPage}`}
+        label={currentPage}
+        color={colorIndex[activeIndex]}
+      />
+    );
 
+    for (let i = 0; i < 5; i++) {
+      if (i !== activeIndex) {
+        navItems.push(
+          <WorknavItem
+            key={i}
+            index={i}
+            activeIndex={activeIndex}
+            link={`/work/${pageIndexInv[i]}`}
+            label={pageIndexInv[i]}
+            color={colorIndex[i]}
+          />
+        );
+      }
+    }
+  } else {
+    for (let i = 0; i < 5; i++) {
+      navItems.push(
+        <WorknavItem
+          key={i}
+          index={i}
+          activeIndex={activeIndex}
+          link={`/work/${pageIndexInv[i]}`}
+          label={pageIndexInv[i]}
+          color={colorIndex[i]}
+        />
+      );
+    }
+  }
 
-
-    useEffect(() => {
-        let navItemCpy = [];
-        let currentPage = Router.asPath.split("/").at(-1);
-
-        if ( document.body.clientWidth <= 1023 ){
-            navItemCpy.push(<WorknavItem index={pageIndex[currentPage]} activeIndex={pageIndex[currentPage]} link={`/work/${currentPage}`} label={currentPage} color={colorIndex[pageIndex[currentPage]]}/>)
-
-            for (let i = 0; i < 5; i++) {
-                if ( i != pageIndex[currentPage] ){
-                    navItemCpy.push(<WorknavItem index={i} activeIndex={pageIndex[currentPage]} link={`/work/${pageIndexInv[i]}`} label={pageIndexInv[i]} color={colorIndex[i]}/>)
-                }
-            }
-        } else {
-            for (let i = 0; i < 5; i++) {
-                navItemCpy.push(<WorknavItem index={i} activeIndex={pageIndex[currentPage]} link={`/work/${pageIndexInv[i]}`} label={pageIndexInv[i]} color={colorIndex[i]}/>)
-
-            }
-        }
-
-        setNavItem(navItemCpy);
-    }, [Router])
-
-    return (
-        <>
-            <div className="WorkNav">
-                <div className="WorkNav-inner">
-                    <div className="WorkNav-wrapper">
-                        {navItem}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+  return (
+    <div className="WorkNav">
+      <div className="WorkNav-inner">
+        <div className="WorkNav-wrapper">{navItems}</div>
+      </div>
+    </div>
+  );
 }

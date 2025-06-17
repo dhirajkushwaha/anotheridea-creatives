@@ -1724,10 +1724,10 @@ function MyApp({ Component, pageProps }) {
                             if ( router.asPath == "/" ){ // vimeo video
 
                                 if ( window.navigator.onLine ){
-                                    let video_url_str = "https://player.vimeo.com/video/824751823?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                    let video_url_str = "https://player.vimeo.com/video/1041057807?h=0a152e67e9&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     if ( document.body.clientWidth < 450 )
-                                        video_url_str = "https://player.vimeo.com/video/824751823?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
+                                        video_url_str = "https://player.vimeo.com/video/1041057807?h=972d4c7b96&title=0&portrait=0&muted=1&autoplay=1&controls=0&dnt=1&loop=1&transparent=0&background=1&app_id=000001";
 
                                     // var xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
                                     // xhr.onload = function(){
@@ -1737,7 +1737,7 @@ function MyApp({ Component, pageProps }) {
                                             width="640"
                                             height="360"
                                             frameBorder="0"
-                                            allow="picture-in-picture"
+                                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                                             allowFullScreen=""
                                             title="Another Idea"
                                             data-ready="true"

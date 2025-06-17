@@ -32,7 +32,7 @@ export default function Footer(){
                 </div>
             </div>
             <div className="copyRightText">
-                © 2023 All Rights Reserved Another Idea
+                © {new Date().getFullYear()} All Rights Reserved Another Idea
             </div><hr color="black" />
         </footer>
     )
